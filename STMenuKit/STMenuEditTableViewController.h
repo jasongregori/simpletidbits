@@ -6,7 +6,7 @@
 //  Copyright 2009 Jason Gregori. All rights reserved.
 //
 
-#import "STMenuBasicTableViewController.h"
+#import "STMenuFormattedTableViewController.h"
 
 /*
  
@@ -47,6 +47,6 @@
  
  */
 
-@interface STMenuEditTableViewController : STMenuBasicTableViewController
+@interface STMenuEditTableViewController : STMenuFormattedTableViewController
 
 @end

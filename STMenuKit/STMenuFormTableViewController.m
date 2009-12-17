@@ -8,6 +8,7 @@
 
 #import "STMenuFormTableViewController.h"
 #import "STMenuFormTableViewCell.h"
+#import "STMenuBasicSectionController.h"
 
 
 @implementation STMenuFormTableViewController
@@ -19,6 +20,13 @@
 
     }
     return self;
+}
+
+#pragma mark STMenuFormattedTableViewController
+
+- (Class)st_defaultSectionClass
+{
+    return [STMenuBasicSectionController class];
 }
 
 #pragma mark STMenuBaseTableViewController

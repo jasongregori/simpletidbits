@@ -8,6 +8,7 @@
 
 #import "STMenuEditTableViewController.h"
 #import "STMenuEditTableViewCell.h"
+#import "STMenuBasicSectionController.h"
 
 
 @implementation STMenuEditTableViewController
@@ -19,6 +20,13 @@
         self.navigationItem.rightBarButtonItem  = self.editButtonItem;
     }
     return self;
+}
+
+#pragma mark STMenuFormattedTableViewController
+
+- (Class)st_defaultSectionClass
+{
+    return [STMenuBasicSectionController class];
 }
 
 #pragma mark STMenuBaseTableViewController
