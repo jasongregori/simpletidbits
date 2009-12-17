@@ -36,6 +36,8 @@
 
 - (void)st_prepareForReuse;
 
+// TODO: cell should know indexPath!
+
 // ???: I thought we couldn't use setSelected:animated for this but I think
 // we can so this is deprecated until I am sure.
 - (void)cellWasSelected;

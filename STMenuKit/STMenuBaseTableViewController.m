@@ -32,7 +32,10 @@
 // create an instance of a menu
 + (id)menu
 {
-    return [[[self alloc] init] autorelease];
+    id  menu    = [[[self alloc] init] autorelease];
+    // set defaults
+    [menu st_prepareForReuse];
+    return menu;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
