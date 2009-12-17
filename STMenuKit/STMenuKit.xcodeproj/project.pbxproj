@@ -110,11 +110,15 @@
 		0867D691FE84028FC02AAC07 /* STMenuKit */ = {
 			isa = PBXGroup;
 			children = (
+				794E01EC10D9DF04000C1852 /* Regular Menus */,
 				7959039810C61AA200DB0F5F /* STMenuKit.h */,
 				08FB77AEFE84172EC02AAC07 /* Basics */,
-				7959030910C615E900DB0F5F /* Edit Menu */,
-				799F707A10C8C48A0055C744 /* Form Menu */,
-				794C778210CA07B400717975 /* More Base Cells */,
+				794E01E910D9DE6D000C1852 /* Cells */,
+				794E01EB10D9DEC7000C1852 /* Section Controllers */,
+				794E01EA10D9DE98000C1852 /* Menus */,
+				794E01EF10D9DFB1000C1852 /* Form Menu */,
+				794E01EE10D9DFA2000C1852 /* Edit Menu */,
+				794E01F010D9DFD2000C1852 /* List Menu */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
@@ -138,20 +142,6 @@
 				79B303EC10A7463C00CE423D /* STMenuProtocol.h */,
 				79818E9F10B0DD0D00B32881 /* STMenuMaker.h */,
 				79818EA010B0DD0D00B32881 /* STMenuMaker.m */,
-				79D1798810B8AD73008A5B54 /* STMenuTableViewCell.h */,
-				79D1798910B8AD73008A5B54 /* STMenuTableViewCell.m */,
-				F728F39410D6B452005B527A /* STMenuBaseViewController.h */,
-				F728F39510D6B452005B527A /* STMenuBaseViewController.m */,
-				79EABFC110AD1DFE004DF974 /* STMenuBaseTableViewController.h */,
-				79EABFC210AD1DFE004DF974 /* STMenuBaseTableViewController.m */,
-				79D1799210B8B2A8008A5B54 /* STMenuFormattedSectionController.h */,
-				79D1799310B8B2A8008A5B54 /* STMenuFormattedSectionController.m */,
-				79EABFD410AD2272004DF974 /* STMenuFormattedTableViewController.h */,
-				79EABFD510AD2272004DF974 /* STMenuFormattedTableViewController.m */,
-				79312D6810BA400C00479D69 /* STMenuBasicSectionController.h */,
-				79312D6910BA400C00479D69 /* STMenuBasicSectionController.m */,
-				79312D3710BA029B00479D69 /* STMenuBasicTableViewController.h */,
-				79312D3810BA029B00479D69 /* STMenuBasicTableViewController.m */,
 				79F010E410D7329300CFDBD6 /* STLoadingView.h */,
 				79F010E510D7329300CFDBD6 /* STLoadingView.m */,
 			);
@@ -166,16 +156,51 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		794C778210CA07B400717975 /* More Base Cells */ = {
+		794E01E910D9DE6D000C1852 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				79D1798810B8AD73008A5B54 /* STMenuTableViewCell.h */,
+				79D1798910B8AD73008A5B54 /* STMenuTableViewCell.m */,
 				794C780D10CA17AF00717975 /* STMenuTextFieldTableViewCell.h */,
 				794C780E10CA17AF00717975 /* STMenuTextFieldTableViewCell.m */,
 			);
-			name = "More Base Cells";
+			name = Cells;
 			sourceTree = "<group>";
 		};
-		7959030910C615E900DB0F5F /* Edit Menu */ = {
+		794E01EA10D9DE98000C1852 /* Menus */ = {
+			isa = PBXGroup;
+			children = (
+				F728F39410D6B452005B527A /* STMenuBaseViewController.h */,
+				F728F39510D6B452005B527A /* STMenuBaseViewController.m */,
+				79EABFC110AD1DFE004DF974 /* STMenuBaseTableViewController.h */,
+				79EABFC210AD1DFE004DF974 /* STMenuBaseTableViewController.m */,
+				79EABFD410AD2272004DF974 /* STMenuFormattedTableViewController.h */,
+				79EABFD510AD2272004DF974 /* STMenuFormattedTableViewController.m */,
+				79312D3710BA029B00479D69 /* STMenuBasicTableViewController.h */,
+				79312D3810BA029B00479D69 /* STMenuBasicTableViewController.m */,
+			);
+			name = Menus;
+			sourceTree = "<group>";
+		};
+		794E01EB10D9DEC7000C1852 /* Section Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				79D1799210B8B2A8008A5B54 /* STMenuFormattedSectionController.h */,
+				79D1799310B8B2A8008A5B54 /* STMenuFormattedSectionController.m */,
+				79312D6810BA400C00479D69 /* STMenuBasicSectionController.h */,
+				79312D6910BA400C00479D69 /* STMenuBasicSectionController.m */,
+			);
+			name = "Section Controllers";
+			sourceTree = "<group>";
+		};
+		794E01EC10D9DF04000C1852 /* Regular Menus */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Regular Menus";
+			sourceTree = "<group>";
+		};
+		794E01EE10D9DFA2000C1852 /* Edit Menu */ = {
 			isa = PBXGroup;
 			children = (
 				795902F410C610E300DB0F5F /* STMenuEditTableViewCell.h */,
@@ -186,7 +211,7 @@
 			name = "Edit Menu";
 			sourceTree = "<group>";
 		};
-		799F707A10C8C48A0055C744 /* Form Menu */ = {
+		794E01EF10D9DFB1000C1852 /* Form Menu */ = {
 			isa = PBXGroup;
 			children = (
 				799F707F10C8C8D80055C744 /* STMenuFormTableViewCell.h */,
@@ -197,6 +222,13 @@
 				799F707C10C8C5150055C744 /* STMenuFormTableViewController.m */,
 			);
 			name = "Form Menu";
+			sourceTree = "<group>";
+		};
+		794E01F010D9DFD2000C1852 /* List Menu */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "List Menu";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
