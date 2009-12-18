@@ -79,6 +79,7 @@
              managedObjectContext:moc
              sectionNameKeyPath:[fetchInfo valueForKey:@"sectionName"]
              cacheName:[fetchInfo valueForKey:@"cacheName"]];
+        [fetchRequest release];
         controller.delegate     = self;
         self.st_fetchedResultsController    = controller;
         
