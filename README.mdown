@@ -64,11 +64,11 @@ Adding simpletidbits to a Project
 3.  __Link to the Framework__  
     Click on the {framework}.xcodeproj in your project sidebar. Under the "Details" tab (View->Details), you will see lib{framework}.a. Check the checkbox on the far right side of lib{framework}.a (the target column). I think this links the framework to your project for preprocessing.
 
-4.  __Add the Framework as a Dependency__  
+4.  __Add the Framework as a Dependency__
     Expand the "Targets" group in the sidebar and double-click your application's target. Under the "General" tab you will see a "Direct Dependencies" section. Click the "+" button, select {framework} under {framework}.xcodeproj, and click "Add Target". I think this makes sure the framework is compiled to the same SDK and Configuration as your project (it compiles it if not available and recompiles if there is a change).
 
 5.  __Add a Header Search Path__  
-    Under "Project Settings" (double-click your project file in the sidebar), go to the "Build" tab. Find "Header Search Paths" (you can find more easily by searching). Double-click it. Add the relative path from your project to the simpletidbits directory. I think this allows Xcode to find the header files for preprocessing.
+    Under "Project Settings" (double-click your project file in the sidebar), go to the "Build" tab. Make sure your Configuration is set to "All Configurations", so this will be set for all. Find "Header Search Paths" (you can find more easily by searching). Double-click it. Add the relative path from your project to the simpletidbits directory. I think this allows Xcode to find the header files for preprocessing.
 
 6.  __Add a Linker Flag__  
     In the same place as step 5, find the "Other Linker Flags" row. Add the flag "-ObjC". Without this flag, the compiler will not include the categories in your excecutable. Unfortunately, with this flag also forces the compiler to load all the classes and categories of the library instead of just the ones you use.
