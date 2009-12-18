@@ -63,7 +63,12 @@
     
 }
 
-- (NSUInteger)numberOfSections
+- (NSInteger)numberOfSections
+{
+    return 0;
+}
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section
 {
     return 0;
 }
@@ -182,8 +187,6 @@
         [self setValue:[schema valueForKey:key]
             forKeyPath:key];
     }
-    
-    [self noItemsCheck];
 }
 
 - (void)st_prepareForReuse
@@ -203,15 +206,6 @@
     self.addMenu        = nil;
 }
 
-#pragma mark UIViewController
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    self.tableView.rowHeight        = [self.rowHeight floatValue];
-}
-
 #pragma mark Table view methods
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -225,12 +219,12 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    if (self.st_showNoItemsMessage && section == [self numberOfSections])
+    if (section == [self numberOfSections])
     {
         // no items section
-        return [self.noItemsRow integerValue];
+        return self.st_showNoItemsMessage?[self.noItemsRow integerValue]:0;
     }
-    return 0;
+    return [self numberOfRowsInSection:section];
 }
 
 
@@ -301,6 +295,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
+
+#pragma mark UIViewController
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    
+    self.tableView.rowHeight        = [self.rowHeight floatValue];
+}
 
 
 @end

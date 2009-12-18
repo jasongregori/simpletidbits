@@ -73,7 +73,8 @@
 - (void)deleteItem:(id)item;
 
 // I need this because of the noItem section
-- (NSUInteger)numberOfSections;
+- (NSInteger)numberOfSections;
+- (NSInteger)numberOfRowsInSection:(NSInteger)section;
 
 // Checks if there are any items, if there aren't any, shows the noItemsMessage
 - (void)noItemsCheck;
