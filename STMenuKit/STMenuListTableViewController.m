@@ -159,7 +159,7 @@
     }
 }
 
-- (void)setSt_ShowNoItemsMessage:(BOOL)show
+- (void)setSt_showNoItemsMessage:(BOOL)show
 {
     if (show != _showNoItemsMessage)
     {
@@ -169,7 +169,12 @@
             // reload the no Item section
             [self.tableView reloadSections:
              [NSIndexSet indexSetWithIndex:[self numberOfSections]]
-                          withRowAnimation:YES];
+                          withRowAnimation:UITableViewRowAnimationFade];
+        }
+        if (show)
+        {
+            // if we show the no items message, stop editing
+            [self setEditing:NO animated:YES];
         }
     }
 }
@@ -279,6 +284,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 - (BOOL)tableView:(UITableView *)tableView
 canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    if (indexPath.section == [self numberOfSections])
+    {
+        // no items section
+        return NO;
+    }
     // Return NO if you do not want the specified item to be editable.
     return [self.allowDeletion boolValue];
 }

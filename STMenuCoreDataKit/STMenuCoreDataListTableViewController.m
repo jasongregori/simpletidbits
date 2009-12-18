@@ -96,6 +96,13 @@
 
 #pragma mark STMenuListTableViewController
 
+- (void)noItemsCheck
+{
+    [self setSt_showNoItemsMessage:([[self.st_fetchedResultsController
+                                      fetchedObjects]
+                                     count] == 0)];
+}
+
 - (id)st_itemForIndexPath:(NSIndexPath *)indexPath
 {
     return [self.st_fetchedResultsController objectAtIndexPath:indexPath];
@@ -112,6 +119,13 @@
       = [[self.st_fetchedResultsController sections]
          objectAtIndex:section];
     return [sectionInfo numberOfObjects];
+}
+
+- (void)deleteItem:(id)item
+{
+    NSManagedObjectContext  *moc    = [STCoreData mainManagedObjectContext];
+    [moc deleteObject:item];
+    [STCoreData saveManagedObjectContext:moc];
 }
 
 #pragma mark Delegate Methods
