@@ -27,7 +27,7 @@ static STRemoteUser *sharedInstance = nil;
   id <STRemoteLoginControllerProtocol>  st_loginController;
 @property (nonatomic, retain)
   id <STRemoteSignUpControllerProtocol> st_signUpController;
-@property (nonatomic, retain) STRemoteData  *remoteData;
+@property (nonatomic, retain)   STRemoteData    *remoteData;
 @end
 
 
@@ -44,6 +44,14 @@ static STRemoteUser *sharedInstance = nil;
     if (!sharedInstance)
     {
         sharedInstance = [[self alloc] init];
+        if (sharedInstance.loggedIn)
+        {
+            // send initial logged in notification
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:STRemoteUserDidLoginNotification
+             object:sharedInstance
+             userInfo:sharedInstance.userInfo];            
+        }
     }
     return sharedInstance;
 }
