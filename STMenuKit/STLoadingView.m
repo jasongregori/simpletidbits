@@ -9,10 +9,10 @@
 #import "STLoadingView.h"
 #import <QuartzCore/QuartzCore.h>
 
-#define kSTLoadingViewWidthWithText     150
+#define kSTLoadingViewWidthWithText     200
 #define kSTLoadingViewWidthWithoutText  100
 #define kSTLoadingViewTopMargin     20
-#define kSTLoadingViewMidMargin     20
+#define kSTLoadingViewMidMargin     15
 #define kSTLoadingViewSideMargin    20
 #define kSTLoadingViewBottomMargin  20
 
@@ -36,7 +36,7 @@
     }
     if (self = [super initWithFrame:frame])
     {
-        self.backgroundColor    = [UIColor colorWithWhite:0 alpha:0.8];
+        self.backgroundColor    = [UIColor colorWithWhite:0 alpha:0.7];
         self.layer.cornerRadius = 10;
         
         _aiv    = [[UIActivityIndicatorView alloc]
@@ -62,6 +62,7 @@
         self.label.autoresizingMask = (UIViewAutoresizingFlexibleHeight
                                        | UIViewAutoresizingFlexibleWidth);
         self.label.textAlignment    = UITextAlignmentCenter;
+        self.label.font             = [UIFont boldSystemFontOfSize:17];
         self.label.textColor        = [UIColor whiteColor];
         self.label.backgroundColor  = [UIColor clearColor];
         [self addSubview:self.label];
@@ -125,7 +126,7 @@
                                        CGSizeMake(kSTLoadingViewWidthWithText
                                                   - 2 * kSTLoadingViewSideMargin,
                                                   CGFLOAT_MAX)];
-        return CGSizeMake(kSTLoadingViewWidthWithText,
+        return CGSizeMake(sizeOfText.width + 2 * kSTLoadingViewSideMargin,
                           sizeOfText.height
                           + kSTLoadingViewTopMargin
                           + kSTLoadingViewMidMargin
