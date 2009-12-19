@@ -341,7 +341,7 @@ static NSMutableSet			*st_filesToSave			= nil;
 	// set up wait list
 	// this is a special set that does not retain anything
 	NSMutableSet	*waitList	= (NSMutableSet *)CFSetCreateMutable(NULL,
-																	 1,
+																	 0,
 																	 NULL);
 	[waitList addObject:fileCache];
 	connection.context	= waitList;
