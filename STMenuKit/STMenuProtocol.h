@@ -28,6 +28,10 @@
 @property (nonatomic, assign)   BOOL        loading;
 @property (nonatomic, copy)     NSString    *loadingMessage;
 
+// Intercommunication
+@property (nonatomic, copy)     NSString    *menuKey;
+@property (nonatomic, copy)     NSString    *delegateKey;
+
 - (void)setPlist:(id)plist andValue:(id)value;
 
 - (void)setLoading:(BOOL)loading animated:(BOOL)animated;

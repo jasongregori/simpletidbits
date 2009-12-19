@@ -9,6 +9,7 @@
 #import "STMenuBaseTableViewController.h"
 #import "STMenuMaker.h"
 #import "STMenuTableViewCell.h"
+#import "STMenuIntercomController.h"
 
 @interface STMenuBaseTableViewController ()
 
@@ -26,7 +27,8 @@
 @synthesize value = _value, key = _key, st_plistName = _plistName,
             st_schema = _schema, parentMenuShouldSave = _parentMenuShouldSave,
             st_subMenu = _subMenu, st_cachedMenus = _cachedMenus,
-            loadingMessage = _loadingMessage, loadingView = _loadingView;
+            loadingMessage = _loadingMessage, loadingView = _loadingView,
+            menuKey = _menuKey, delegateKey = _delegateKey;
 
 
 // create an instance of a menu
@@ -55,8 +57,33 @@
     [_key release];
     [_subMenu release];
     [_cachedMenus release];
+    [_menuKey release];
+    [_delegateKey release];
     
     [super dealloc];
+}
+
+- (void)setMenuKey:(NSString *)menuKey
+{
+    if (menuKey != _menuKey)
+    {
+        // unregister old key
+        [[STMenuIntercomController sharedIntercom]
+         unregisterMenu:self
+         forKey:menuKey];
+        [_menuKey release];
+        _menuKey    = [menuKey copy];
+        // register new key
+        [[STMenuIntercomController sharedIntercom]
+         registerMenu:self
+         forKey:menuKey];
+    }
+}
+
+- (id)delegate
+{
+    return [[STMenuIntercomController sharedIntercom]
+            delegateForKey:self.delegateKey];
 }
 
 - (Class)st_defaultCellClass
@@ -192,6 +219,8 @@
     }
     
     self.view.userInteractionEnabled    = !loading;
+    self.navigationItem.leftBarButtonItem.enabled   = !loading;
+    self.navigationItem.rightBarButtonItem.enabled  = !loading;
     
     if (loading && !self.loadingView)
     {
@@ -228,7 +257,8 @@
 // This is called when a menu is reused. Reset all editable properties.
 - (void)st_prepareForReuse
 {
-    
+    // unregister menu key
+    self.menuKey    = nil;
 }
 
 #pragma mark For Subclass Use

@@ -25,6 +25,8 @@
     BOOL            _loading;
     NSString        *_loadingMessage;
     STLoadingView   *_loadingView;
+    NSString        *_menuKey;
+    NSString        *_delegateKey;
     
     NSString        *_key;
     BOOL            _parentMenuShouldSave;
@@ -32,6 +34,8 @@
     UIViewController <STMenuProtocol>   *_subMenu;
     NSMutableDictionary     *_cachedMenus;
 }
+// Intercommunication: returns the delegate from the intercom using delegateKey
+@property (nonatomic, readonly) id  delegate;
 
 #pragma mark For Subclass or Private Use Only
 

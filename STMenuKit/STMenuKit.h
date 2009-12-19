@@ -2,6 +2,7 @@
 // Basics
 #import "STMenuProtocol.h"
 #import "STMenuMaker.h"
+#import "STMenuIntercomController.h"
 #import "STLoadingView.h"
 
 // Cells

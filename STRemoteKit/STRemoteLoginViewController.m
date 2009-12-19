@@ -195,14 +195,6 @@
     return [super loading];
 }
 
-- (void)setLoading:(BOOL)loading animated:(BOOL)animated
-{
-    [super setLoading:loading animated:animated];
-    
-    self.st_signUpButton.enabled   = !loading;
-    self.st_cancelButton.enabled   = !loading;
-}
-
 #pragma mark UIViewController
 
 - (void)loadView

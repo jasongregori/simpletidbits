@@ -26,6 +26,8 @@
 		799F707E10C8C5150055C744 /* STMenuFormTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 799F707C10C8C5150055C744 /* STMenuFormTableViewController.m */; };
 		799F708110C8C8D80055C744 /* STMenuFormTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 799F707F10C8C8D80055C744 /* STMenuFormTableViewCell.h */; };
 		799F708210C8C8D80055C744 /* STMenuFormTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 799F708010C8C8D80055C744 /* STMenuFormTableViewCell.m */; };
+		79B0AB8610DCA08200482185 /* STMenuIntercomController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B0AB8410DCA08200482185 /* STMenuIntercomController.h */; };
+		79B0AB8710DCA08200482185 /* STMenuIntercomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0AB8510DCA08200482185 /* STMenuIntercomController.m */; };
 		79B303EE10A7463C00CE423D /* STMenuProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B303EC10A7463C00CE423D /* STMenuProtocol.h */; };
 		79B304A810A7A6BB00CE423D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B304A710A7A6BB00CE423D /* UIKit.framework */; };
 		79B7389210D89A1F003F5027 /* STMenuFormLabelTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B7389010D89A1F003F5027 /* STMenuFormLabelTableViewCell.h */; };
@@ -67,6 +69,8 @@
 		799F707C10C8C5150055C744 /* STMenuFormTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuFormTableViewController.m; sourceTree = "<group>"; };
 		799F707F10C8C8D80055C744 /* STMenuFormTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuFormTableViewCell.h; sourceTree = "<group>"; };
 		799F708010C8C8D80055C744 /* STMenuFormTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuFormTableViewCell.m; sourceTree = "<group>"; };
+		79B0AB8410DCA08200482185 /* STMenuIntercomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuIntercomController.h; sourceTree = "<group>"; };
+		79B0AB8510DCA08200482185 /* STMenuIntercomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuIntercomController.m; sourceTree = "<group>"; };
 		79B303EC10A7463C00CE423D /* STMenuProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuProtocol.h; sourceTree = "<group>"; };
 		79B304A710A7A6BB00CE423D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79B7389010D89A1F003F5027 /* STMenuFormLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuFormLabelTableViewCell.h; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 				79B303EC10A7463C00CE423D /* STMenuProtocol.h */,
 				79818E9F10B0DD0D00B32881 /* STMenuMaker.h */,
 				79818EA010B0DD0D00B32881 /* STMenuMaker.m */,
+				79B0AB8410DCA08200482185 /* STMenuIntercomController.h */,
+				79B0AB8510DCA08200482185 /* STMenuIntercomController.m */,
 				79F010E410D7329300CFDBD6 /* STLoadingView.h */,
 				79F010E510D7329300CFDBD6 /* STLoadingView.m */,
 			);
@@ -263,6 +269,7 @@
 				F728F39610D6B452005B527A /* STMenuBaseViewController.h in Headers */,
 				794E020510D9E01E000C1852 /* STMenuListTableViewController.h in Headers */,
 				794E02E610DA1492000C1852 /* STMenuNoItemsTableViewCell.h in Headers */,
+				79B0AB8610DCA08200482185 /* STMenuIntercomController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +332,7 @@
 				F728F39710D6B452005B527A /* STMenuBaseViewController.m in Sources */,
 				794E020610D9E01E000C1852 /* STMenuListTableViewController.m in Sources */,
 				794E02E710DA1492000C1852 /* STMenuNoItemsTableViewCell.m in Sources */,
+				79B0AB8710DCA08200482185 /* STMenuIntercomController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
