@@ -179,7 +179,9 @@
             // reload the no Item section
             [self.tableView reloadSections:
              [NSIndexSet indexSetWithIndex:[self numberOfSections]]
-                          withRowAnimation:UITableViewRowAnimationFade];
+                          withRowAnimation:(self.view.window ?
+                                            UITableViewRowAnimationFade :
+                                            UITableViewRowAnimationNone)];
         }
         if (show)
         {

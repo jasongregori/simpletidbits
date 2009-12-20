@@ -257,6 +257,11 @@
     }
 }
 
+- (void)menuDidDismiss
+{
+    
+}
+
 - (void)done
 {
     
@@ -343,6 +348,18 @@
             [self st_saveValue:self.st_subMenu.value
                  forSubMenuKey:self.st_subMenu.key];
         }
+    }
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    if (self.st_subMenu)
+    {
+        // tell the sub menu that is dismissed
+        [self.st_subMenu menuDidDismiss];
+        
         // Release the subMenu so we won't accidentally save again
         self.st_subMenu    = nil;
     }

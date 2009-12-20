@@ -10,8 +10,16 @@
 #import "STMenuEditTableViewCell.h"
 #import "STMenuBasicSectionController.h"
 
+@interface STMenuEditViewController ()
+@property (nonatomic, assign)   BOOL        inDeleteMode;
+- (void)st_deleteButtonTapped;
+
+@end
+
 
 @implementation STMenuEditViewController
+@synthesize showDeleteButton = _showDeleteButton,
+            deleteMessage = _deleteMessage, inDeleteMode = _inDeleteMode;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -23,17 +31,78 @@
     return self;
 }
 
-- (void)save
+- (void)dealloc
 {
-    [self stopEditing];
+    [_showDeleteButton release];
+    [_deleteMessage release];
+    
+    [super dealloc];
 }
 
-- (void)stopEditing
+- (void)st_setEditing:(BOOL)editing animated:(BOOL)animated
 {
-    [super setEditing:NO animated:YES];
+    [super setEditing:editing animated:animated];
     
-    // hide the back button when editing
-    [self.navigationItem setHidesBackButton:NO animated:YES];    
+    // hide back button when editing
+    [self.navigationItem setHidesBackButton:editing animated:animated];
+    
+    // parent menu should only save if we are not in editing mode
+    self.parentMenuShouldSave   = !editing;
+    
+    if ([self.showDeleteButton boolValue] && [self isViewLoaded])
+    {
+        if (editing)
+        {
+            // show delete button
+            UIButton    *button     = [UIButton
+                                       buttonWithType:UIButtonTypeRoundedRect];
+            [button addTarget:self
+                       action:@selector(st_deleteButtonTapped)
+             forControlEvents:UIControlEventTouchUpInside];
+            [button setTitle:self.deleteMessage ? self.deleteMessage : @"Delete"
+                    forState:UIControlStateNormal];
+            UIView      *backing    = [[UIView alloc] initWithFrame:
+                                       CGRectMake(0, 0, 320, 64)];
+            button.frame    = CGRectMake(10, 10, 300, 44);
+            [backing addSubview:button];
+            self.tableView.tableFooterView  = backing;
+            [backing release];
+        }
+        else
+        {
+            self.tableView.tableFooterView  = nil;
+        }
+    }
+}
+
+- (void)st_deleteButtonTapped
+{
+    if ([self.delegate
+         respondsToSelector:@selector(editMenu:shouldDeleteItem:)])
+    {
+        if (![self.delegate editMenu:self shouldDeleteItem:self.value])
+        {
+            return;
+        }
+    }
+    
+    // if we are ok, just do it
+    [self deleteItem];
+}
+
+- (void)saveItem
+{
+    if (self.editing)
+    {
+        [self st_setEditing:NO animated:YES];
+    }
+}
+
+- (void)deleteItem
+{
+    self.inDeleteMode   = YES;
+    
+    [self dismiss];
 }
 
 #pragma mark STMenuFormattedTableViewController
@@ -55,6 +124,43 @@
     return @"STMenuEdit";
 }
 
+#pragma mark STMenuProtocol
+
+- (void)done
+{
+    if (self.editing)
+    {
+        [self setEditing:NO animated:YES];
+    }
+    else
+    {
+        [self dismiss];
+    }
+}
+
+- (void)menuDidDismiss
+{
+    [super menuDidDismiss];
+    
+    if (self.editing)
+    {
+        [self st_setEditing:NO animated:NO];
+    }
+    
+    if (self.inDeleteMode)
+    {
+        self.value          = nil;
+        self.inDeleteMode   = NO;
+    }
+}
+
+- (void)st_prepareForReuse
+{
+    [super st_prepareForReuse];
+    
+    self.showDeleteButton   = nil;
+}
+
 #pragma mark UIViewController
 
 - (void)viewDidLoad
@@ -67,6 +173,11 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
+    if (self.editing == editing)
+    {
+        return;
+    }
+    
     if (!editing)
     {
         if ([self.delegate
@@ -77,11 +188,13 @@
                 return;
             }
         }
+        // if we are ok, just do it
+        [self saveItem];
     }
-    [super setEditing:editing animated:animated];
-    
-    // hide the back button when editing
-    [self.navigationItem setHidesBackButton:editing animated:animated];
+    else
+    {
+        [self st_setEditing:editing animated:animated];
+    }
 }
 
 @end

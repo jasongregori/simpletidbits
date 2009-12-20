@@ -154,17 +154,21 @@
         return;
     }
     
+    UITableViewRowAnimation rowAnimation    = (self.view.window ?
+                                               UITableViewRowAnimationFade :
+                                               UITableViewRowAnimationNone);
+    
     switch (type)
     {
         case NSFetchedResultsChangeInsert:
             [self.tableView
              insertSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-             withRowAnimation:UITableViewRowAnimationFade];
+             withRowAnimation:rowAnimation];
             break;
         case NSFetchedResultsChangeDelete:
             [self.tableView
              deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex]
-             withRowAnimation:UITableViewRowAnimationFade];
+             withRowAnimation:rowAnimation];
             break;
     }
 }
@@ -182,18 +186,22 @@
     
     UITableView *tableView = self.tableView;
     
+    UITableViewRowAnimation rowAnimation    = (self.view.window ?
+                                               UITableViewRowAnimationFade :
+                                               UITableViewRowAnimationNone);
+    
     switch(type)
     {
         case NSFetchedResultsChangeInsert:
             [tableView
              insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
-             withRowAnimation:UITableViewRowAnimationFade];
+             withRowAnimation:rowAnimation];
             break;
             
         case NSFetchedResultsChangeDelete:
             [tableView
              deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-             withRowAnimation:UITableViewRowAnimationFade];
+             withRowAnimation:rowAnimation];
             break;
             
         case NSFetchedResultsChangeUpdate:
@@ -205,10 +213,10 @@
         case NSFetchedResultsChangeMove:
             [tableView
              deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath]
-             withRowAnimation:UITableViewRowAnimationFade];
+             withRowAnimation:rowAnimation];
             [tableView
              insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath]
-             withRowAnimation:UITableViewRowAnimationFade];
+             withRowAnimation:rowAnimation];
             break;
     }
 }
@@ -218,6 +226,9 @@
     if ([self isViewLoaded])
     {
         [self.tableView endUpdates];
+        [self.tableView deselectRowAtIndexPath:
+         [self.tableView indexPathForSelectedRow]
+                                      animated:NO];
         [self noItemsCheck];
     }
 }

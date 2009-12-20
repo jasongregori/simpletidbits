@@ -40,10 +40,17 @@
 // The default does nothing.
 - (void)done;
 
+// Programmatically dismiss the menu (for example pop a VC menu in a nav)
+- (void)dismiss;
+
+// This method must be called on a menu after it has been dismissed. It is the
+// job of the menu's parent menu to call this method. Default does nothing.
+- (void)menuDidDismiss;
+
 // create an instance of a menu
 + (id)menu;
 
-#pragma mark For Subclass Use Only
+#pragma mark For Subclass/Private Use Only
 
 // This is called when a menu is reused. Reset all editable properties
 - (void)st_prepareForReuse;

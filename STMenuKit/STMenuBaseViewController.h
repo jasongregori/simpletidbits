@@ -34,7 +34,7 @@
 // Intercommunication: returns the delegate from the intercom using delegateKey
 @property (nonatomic, readonly) id  delegate;
 
-// Dismisses a menu. Use this to pop a menu programmatically.
+// Pops the menu from the nav controller
 - (void)dismiss;
 
 #pragma mark For Subclass or Private Use Only

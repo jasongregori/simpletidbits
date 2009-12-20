@@ -48,23 +48,59 @@
  */
 
 @interface STMenuEditViewController : STMenuFormattedTableViewController
+{
+  @protected
+    BOOL            _inDeleteMode;
+    NSNumber        *_showDeleteButton;
+    NSString        *_deleteMessage;
+}
 
-// use this to complete a save that you have stopped by returning NO to
-// editMenu:shouldSaveItem:
-- (void)save;
-// use this to stop editing that you have prevented from ending earlier by
-// returning NO to editMenu:shouldSaveItem:
-- (void)stopEditing;
+// BOOL
+// If set to yes, shows a delete button when editing.
+// Uses tableFooterView, so if you use this you can't use that. Default: NO
+@property (nonatomic, retain)   NSNumber    *showDeleteButton;
+// Text to show on delete button. Default: "Delete"
+@property (nonatomic, retain)   NSString    *deleteMessage;
+
+// Saves item, does not call delegate method editMenu:shouldSaveItem:.
+// Default simply stops editing.
+- (void)saveItem;
+// Delete item, does not call delegate method editMenu:shouldDeleteItem:.
+// Default dismisses menu and sets value to nil;
+- (void)deleteItem;
+
+// If editing, stops editing, else, dismisses menu
+- (void)done;
+
+#pragma mark Subclasses
+
+// This is called instead of setEditing:animated: because sometimes we block
+// changing it. Do any edit changes in here instead of setEditing:animated:.
+- (void)st_setEditing:(BOOL)editing animated:(BOOL)animated;
 
 @end
 
 @protocol STMenuEditViewControllerDelegate <NSObject>
 
 @optional
-// If you return YES, the item is saved. If you return NO, the item is not
-// saved. At a later date, you may tell it to save.
+// This is called when the user taps the done button
+// If you return YES, saveItem is called.
+// If you return NO, nothing happens and the user stays in edit mode.
+// The user may not exit edit mode unless you return YES or later call saveItem.
+// You may use this to validate the item: if the item is not valid show an alert
+// and return NO.
+// If you need to do something that will take a while (like save the item on the
+// server), you may return NO and later call saveItem yourself.
 - (BOOL)editMenu:(STMenuEditViewController *)editMenu
   shouldSaveItem:(id)item;
+
+// This is called when the user taps the delete button
+// If you return YES, deleteItem is called.
+// If you return NO, nothing happens.
+// If you need to do something that will take a while (like delete the item on
+// the server), you may return NO and later call deleteItem yourself.
+- (BOOL)editMenu:(STMenuEditViewController *)editMenu
+shouldDeleteItem:(id)item;
 
 @end
 
