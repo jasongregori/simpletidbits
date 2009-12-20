@@ -49,4 +49,22 @@
 
 @interface STMenuEditViewController : STMenuFormattedTableViewController
 
+// use this to complete a save that you have stopped by returning NO to
+// editMenu:shouldSaveItem:
+- (void)save;
+// use this to stop editing that you have prevented from ending earlier by
+// returning NO to editMenu:shouldSaveItem:
+- (void)stopEditing;
+
 @end
+
+@protocol STMenuEditViewControllerDelegate <NSObject>
+
+@optional
+// If you return YES, the item is saved. If you return NO, the item is not
+// saved. At a later date, you may tell it to save.
+- (BOOL)editMenu:(STMenuEditViewController *)editMenu
+  shouldSaveItem:(id)item;
+
+@end
+

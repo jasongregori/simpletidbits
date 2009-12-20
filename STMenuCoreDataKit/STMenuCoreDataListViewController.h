@@ -26,6 +26,7 @@
  sortDescriptors (array of dictionaries)
     key (string)
     ascending (BOOL)
+    selector (string)
  sectionName (string)
  cacheName (string)
  */

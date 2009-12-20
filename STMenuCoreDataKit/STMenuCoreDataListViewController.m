@@ -66,7 +66,11 @@
                 NSSortDescriptor    *descriptor
                   = [[NSSortDescriptor alloc]
                      initWithKey:[sort valueForKey:@"key"]
-                     ascending:[[sort valueForKey:@"ascending"] boolValue]];
+                     ascending:[[sort valueForKey:@"ascending"] boolValue]
+                     selector:
+                         [sort valueForKey:@"selector"] ?
+                         NSSelectorFromString([sort valueForKey:@"selector"]) :
+                         @selector(compare:)];
                 [sorts addObject:descriptor];
                 [descriptor release];
             }

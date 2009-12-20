@@ -23,6 +23,19 @@
     return self;
 }
 
+- (void)save
+{
+    [self stopEditing];
+}
+
+- (void)stopEditing
+{
+    [super setEditing:NO animated:YES];
+    
+    // hide the back button when editing
+    [self.navigationItem setHidesBackButton:NO animated:YES];    
+}
+
 #pragma mark STMenuFormattedTableViewController
 
 - (Class)st_defaultSectionClass
@@ -54,6 +67,17 @@
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated
 {
+    if (!editing)
+    {
+        if ([self.delegate
+             respondsToSelector:@selector(editMenu:shouldSaveItem:)])
+        {
+            if (![self.delegate editMenu:self shouldSaveItem:self.value])
+            {
+                return;
+            }
+        }
+    }
     [super setEditing:editing animated:animated];
     
     // hide the back button when editing
