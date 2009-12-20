@@ -25,7 +25,7 @@
  
  */
 
-@interface STRemoteLoginViewController : STMenuFormTableViewController
+@interface STRemoteLoginViewController : STMenuFormViewController
 <STRemoteLoginControllerProtocol>
 {
   @protected

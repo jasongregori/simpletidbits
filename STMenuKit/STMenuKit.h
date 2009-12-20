@@ -21,14 +21,14 @@
 // Form Menu
 #import "STMenuFormTableViewCell.h"
 #import "STMenuFormLabelTableViewCell.h"
-#import "STMenuFormTableViewController.h"
+#import "STMenuFormViewController.h"
 
 // Edit Menu
 #import "STMenuEditTableViewCell.h"
-#import "STMenuEditTableViewController.h"
+#import "STMenuEditViewController.h"
 
 // List Menu
-#import "STMenuListTableViewController.h"
+#import "STMenuListViewController.h"
 
 // Sub Menu
 #import "STMenuSubMenuTableViewController.h"

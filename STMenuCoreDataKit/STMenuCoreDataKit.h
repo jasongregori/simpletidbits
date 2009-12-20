@@ -6,4 +6,4 @@
 //  Copyright 2009 Jason Gregori. All rights reserved.
 //
 
-#import "STMenuCoreDataListTableViewController.h"
+#import "STMenuCoreDataListViewController.h"

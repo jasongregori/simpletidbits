@@ -10,8 +10,8 @@
 		7939F0FE10DB4A98006FD516 /* libSTCoreDataKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7939F0E910DB4A4B006FD516 /* libSTCoreDataKit.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7939F0FF10DB4A99006FD516 /* libSTMenuKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7939F0EF10DB4A54006FD516 /* libSTMenuKit.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7939F10C10DB4AE3006FD516 /* STMenuCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7939F10B10DB4AE3006FD516 /* STMenuCoreDataKit.h */; };
-		7939F10F10DB4B13006FD516 /* STMenuCoreDataListTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7939F10D10DB4B13006FD516 /* STMenuCoreDataListTableViewController.h */; };
-		7939F11010DB4B13006FD516 /* STMenuCoreDataListTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7939F10E10DB4B13006FD516 /* STMenuCoreDataListTableViewController.m */; };
+		7939F10F10DB4B13006FD516 /* STMenuCoreDataListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7939F10D10DB4B13006FD516 /* STMenuCoreDataListViewController.h */; };
+		7939F11010DB4B13006FD516 /* STMenuCoreDataListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7939F10E10DB4B13006FD516 /* STMenuCoreDataListViewController.m */; };
 		AA747D9F0F9514B9006C5449 /* STMenuCoreDataKit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* STMenuCoreDataKit_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -21,28 +21,28 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 7939F0E410DB4A4B006FD516 /* STCoreDataKit.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libSTCoreDataKit.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = STCoreDataKit;
 		};
 		7939F0EE10DB4A54006FD516 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7939F0EA10DB4A54006FD516 /* STMenuKit.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libSTMenuKit.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = STMenuKit;
 		};
 		7939F10710DB4AB8006FD516 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7939F0EA10DB4A54006FD516 /* STMenuKit.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* STMenuKit */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = STMenuKit;
 		};
 		7939F10910DB4AB8006FD516 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7939F0E410DB4A4B006FD516 /* STCoreDataKit.xcodeproj */;
 			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D /* STCoreDataKit */;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = STCoreDataKit;
 		};
 /* End PBXContainerItemProxy section */
@@ -51,8 +51,8 @@
 		7939F0E410DB4A4B006FD516 /* STCoreDataKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = STCoreDataKit.xcodeproj; path = ../STCoreDataKit/STCoreDataKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7939F0EA10DB4A54006FD516 /* STMenuKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = STMenuKit.xcodeproj; path = ../STMenuKit/STMenuKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7939F10B10DB4AE3006FD516 /* STMenuCoreDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuCoreDataKit.h; sourceTree = "<group>"; };
-		7939F10D10DB4B13006FD516 /* STMenuCoreDataListTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuCoreDataListTableViewController.h; sourceTree = "<group>"; };
-		7939F10E10DB4B13006FD516 /* STMenuCoreDataListTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuCoreDataListTableViewController.m; sourceTree = "<group>"; };
+		7939F10D10DB4B13006FD516 /* STMenuCoreDataListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuCoreDataListViewController.h; sourceTree = "<group>"; };
+		7939F10E10DB4B13006FD516 /* STMenuCoreDataListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuCoreDataListViewController.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* STMenuCoreDataKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuCoreDataKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libSTMenuCoreDataKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTMenuCoreDataKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,8 +105,8 @@
 		08FB77AEFE84172EC02AAC07 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				7939F10D10DB4B13006FD516 /* STMenuCoreDataListTableViewController.h */,
-				7939F10E10DB4B13006FD516 /* STMenuCoreDataListTableViewController.m */,
+				7939F10D10DB4B13006FD516 /* STMenuCoreDataListViewController.h */,
+				7939F10E10DB4B13006FD516 /* STMenuCoreDataListViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -144,7 +144,7 @@
 			files = (
 				AA747D9F0F9514B9006C5449 /* STMenuCoreDataKit_Prefix.pch in Headers */,
 				7939F10C10DB4AE3006FD516 /* STMenuCoreDataKit.h in Headers */,
-				7939F10F10DB4B13006FD516 /* STMenuCoreDataListTableViewController.h in Headers */,
+				7939F10F10DB4B13006FD516 /* STMenuCoreDataListViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,7 +220,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7939F11010DB4B13006FD516 /* STMenuCoreDataListTableViewController.m in Sources */,
+				7939F11010DB4B13006FD516 /* STMenuCoreDataListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
