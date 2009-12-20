@@ -13,6 +13,7 @@
 @interface STMenuTextFieldTableViewCell ()
 @property (nonatomic, retain) UITextField   *textField;
 @property (nonatomic, retain) NSIndexPath   *st_nextCellIndexPath;
+@property (nonatomic, assign) BOOL          st_deselectOnReturn;
 @property (nonatomic, assign) BOOL          st_doneOnReturn;
 
 - (void)st_deselectIfNotSelectedCell;
@@ -23,6 +24,7 @@
 
 @implementation STMenuTextFieldTableViewCell
 @synthesize textField = _textField, st_nextCellIndexPath = _nextCellIndexPath,
+            st_deselectOnReturn = _deselectOnReturn,
             st_doneOnReturn = _doneOnReturn;
 
 - (id)initWithStyle:(UITableViewCellStyle)style
@@ -53,6 +55,9 @@
         _textField.returnKeyType= UIReturnKeyDefault;
         [self.contentView addSubview:_textField];
         
+        // defaults
+        _deselectOnReturn       = YES;
+        
         // observe the textfield for changes
         [[NSNotificationCenter defaultCenter]
          addObserver:self
@@ -75,7 +80,8 @@
 
 - (void)st_deselectIfNotSelectedCell
 {
-    if ([self.menu.tableView cellForRowAtIndexPath:
+    if (self.menu &&
+        [self.menu.tableView cellForRowAtIndexPath:
          [self.menu.tableView indexPathForSelectedRow]]
         != self)
     {
@@ -280,9 +286,19 @@
     return nil;
 }
 
+- (void)setDeselectOnReturn:(NSNumber *)deselect
+{
+    self.st_deselectOnReturn    = [deselect boolValue];
+}
+
+- (NSNumber *)deselectOnReturn
+{
+    return nil;
+}
+
 - (void)setDoneOnReturn:(NSNumber *)done
 {
-    self.st_doneOnReturn   = [done boolValue];
+    self.st_doneOnReturn        = [done boolValue];
 }
 
 - (NSNumber *)doneOnReturn
@@ -406,7 +422,7 @@
          animated:YES
          scrollPosition:UITableViewScrollPositionTop];
     }
-    else
+    else if (self.st_deselectOnReturn)
     {
         // end editing, deselect cell
         [self.menu.tableView

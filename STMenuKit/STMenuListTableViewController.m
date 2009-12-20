@@ -55,7 +55,17 @@
 // push an item
 - (void)showItem:(id)item
 {
-    
+    if (self.itemMenu)
+    {
+        UIViewController <STMenuProtocol> *subMenu
+          = [self st_getMenuFromData:self.itemMenu forKey:@"list"];
+        // we use the key list so that the properties of the menu are not reset
+        // everytime
+        
+        subMenu.value   = item;
+        
+        [self st_pushMenu:subMenu];
+    }
 }
 
 - (void)deleteItem:(id)item

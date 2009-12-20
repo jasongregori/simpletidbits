@@ -34,6 +34,9 @@
 // Intercommunication: returns the delegate from the intercom using delegateKey
 @property (nonatomic, readonly) id  delegate;
 
+// Dismisses a menu. Use this to pop a menu programmatically.
+- (void)dismiss;
+
 #pragma mark For Subclass or Private Use Only
 
 // use this to know when schema was changed

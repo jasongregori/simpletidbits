@@ -80,6 +80,14 @@
     }
 }
 
+- (void)dismiss
+{
+    if (self.navigationController.topViewController == self)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 - (id)delegate
 {
     return [[STMenuIntercomController sharedIntercom]

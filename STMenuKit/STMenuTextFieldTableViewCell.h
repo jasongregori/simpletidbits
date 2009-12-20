@@ -24,6 +24,7 @@
 {
     UITextField     *_textField;
     NSIndexPath     *_nextCellIndexPath;
+    BOOL            _deselectOnReturn;
     BOOL            _doneOnReturn;
 }
 @property (nonatomic, retain, readonly) UITextField *textField;
@@ -32,31 +33,35 @@
 
 // Options: none, words, sentences, allCharacters
 // Default: none
-@property (nonatomic, copy) NSString    *autocapitalizationType;
+@property (nonatomic, copy)     NSString    *autocapitalizationType;
 // Options: default, no, yes
 // Default: default
-@property (nonatomic, copy) NSString    *autocorrectionType;
+@property (nonatomic, copy)     NSString    *autocorrectionType;
 // BOOL
 // Default: NO
 @property (nonatomic, retain)   NSNumber    *enablesReturnKeyAutomatically;
 // Options: default, asciiCapable, numbersAndPunctuation, url, numberPad,
 //          phonePad, emailAddress
 // Default: default
-@property (nonatomic, copy) NSString    *keyboardType;
+@property (nonatomic, copy)     NSString    *keyboardType;
 // BOOL
 // Default: NO
 @property (nonatomic, retain)   NSNumber    *secureTextEntry;
 // Options: default, go, google, join, next, route, search, send, yahoo, done,
 //          emergencyCall
 // Default: default
-@property (nonatomic, copy) NSString    *returnKeyType;
+@property (nonatomic, copy)     NSString    *returnKeyType;
 
-// Other traits
+// Other traits. Also setOnly.
 
 // NSString of the form "section,row" (eg "0,1")
 // When this is set, tapping the return key selects this row
 // Making this non nil also sets returnKeyType to next.
-@property (nonatomic, copy) NSString    *nextCellIndexPath;
+@property (nonatomic, copy)     NSString    *nextCellIndexPath;
+// BOOL
+// When this value is YES, we deselect the cell on return.
+// Default: YES
+@property (nonatomic, retain)   NSNumber    *deselectOnReturn;
 // BOOL
 // When this value is YES, we call menu's done method when the return key is
 // tapped. Default: NO

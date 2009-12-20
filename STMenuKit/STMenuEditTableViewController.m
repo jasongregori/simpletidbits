@@ -18,6 +18,7 @@
     if (self = [super initWithStyle:UITableViewStyleGrouped])
     {
         self.navigationItem.rightBarButtonItem  = self.editButtonItem;
+        self.hidesBottomBarWhenPushed   = YES;
     }
     return self;
 }

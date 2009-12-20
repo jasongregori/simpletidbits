@@ -77,6 +77,14 @@
     }
 }
 
+- (void)dismiss
+{
+    if (self.navigationController.topViewController == self)
+    {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 - (id)delegate
 {
     return [[STMenuIntercomController sharedIntercom]
@@ -280,7 +288,7 @@
                  forSubMenuKey:self.st_subMenu.key];
         }
         // Release the subMenu so we won't accidentally save again
-        self.st_subMenu    = nil;
+        self.st_subMenu         = nil;
     }
 }
 
