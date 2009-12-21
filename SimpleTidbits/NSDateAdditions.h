@@ -15,4 +15,6 @@
 - (NSString *)st_shortStringValue;
 - (NSString *)st_longStringValue;
 
+- (NSDate *)st_dateByRoundingToNearest:(NSUInteger)minutes;
+
 @end

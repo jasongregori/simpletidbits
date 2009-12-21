@@ -36,4 +36,26 @@ static NSDateFormatter *longDateFormatter = nil;
 }
 
 
+- (NSDate *)st_dateByRoundingToNearest:(NSUInteger)minutes
+{
+    NSDateComponents	*dateComponents
+      = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit
+                                                  | NSMonthCalendarUnit
+                                                  | NSDayCalendarUnit
+                                                  | NSHourCalendarUnit
+                                                  | NSMinuteCalendarUnit)
+                                        fromDate:self];
+    // should we round up or down?
+    NSUInteger  minutesModRounder   = [dateComponents minute] % minutes;
+    NSUInteger  newMinutes          = ([dateComponents minute]
+                                       - minutesModRounder);
+    if (minutesModRounder > minutes/2)
+    {
+        // up is closer, round up
+        newMinutes  += minutes;
+    }
+    [dateComponents setMinute:newMinutes];
+    return [[NSCalendar currentCalendar] dateFromComponents:dateComponents];
+}
+
 @end
