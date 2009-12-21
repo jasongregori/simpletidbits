@@ -69,6 +69,7 @@ static NSPersistentStoreCoordinator	*st_persistentStoreCoordinator	= nil;
                                        init];
     [moc setPersistentStoreCoordinator:st_persistentStoreCoordinator];
     [moc setMergePolicy:NSOverwriteMergePolicy];
+    
     return moc;
 }
 
@@ -79,6 +80,15 @@ static NSPersistentStoreCoordinator	*st_persistentStoreCoordinator	= nil;
     if (!st_mainManagedObjectContext)
     {
         st_mainManagedObjectContext	= [self newManagedObjectContext];
+
+        // observe all mocs!
+        [[NSNotificationCenter defaultCenter]
+         addObserver:self
+         selector:
+         @selector
+         (mergeSavedManagedObjectContextNotificationIntoMainManagedObjectContext:)
+         name:NSManagedObjectContextDidSaveNotification
+         object:nil];
     }
     return st_mainManagedObjectContext;
 }
@@ -87,6 +97,8 @@ static NSPersistentStoreCoordinator	*st_persistentStoreCoordinator	= nil;
 // Any errors will be logged.
 + (BOOL)saveManagedObjectContext:(NSManagedObjectContext *)moc;
 {
+    NSLog(@"Saving: %@", moc);
+    
     NSError		*error		= nil;
     BOOL		didWork		= [moc save:&error];
     if (!didWork)
@@ -100,6 +112,18 @@ static NSPersistentStoreCoordinator	*st_persistentStoreCoordinator	= nil;
         [moc rollback];
     }
     return didWork;
+}
+
++ (void)mergeSavedManagedObjectContextNotificationIntoMainManagedObjectContext:
+  (NSNotification *)notification
+{
+    if ([notification object] != [STCoreData mainManagedObjectContext])
+    {
+        NSLog(@"Object: %@\nNotification: %@",
+              [notification object], [notification userInfo]);
+        [[STCoreData mainManagedObjectContext]
+         mergeChangesFromContextDidSaveNotification:notification];
+    }
 }
 
 @end
