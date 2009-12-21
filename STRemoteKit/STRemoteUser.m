@@ -11,6 +11,8 @@
 #pragma mark Notifications
 NSString *const STRemoteUserDidLoginNotification
   = @"STRemoteUserDidLoginNotification";
+NSString *const STRemoteUserWillLogoutNotification
+  = @"STRemoteUserWillLogoutNotification";
 NSString *const STRemoteUserDidLogoutNotification
   = @"STRemoteUserDidLogoutNotification";
 
@@ -173,6 +175,12 @@ static STRemoteUser *sharedInstance = nil;
 {
     // get userinfo so we can send it in the notification
     id      userInfo        = [self.userInfo retain];
+    
+    // send willLogout Notification
+    [[NSNotificationCenter defaultCenter]
+     postNotificationName:STRemoteUserWillLogoutNotification
+     object:self
+     userInfo:userInfo];
 
     // remove all our user data
     NSUserDefaults  *defaults   = [NSUserDefaults standardUserDefaults];
@@ -182,7 +190,7 @@ static STRemoteUser *sharedInstance = nil;
     // save
     [defaults synchronize];
     
-    // send notification
+    // send didLogout notification
     [[NSNotificationCenter defaultCenter]
      postNotificationName:STRemoteUserDidLogoutNotification
      object:self

@@ -40,8 +40,9 @@
 
 #pragma mark Notifications
 
-// For both notifications object is self, userInfo is self.userInfo
+// For notifications object is self, userInfo is self.userInfo
 extern NSString *const STRemoteUserDidLoginNotification;
+extern NSString *const STRemoteUserWillLogoutNotification;
 extern NSString *const STRemoteUserDidLogoutNotification;
 
 @interface STRemoteUser : NSObject
