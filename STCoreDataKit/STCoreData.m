@@ -119,8 +119,6 @@ static NSPersistentStoreCoordinator	*st_persistentStoreCoordinator	= nil;
 {
     if ([notification object] != [STCoreData mainManagedObjectContext])
     {
-        NSLog(@"Object: %@\nNotification: %@",
-              [notification object], [notification userInfo]);
         [[STCoreData mainManagedObjectContext]
          mergeChangesFromContextDidSaveNotification:notification];
     }

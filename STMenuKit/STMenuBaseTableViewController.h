@@ -28,6 +28,8 @@
     NSString        *_menuKey;
     NSString        *_delegateKey;
     
+    NSString        *_headerMessage;
+    
     NSString        *_key;
     BOOL            _parentMenuShouldSave;
     
@@ -39,7 +41,10 @@
     NSMutableDictionary     *_cachedMenus;
 }
 // Intercommunication: returns the delegate from the intercom using delegateKey
-@property (nonatomic, readonly) id  delegate;
+@property (nonatomic, readonly) id          delegate;
+
+// This is a message to display at the top of the table
+@property (nonatomic, copy)     NSString    *headerMessage;
 
 // Pops the menu from the nav controller
 - (void)dismiss;

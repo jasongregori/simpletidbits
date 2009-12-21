@@ -49,11 +49,29 @@
 		79F010E610D7329300CFDBD6 /* STLoadingView.h in Headers */ = {isa = PBXBuildFile; fileRef = 79F010E410D7329300CFDBD6 /* STLoadingView.h */; };
 		79F010E710D7329300CFDBD6 /* STLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 79F010E510D7329300CFDBD6 /* STLoadingView.m */; };
 		79F010F210D732AE00CFDBD6 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F010F110D732AE00CFDBD6 /* QuartzCore.framework */; };
+		79F7A19C10DF7D1500CFCDF6 /* libSimpleTidbits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79F7A19B10DF7D1100CFCDF6 /* libSimpleTidbits.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		AA747D9F0F9514B9006C5449 /* STMenuKit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* STMenuKit_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 		F728F39610D6B452005B527A /* STMenuBaseViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F728F39410D6B452005B527A /* STMenuBaseViewController.h */; };
 		F728F39710D6B452005B527A /* STMenuBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F728F39510D6B452005B527A /* STMenuBaseViewController.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		79F7A19A10DF7D1100CFCDF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79F7A19610DF7D1100CFCDF6 /* SimpleTidbits.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libSimpleTidbits.a */;
+			remoteInfo = SimpleTidbits;
+		};
+		79F7A1AB10DF7DE900CFCDF6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 79F7A19610DF7D1100CFCDF6 /* SimpleTidbits.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = D2AAC07D0554694100DB518D /* SimpleTidbits */;
+			remoteInfo = SimpleTidbits;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		79312D6810BA400C00479D69 /* STMenuBasicSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuBasicSectionController.h; sourceTree = "<group>"; };
@@ -98,6 +116,7 @@
 		79F010E410D7329300CFDBD6 /* STLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STLoadingView.h; sourceTree = "<group>"; };
 		79F010E510D7329300CFDBD6 /* STLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STLoadingView.m; sourceTree = "<group>"; };
 		79F010F110D732AE00CFDBD6 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		79F7A19610DF7D1100CFCDF6 /* SimpleTidbits.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SimpleTidbits.xcodeproj; path = ../SimpleTidbits/SimpleTidbits.xcodeproj; sourceTree = SOURCE_ROOT; };
 		AA747D9E0F9514B9006C5449 /* STMenuKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libSTMenuKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTMenuKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -113,6 +132,7 @@
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				79B304A810A7A6BB00CE423D /* UIKit.framework in Frameworks */,
 				79F010F210D732AE00CFDBD6 /* QuartzCore.framework in Frameworks */,
+				79F7A19C10DF7D1500CFCDF6 /* libSimpleTidbits.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -150,6 +170,7 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				79F7A19610DF7D1100CFCDF6 /* SimpleTidbits.xcodeproj */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
 				79B304A710A7A6BB00CE423D /* UIKit.framework */,
 			);
@@ -261,6 +282,14 @@
 			name = SubMenus;
 			sourceTree = "<group>";
 		};
+		79F7A19710DF7D1100CFCDF6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				79F7A19B10DF7D1100CFCDF6 /* libSimpleTidbits.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -308,6 +337,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				79F7A1AC10DF7DE900CFCDF6 /* PBXTargetDependency */,
 			);
 			name = STMenuKit;
 			productName = STMenuKit;
@@ -325,12 +355,28 @@
 			mainGroup = 0867D691FE84028FC02AAC07 /* STMenuKit */;
 			productRefGroup = 034768DFFF38A50411DB9C8B /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 79F7A19710DF7D1100CFCDF6 /* Products */;
+					ProjectRef = 79F7A19610DF7D1100CFCDF6 /* SimpleTidbits.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				D2AAC07D0554694100DB518D /* STMenuKit */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		79F7A19B10DF7D1100CFCDF6 /* libSimpleTidbits.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSimpleTidbits.a;
+			remoteRef = 79F7A19A10DF7D1100CFCDF6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D2AAC07B0554694100DB518D /* Sources */ = {
@@ -361,6 +407,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		79F7A1AC10DF7DE900CFCDF6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SimpleTidbits;
+			targetProxy = 79F7A1AB10DF7DE900CFCDF6 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1DEB921F08733DC00010E9CD /* Debug */ = {
@@ -403,6 +457,7 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ..;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1;
@@ -416,6 +471,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = ..;
 				OTHER_LDFLAGS = "-ObjC";
 				PREBINDING = NO;
 				SDKROOT = iphoneos3.1;

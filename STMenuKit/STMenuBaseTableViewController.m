@@ -10,6 +10,7 @@
 #import "STMenuMaker.h"
 #import "STMenuTableViewCell.h"
 #import "STMenuIntercomController.h"
+#import <SimpleTidbits/SimpleTidbits.h>
 
 @interface STMenuBaseTableViewController ()
 
@@ -29,7 +30,7 @@
             st_subMenu = _subMenu, st_cachedMenus = _cachedMenus,
             loadingMessage = _loadingMessage, loadingView = _loadingView,
             menuKey = _menuKey, delegateKey = _delegateKey, newMode = _newMode,
-            st_inModal = _inModal;
+            st_inModal = _inModal, headerMessage = _headerMessage;
 
 
 // create an instance of a menu
@@ -61,6 +62,7 @@
     [_menuKey release];
     [_delegateKey release];
     [_newMode release];
+    [_headerMessage release];
     
     [super dealloc];
 }
@@ -162,6 +164,32 @@
 - (void)st_initializeCell:(STMenuTableViewCell *)cell
 {
     
+}
+
+- (void)setHeaderMessage:(NSString *)headerMessage
+{
+    if (_headerMessage != headerMessage)
+    {
+        [_headerMessage release];
+        _headerMessage  = [headerMessage copy];
+    }
+    
+    if ([self isViewLoaded])
+    {
+        if (headerMessage)
+        {
+            STTableViewTextView *textView   = [[STTableViewTextView alloc]
+                                               init];
+//            textView.margins    = UIEdgeInsetsMake(10, 10, 0, 10);
+            textView.text       = headerMessage;
+            self.tableView.tableHeaderView  = textView;
+            [textView release];
+        }
+        else
+        {
+            self.tableView.tableHeaderView  = nil;
+        }
+    }
 }
 
 #pragma mark STMenuProtocol
@@ -279,6 +307,8 @@
 {
     // unregister menu key
     self.menuKey    = nil;
+    self.newMode    = nil;
+    self.headerMessage  = nil;
 }
 
 #pragma mark For Subclass Use
@@ -344,7 +374,10 @@
     [super viewDidLoad];
     
     // got to set loading correctly
-    [self setLoading:self.loading];    
+    [self setLoading:self.loading];
+    
+    // get header message up there
+    self.headerMessage  = self.headerMessage;
 }
 
 - (void)didReceiveMemoryWarning
