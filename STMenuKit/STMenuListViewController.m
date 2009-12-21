@@ -21,7 +21,8 @@
             st_addButton = _addButton, rowHeight = _rowHeight,
             st_showNoItemsMessage = _showNoItemsMessage,
             noItemsRow = _noItemsRow, noItemsMessage = _noItemsMessage,
-            noItemsMessageCell = _noItemsMessageCell, newItem = _newItem;
+            noItemsMessageCell = _noItemsMessageCell, newItem = _newItem,
+            showTitle = _showTitle;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -42,6 +43,7 @@
     [_allowDeletion release];
     [_addMenu release];
     [_newItem release];
+    [_showTitle release];
     
     [super dealloc];
 }
@@ -88,6 +90,7 @@
     else
     {
         addMenu     = [self st_getMenuFromData:self.itemMenu forKey:@"list"];
+        addMenu.title   = self.addTitle;
     }
     // set value
     addMenu.value   = newItem;
@@ -113,6 +116,7 @@
         // we use the key list so that the properties of the menu are not reset
         // everytime
         
+        subMenu.title   = self.showTitle;
         subMenu.value   = item;
         if (!self.addMenu)
         {
@@ -277,6 +281,7 @@
     self.cell           = nil;
     self.addTitle       = nil;
     self.addMenu        = nil;
+    self.showTitle      = nil;
 }
 
 #pragma mark Table view methods

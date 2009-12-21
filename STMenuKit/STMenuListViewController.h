@@ -44,6 +44,7 @@
     id          _itemMenu;
     id          _cell;
     NSString    *_addTitle;
+    NSString    *_showTitle;
     id          _addMenu;
     id          _noItemsMessageCell;
     id          _newItem;
@@ -58,6 +59,7 @@
 @property (nonatomic, retain)   id          itemMenu;   // (STMenuMaker Item)
 @property (nonatomic, retain)   id          cell;       // (STMenuMaker Item)
 @property (nonatomic, copy)     NSString    *addTitle;  // itemMenu add title
+@property (nonatomic, copy)     NSString    *showTitle; // itemMenu show title
 @property (nonatomic, retain)   id          addMenu;    // (STMenuMaker Item)
 @property (nonatomic, retain)   id          noItemsMessageCell; // (STMenuMaker)
 @property (nonatomic, retain)   id          newItem;    // used for addItem
