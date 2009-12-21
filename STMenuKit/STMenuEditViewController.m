@@ -46,12 +46,17 @@
     // hide back button when editing
     [self.navigationItem setHidesBackButton:editing animated:animated];
     
-    // parent menu should only save if we are not in editing mode
-    self.parentMenuShouldSave   = !editing;
+    if (![self.newMode boolValue])
+    {
+        // in not new mode
+        
+        // parent menu should only save if we are not in editing mode
+        self.parentMenuShouldSave   = !editing;
+    }
     
     if ([self.showDeleteButton boolValue] && [self isViewLoaded])
     {
-        if (editing)
+        if (editing && ![self.newMode boolValue])
         {
             // show delete button
             UIButton    *button     = [UIButton
@@ -92,7 +97,12 @@
 
 - (void)saveItem
 {
-    if (self.editing)
+    if ([self.newMode boolValue])
+    {
+        self.parentMenuShouldSave   = YES;
+        [self dismiss];
+    }
+    else if (self.editing)
     {
         [self st_setEditing:NO animated:YES];
     }
@@ -159,6 +169,30 @@
     [super st_prepareForReuse];
     
     self.showDeleteButton   = nil;
+}
+
+- (void)setNewMode:(NSNumber *)newMode
+{
+    [super setNewMode:newMode];
+    
+    if ([newMode boolValue])
+    {
+        // gotta be in edit mode
+        [self st_setEditing:YES animated:NO];
+        
+        self.navigationItem.leftBarButtonItem
+          = [[[UIBarButtonItem alloc]
+              initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
+              target:self
+              action:@selector(dismiss)]
+             autorelease];
+    }
+    else
+    {
+        // start in not editing mode
+        [self st_setEditing:NO animated:NO];
+        self.navigationItem.leftBarButtonItem   = nil;
+    }
 }
 
 #pragma mark UIViewController

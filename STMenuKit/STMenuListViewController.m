@@ -21,7 +21,7 @@
             st_addButton = _addButton, rowHeight = _rowHeight,
             st_showNoItemsMessage = _showNoItemsMessage,
             noItemsRow = _noItemsRow, noItemsMessage = _noItemsMessage,
-            noItemsMessageCell = _noItemsMessageCell;
+            noItemsMessageCell = _noItemsMessageCell, newItem = _newItem;
 
 /*
 - (id)initWithStyle:(UITableViewStyle)style {
@@ -41,20 +41,71 @@
     [_cell release];
     [_allowDeletion release];
     [_addMenu release];
+    [_newItem release];
     
     [super dealloc];
 }
 
+// Returns a copy of newItem to be used as the item to be edited for adding.
+// Override to provide something else.
+- (id)st_copyOfNewItem
+{
+    return [[self.newItem copy] autorelease];
+}
 
 // show add menu
 - (void)addItem
 {
+    // Get new item
+    id      newItem     = nil;
     
+    // try delegate
+    if ([self.delegate respondsToSelector:@selector(listMenuNewItem:)])
+    {
+        newItem     = [self.delegate listMenuNewItem:self];
+    }
+    
+    // try self
+    if (!newItem)
+    {
+        newItem     = [self st_copyOfNewItem];
+    }
+    
+    if (!newItem)
+    {
+        // failure
+        return;
+    }
+    
+    // get add menu
+    UIViewController <STMenuProtocol>   *addMenu    = nil;
+    
+    // try addMenu prop
+    if (self.addMenu)
+    {
+        addMenu     = [self st_getMenuFromData:self.addMenu forKey:@"list"];
+    }
+    else
+    {
+        addMenu     = [self st_getMenuFromData:self.itemMenu forKey:@"list"];
+    }
+    // set value
+    addMenu.value   = newItem;
+    // set to new mode
+    addMenu.newMode = [NSNumber numberWithBool:YES];
+    
+    // display
+    [self st_presentMenu:addMenu];
 }
 
 // push an item
 - (void)showItem:(id)item
 {
+    if ([self.delegate respondsToSelector:@selector(listMenu:showingItem:)])
+    {
+        [self.delegate listMenu:self showingItem:item];
+    }
+    
     if (self.itemMenu)
     {
         UIViewController <STMenuProtocol> *subMenu
@@ -63,6 +114,11 @@
         // everytime
         
         subMenu.value   = item;
+        if (!self.addMenu)
+        {
+            // we might have set this on an add
+            subMenu.newMode = [NSNumber numberWithBool:NO];
+        }
         
         [self st_pushMenu:subMenu];
     }

@@ -23,6 +23,10 @@
 @property (nonatomic, copy)     NSString    *key;
 @property (nonatomic, assign)   BOOL        parentMenuShouldSave;
 
+// Some menus may have a "new" mode. For example Edit Menu has a new mode with
+// a cancel button instead of a back button.
+@property (nonatomic, retain)   NSNumber    *newMode;
+
 // When a menu is loading, it should stop the user from accessing anything and
 // display some kind of ui so the user knows what's going on.
 @property (nonatomic, assign)   BOOL        loading;
@@ -51,6 +55,9 @@
 + (id)menu;
 
 #pragma mark For Subclass/Private Use Only
+
+// tells you if this menu is in a modal, used for dismiss
+@property (nonatomic, assign)   BOOL    st_inModal;
 
 // This is called when a menu is reused. Reset all editable properties
 - (void)st_prepareForReuse;

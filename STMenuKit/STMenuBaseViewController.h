@@ -28,13 +28,17 @@
     NSString        *_key;
     BOOL            _parentMenuShouldSave;
     
+    NSNumber        *_newMode;
+    
+    BOOL            _inModal;
+    
     UIViewController <STMenuProtocol>   *_subMenu;
     NSMutableDictionary     *_cachedMenus;
 }
 // Intercommunication: returns the delegate from the intercom using delegateKey
 @property (nonatomic, readonly) id  delegate;
 
-// Pops the menu from the nav controller
+// Pops the menu from the nav controller or dismisses modal if in modal
 - (void)dismiss;
 
 #pragma mark For Subclass or Private Use Only

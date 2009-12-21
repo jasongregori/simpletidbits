@@ -46,6 +46,7 @@
     NSString    *_addTitle;
     id          _addMenu;
     id          _noItemsMessageCell;
+    id          _newItem;
 }
 @property (nonatomic, retain)   NSNumber    *rowHeight; // float
 @property (nonatomic, retain)   NSNumber    *noItemsRow;    // Message row
@@ -59,11 +60,15 @@
 @property (nonatomic, copy)     NSString    *addTitle;  // itemMenu add title
 @property (nonatomic, retain)   id          addMenu;    // (STMenuMaker Item)
 @property (nonatomic, retain)   id          noItemsMessageCell; // (STMenuMaker)
+@property (nonatomic, retain)   id          newItem;    // used for addItem
 
 - (void)setShowAddButton:(BOOL)show animated:(BOOL)animated;
 - (void)setShowEditButton:(BOOL)show animated:(BOOL)animated;
 
-// show add menu
+// show add menu. Trys to get a newItem from the delegate, if it can't it gets a
+// copy of newItem. If addMenu exists, uses that menu. Otherwise uses itemMenu
+// and sets title to addTitle. Then sets value of menu to newItem and displays
+// it modally.
 - (void)addItem;
 
 // push an item
@@ -86,5 +91,23 @@
 // override to use default cell, or override cellForRow, didSelectRow, and
 // commitEditingStyle.
 - (id)st_itemForIndexPath:(NSIndexPath *)indexPath;
+
+// Returns a copy of newItem to be used as the item to be edited for adding.
+// Override to provide something else.
+- (id)st_copyOfNewItem;
+
+@end
+
+
+@protocol STMenuListViewControllerDelegate
+
+  @optional
+// Called when showItem: is called, you may use this to do something at the same
+// time. Or if itemMenu is nil, you can push something else instead.
+- (void)listMenu:(STMenuListViewController *)listMenu showingItem:(id)item;
+
+// Called when addItem is called. If an item is returned, it is used as the 
+// new Item for the user to edit. Otherwise st_copyOfNewItem is used.
+- (id)listMenuNewItem:(STMenuListViewController *)listMenu;
 
 @end

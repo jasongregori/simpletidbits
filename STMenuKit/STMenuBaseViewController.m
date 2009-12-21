@@ -26,7 +26,8 @@
             st_schema = _schema, parentMenuShouldSave = _parentMenuShouldSave,
             st_subMenu = _subMenu, st_cachedMenus = _cachedMenus,
             loadingMessage = _loadingMessage, loadingView = _loadingView,
-            menuKey = _menuKey, delegateKey = _delegateKey;
+            menuKey = _menuKey, delegateKey = _delegateKey, newMode = _newMode,
+            st_inModal = _inModal;
 
 // create an instance of a menu
 + (id)menu
@@ -56,6 +57,7 @@
     [_cachedMenus release];
     [_menuKey release];
     [_delegateKey release];
+    [_newMode release];
     
     [super dealloc];
 }
@@ -79,7 +81,12 @@
 
 - (void)dismiss
 {
-    if (self.navigationController.topViewController == self)
+    if (self.st_inModal)
+    {
+        [self.navigationController.parentViewController
+         dismissModalViewControllerAnimated:YES];
+    }
+    else if (self.navigationController.topViewController == self)
     {
         [self.navigationController popViewControllerAnimated:YES];
     }
@@ -223,10 +230,25 @@
 // parentMenuShouldSave to NO.
 - (void)st_pushMenu:(UIViewController <STMenuProtocol> *)subMenu
 {
-    self.st_subMenu    = subMenu;
+    self.st_subMenu     = subMenu;
+    subMenu.st_inModal  = NO;
     subMenu.parentMenuShouldSave    = NO;
     [self.navigationController pushViewController:subMenu
                                          animated:YES];
+}
+
+// Use this to show a subMenu in a modal. It will be put in a Navigation
+// Controller. self.st_subMenu will be set to this menu. It will set
+// parentMenuShouldSave to NO on the submenu.
+- (void)st_presentMenu:(UIViewController <STMenuProtocol> *)subMenu
+{
+    self.st_subMenu     = subMenu;
+    subMenu.st_inModal  = YES;
+    subMenu.parentMenuShouldSave    = NO;
+    UINavigationController  *nav    = [[UINavigationController alloc]
+                                       initWithRootViewController:subMenu];
+    [self.navigationController presentModalViewController:nav
+                                                 animated:YES];
 }
 
 // Override this to save values returned by sub menus. Default does nothing.

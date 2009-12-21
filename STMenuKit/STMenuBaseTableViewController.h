@@ -31,6 +31,10 @@
     NSString        *_key;
     BOOL            _parentMenuShouldSave;
     
+    NSNumber        *_newMode;
+    
+    BOOL            _inModal;
+    
     UIViewController <STMenuProtocol>   *_subMenu;
     NSMutableDictionary     *_cachedMenus;
 }
@@ -71,6 +75,11 @@
 // Use this to push a subMenu. It will set self.st_subMenu to this. It will set
 // parentMenuShouldSave to NO on the submenu.
 - (void)st_pushMenu:(UIViewController <STMenuProtocol> *)subMenu;
+
+// Use this to show a subMenu in a modal. It will be put in a Navigation
+// Controller. self.st_subMenu will be set to this menu. It will set
+// parentMenuShouldSave to NO on the submenu.
+- (void)st_presentMenu:(UIViewController <STMenuProtocol> *)subMenu;
 
 // Override this to save values returned by sub menus. This will only be called
 // if you pushed the sub menu using st_pushMenu and the menu has set
