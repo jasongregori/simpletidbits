@@ -18,6 +18,13 @@
 // object.
 // Should be copied if possible.
 @property (nonatomic, copy)     id          plist;
+
+// This is the value that is being displayed to the user.
+// If your menu is one that allows the user to cancel or otherwise not save
+// (like a sub menu), you must either not edit the original value that is
+// giving you by your parent or you must rollback any changes made before
+// canceling. For example you can set your value to a copy of the original or
+// a new value.
 @property (nonatomic, retain)   id          value;
 
 @property (nonatomic, copy)     NSString    *key;

@@ -61,6 +61,8 @@
 // if you pushed the sub menu using st_pushMenu and the menu has set
 // parentMenuShouldSave to YES. Default does nothing.
 - (void)st_saveValue:(id)value forSubMenuKey:(NSString *)key;
+// Called when parentMenuShouldSave is set to NO. Default does nothing.
+- (void)st_cancelForSubMenuKey:(NSString *)key;
 
 // Gets an instance of a menu, either by creating one or by using a cached one.
 // Data could be either a the class name (NSString) or a dictionary.

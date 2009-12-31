@@ -98,6 +98,17 @@
     }
 }
 
+- (void)st_cancelForSubMenuKey:(NSString *)key
+{
+    if (self.st_subMenuSection != NSNotFound)
+    {
+        STMenuFormattedSectionController    *section
+          = [self.st_sections objectAtIndex:self.st_subMenuSection];
+        [section cancelForSubMenuKey:key];
+        self.st_subMenuSection  = NSNotFound;
+    }
+}
+
 #pragma mark STMenuProtocol
 
 - (void)setPlist:(id)plist andValue:(id)value
@@ -140,6 +151,22 @@
             [self.tableView reloadData];
         }
     }
+}
+
+#pragma mark UIViewController
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    [self.tableView beginUpdates];
+    
+    [super setEditing:editing animated:animated];
+    
+    for (STMenuFormattedSectionController *section in self.st_sections)
+    {
+        [section setEditing:editing animated:animated];
+    }
+    
+    [self.tableView endUpdates];
 }
 
 #pragma mark Table view methods

@@ -142,7 +142,10 @@
 // submenus
 - (void)saveValue:(id)value forSubMenuKey:(NSString *)key
 {
-    [self.values setValue:value forKeyPath:key];
+    if (key)
+    {
+        [self.values setValue:value forKeyPath:key];
+    }
 }
 
 // cells

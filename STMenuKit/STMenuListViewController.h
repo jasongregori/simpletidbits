@@ -10,6 +10,8 @@
 #import <UIKit/UIKit.h>
 #import "STMenuBaseTableViewController.h"
 
+// TODO: change newItem to createItem because newItem expects to be retained
+
 /*
  STMenuListViewController
  ------------------------
@@ -30,6 +32,8 @@
     * EG: "No Messages"
  
  */
+
+// TODO: Have a total count cell at the bottom, like in contacts
 
 @interface STMenuListViewController : STMenuBaseTableViewController
 {

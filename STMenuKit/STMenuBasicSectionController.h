@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import "STMenuFormattedSectionController.h"
 
+// TODO: change this guys name. maybe "StructuredSectionController" ?
+
 /*
  
  STMenuBasicSectionController
@@ -43,6 +45,7 @@
 
 @interface STMenuBasicSectionController : STMenuFormattedSectionController
 {
+  @protected
     NSArray     *_rows;
     id          _values;
     NSArray     *_keys;

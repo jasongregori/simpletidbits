@@ -36,6 +36,32 @@
     
 }
 
+- (void)cancelForSubMenuKey:(NSString *)key
+{
+    
+}
+
+- (BOOL)isEditing
+{
+    return self.menu.editing;
+}
+
+- (void)setEditing:(BOOL)editing animated:(BOOL)animated
+{
+    
+}
+
+// Default reloads section
+- (void)reloadSection:(BOOL)animated
+{
+    if ([self.menu isViewLoaded])
+    {
+        [self.menu.tableView
+         reloadSections:[NSIndexSet indexSetWithIndex:self.section]
+         withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
 // cells
 - (NSInteger)numberOfRows
 {

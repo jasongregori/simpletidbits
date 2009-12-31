@@ -264,6 +264,7 @@
         [self setValue:[schema valueForKey:key]
             forKeyPath:key];
     }
+    [self noItemsCheck];
 }
 
 - (void)st_prepareForReuse

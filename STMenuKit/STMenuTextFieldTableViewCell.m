@@ -420,7 +420,7 @@
         [self.menu.tableView
          selectRowAtIndexPath:self.st_nextCellIndexPath
          animated:YES
-         scrollPosition:UITableViewScrollPositionTop];
+         scrollPosition:UITableViewScrollPositionMiddle];
     }
     else if (self.st_deselectOnReturn)
     {

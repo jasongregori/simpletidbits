@@ -336,11 +336,17 @@
                                        initWithRootViewController:subMenu];
     [self.navigationController presentModalViewController:nav
                                                  animated:YES];
+    [nav release];
 }
 
 
 // Override this to save values returned by sub menus. Default does nothing.
 - (void)st_saveValue:(id)value forSubMenuKey:(NSString *)key
+{
+    
+}
+
+- (void)st_cancelForSubMenuKey:(NSString *)key
 {
     
 }
@@ -403,6 +409,10 @@
             // If the subMenu should be saved, tell menu to save it
             [self st_saveValue:self.st_subMenu.value
                  forSubMenuKey:self.st_subMenu.key];
+        }
+        else
+        {
+            [self st_cancelForSubMenuKey:self.st_subMenu.key];
         }
     }
 }
