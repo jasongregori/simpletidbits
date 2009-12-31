@@ -12,6 +12,7 @@
 // Section Controllers
 #import "STMenuFormattedSectionController.h"
 #import "STMenuBasicSectionController.h"
+#import "STMenuListSectionController.h"
 
 // Menus
 #import "STMenuBaseViewController.h"
