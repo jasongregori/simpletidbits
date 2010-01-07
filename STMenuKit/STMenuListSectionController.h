@@ -10,8 +10,6 @@
 #import "STMenuFormattedSectionController.h"
 #import <UIKit/UIKit.h>
 
-// TODO: change newItem to createItem because newItem expects to be retained
-
 @interface STMenuListSectionController : STMenuFormattedSectionController
 {
   @protected
@@ -87,7 +85,7 @@
 - (id)createItem;
 
 // Responsible for adding the item to the actual list and adding it to the
-// table. Called when a subMenu returns that was pushed with a new item. 
+// table. Called when a subMenu that was pushed with a new item returns. 
 // Default: If item is already in the list, sort and move cell in table to new
 // spot. Otherwise, item is added into list, the list is sorted, and a new row
 // is added to the table for new index of the item.

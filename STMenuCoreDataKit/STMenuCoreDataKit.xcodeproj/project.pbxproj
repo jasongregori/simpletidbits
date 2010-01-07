@@ -8,10 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		7939F0FE10DB4A98006FD516 /* libSTCoreDataKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7939F0E910DB4A4B006FD516 /* libSTCoreDataKit.a */; settings = {ATTRIBUTES = (Weak, ); }; };
-		7939F0FF10DB4A99006FD516 /* libSTMenuKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7939F0EF10DB4A54006FD516 /* libSTMenuKit.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7939F10C10DB4AE3006FD516 /* STMenuCoreDataKit.h in Headers */ = {isa = PBXBuildFile; fileRef = 7939F10B10DB4AE3006FD516 /* STMenuCoreDataKit.h */; };
 		7939F10F10DB4B13006FD516 /* STMenuCoreDataListViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 7939F10D10DB4B13006FD516 /* STMenuCoreDataListViewController.h */; };
 		7939F11010DB4B13006FD516 /* STMenuCoreDataListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7939F10E10DB4B13006FD516 /* STMenuCoreDataListViewController.m */; };
+		793D86E910F5A23300AD863E /* libSimpleTidbits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793D86E210F5A21F00AD863E /* libSimpleTidbits.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		793D86EA10F5A23600AD863E /* libSTMenuKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 793D86E810F5A23100AD863E /* libSTMenuKit.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7962776610F591C80098EDD4 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7962776510F591C80098EDD4 /* CoreData.framework */; };
+		79C89C0A10EC3C95000F25A0 /* STMenuCoreDataListSectionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79C89C0810EC3C95000F25A0 /* STMenuCoreDataListSectionController.h */; };
+		79C89C0B10EC3C95000F25A0 /* STMenuCoreDataListSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79C89C0910EC3C95000F25A0 /* STMenuCoreDataListSectionController.m */; };
 		AA747D9F0F9514B9006C5449 /* STMenuCoreDataKit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* STMenuCoreDataKit_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -24,20 +28,6 @@
 			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = STCoreDataKit;
 		};
-		7939F0EE10DB4A54006FD516 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7939F0EA10DB4A54006FD516 /* STMenuKit.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D;
-			remoteInfo = STMenuKit;
-		};
-		7939F10710DB4AB8006FD516 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 7939F0EA10DB4A54006FD516 /* STMenuKit.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = D2AAC07D0554694100DB518D;
-			remoteInfo = STMenuKit;
-		};
 		7939F10910DB4AB8006FD516 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 7939F0E410DB4A4B006FD516 /* STCoreDataKit.xcodeproj */;
@@ -45,14 +35,32 @@
 			remoteGlobalIDString = D2AAC07D0554694100DB518D;
 			remoteInfo = STCoreDataKit;
 		};
+		793D86E110F5A21F00AD863E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 793D86DD10F5A21F00AD863E /* SimpleTidbits.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libSimpleTidbits.a */;
+			remoteInfo = SimpleTidbits;
+		};
+		793D86E710F5A23100AD863E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 793D86E310F5A23100AD863E /* STMenuKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libSTMenuKit.a */;
+			remoteInfo = STMenuKit;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		7939F0E410DB4A4B006FD516 /* STCoreDataKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = STCoreDataKit.xcodeproj; path = ../STCoreDataKit/STCoreDataKit.xcodeproj; sourceTree = SOURCE_ROOT; };
-		7939F0EA10DB4A54006FD516 /* STMenuKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = STMenuKit.xcodeproj; path = ../STMenuKit/STMenuKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		7939F10B10DB4AE3006FD516 /* STMenuCoreDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuCoreDataKit.h; sourceTree = "<group>"; };
 		7939F10D10DB4B13006FD516 /* STMenuCoreDataListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuCoreDataListViewController.h; sourceTree = "<group>"; };
 		7939F10E10DB4B13006FD516 /* STMenuCoreDataListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuCoreDataListViewController.m; sourceTree = "<group>"; };
+		793D86DD10F5A21F00AD863E /* SimpleTidbits.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SimpleTidbits.xcodeproj; path = ../../../../dropbox/src/simpletidbits/SimpleTidbits/SimpleTidbits.xcodeproj; sourceTree = SOURCE_ROOT; };
+		793D86E310F5A23100AD863E /* STMenuKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = STMenuKit.xcodeproj; path = ../../../../dropbox/src/simpletidbits/STMenuKit/STMenuKit.xcodeproj; sourceTree = SOURCE_ROOT; };
+		7962776510F591C80098EDD4 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		79C89C0810EC3C95000F25A0 /* STMenuCoreDataListSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuCoreDataListSectionController.h; sourceTree = "<group>"; };
+		79C89C0910EC3C95000F25A0 /* STMenuCoreDataListSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuCoreDataListSectionController.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* STMenuCoreDataKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuCoreDataKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libSTMenuCoreDataKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTMenuCoreDataKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,7 +73,9 @@
 			files = (
 				AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */,
 				7939F0FE10DB4A98006FD516 /* libSTCoreDataKit.a in Frameworks */,
-				7939F0FF10DB4A99006FD516 /* libSTMenuKit.a in Frameworks */,
+				7962776610F591C80098EDD4 /* CoreData.framework in Frameworks */,
+				793D86E910F5A23300AD863E /* libSimpleTidbits.a in Frameworks */,
+				793D86EA10F5A23600AD863E /* libSTMenuKit.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +94,8 @@
 			isa = PBXGroup;
 			children = (
 				7939F10B10DB4AE3006FD516 /* STMenuCoreDataKit.h */,
-				08FB77AEFE84172EC02AAC07 /* Classes */,
+				79F7A1FA10DF862800CFCDF6 /* Section Controllers */,
+				08FB77AEFE84172EC02AAC07 /* List Menu */,
 				32C88DFF0371C24200C91783 /* Other Sources */,
 				0867D69AFE84028FC02AAC07 /* Frameworks */,
 				034768DFFF38A50411DB9C8B /* Products */,
@@ -95,20 +106,22 @@
 		0867D69AFE84028FC02AAC07 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				793D86DD10F5A21F00AD863E /* SimpleTidbits.xcodeproj */,
+				793D86E310F5A23100AD863E /* STMenuKit.xcodeproj */,
 				7939F0E410DB4A4B006FD516 /* STCoreDataKit.xcodeproj */,
-				7939F0EA10DB4A54006FD516 /* STMenuKit.xcodeproj */,
 				AACBBE490F95108600F1A2B1 /* Foundation.framework */,
+				7962776510F591C80098EDD4 /* CoreData.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		08FB77AEFE84172EC02AAC07 /* Classes */ = {
+		08FB77AEFE84172EC02AAC07 /* List Menu */ = {
 			isa = PBXGroup;
 			children = (
 				7939F10D10DB4B13006FD516 /* STMenuCoreDataListViewController.h */,
 				7939F10E10DB4B13006FD516 /* STMenuCoreDataListViewController.m */,
 			);
-			name = Classes;
+			name = "List Menu";
 			sourceTree = "<group>";
 		};
 		32C88DFF0371C24200C91783 /* Other Sources */ = {
@@ -127,12 +140,29 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		7939F0EB10DB4A54006FD516 /* Products */ = {
+		793D86DE10F5A21F00AD863E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				7939F0EF10DB4A54006FD516 /* libSTMenuKit.a */,
+				793D86E210F5A21F00AD863E /* libSimpleTidbits.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		793D86E410F5A23100AD863E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				793D86E810F5A23100AD863E /* libSTMenuKit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		79F7A1FA10DF862800CFCDF6 /* Section Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				79C89C0810EC3C95000F25A0 /* STMenuCoreDataListSectionController.h */,
+				79C89C0910EC3C95000F25A0 /* STMenuCoreDataListSectionController.m */,
+			);
+			name = "Section Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -145,6 +175,7 @@
 				AA747D9F0F9514B9006C5449 /* STMenuCoreDataKit_Prefix.pch in Headers */,
 				7939F10C10DB4AE3006FD516 /* STMenuCoreDataKit.h in Headers */,
 				7939F10F10DB4B13006FD516 /* STMenuCoreDataListViewController.h in Headers */,
+				79C89C0A10EC3C95000F25A0 /* STMenuCoreDataListSectionController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -162,7 +193,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				7939F10810DB4AB8006FD516 /* PBXTargetDependency */,
 				7939F10A10DB4AB8006FD516 /* PBXTargetDependency */,
 			);
 			name = STMenuCoreDataKit;
@@ -183,12 +213,16 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = 793D86DE10F5A21F00AD863E /* Products */;
+					ProjectRef = 793D86DD10F5A21F00AD863E /* SimpleTidbits.xcodeproj */;
+				},
+				{
 					ProductGroup = 7939F0E510DB4A4B006FD516 /* Products */;
 					ProjectRef = 7939F0E410DB4A4B006FD516 /* STCoreDataKit.xcodeproj */;
 				},
 				{
-					ProductGroup = 7939F0EB10DB4A54006FD516 /* Products */;
-					ProjectRef = 7939F0EA10DB4A54006FD516 /* STMenuKit.xcodeproj */;
+					ProductGroup = 793D86E410F5A23100AD863E /* Products */;
+					ProjectRef = 793D86E310F5A23100AD863E /* STMenuKit.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -206,11 +240,18 @@
 			remoteRef = 7939F0E810DB4A4B006FD516 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		7939F0EF10DB4A54006FD516 /* libSTMenuKit.a */ = {
+		793D86E210F5A21F00AD863E /* libSimpleTidbits.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSimpleTidbits.a;
+			remoteRef = 793D86E110F5A21F00AD863E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		793D86E810F5A23100AD863E /* libSTMenuKit.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
 			path = libSTMenuKit.a;
-			remoteRef = 7939F0EE10DB4A54006FD516 /* PBXContainerItemProxy */;
+			remoteRef = 793D86E710F5A23100AD863E /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
@@ -221,17 +262,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				7939F11010DB4B13006FD516 /* STMenuCoreDataListViewController.m in Sources */,
+				79C89C0B10EC3C95000F25A0 /* STMenuCoreDataListSectionController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		7939F10810DB4AB8006FD516 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = STMenuKit;
-			targetProxy = 7939F10710DB4AB8006FD516 /* PBXContainerItemProxy */;
-		};
 		7939F10A10DB4AB8006FD516 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = STCoreDataKit;

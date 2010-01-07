@@ -227,7 +227,7 @@
         [_list release];
         if ([list isKindOfClass:[NSSet class]])
         {
-            _list   = [[list allValues] mutableCopy];
+            _list   = [[list allObjects] mutableCopy];
         }
         else if ([list isKindOfClass:[NSArray class]])
         {
