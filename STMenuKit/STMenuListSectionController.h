@@ -74,6 +74,11 @@
 // are tapping an item or the add button.
 - (BOOL)isInList:(NSUInteger)row;
 
+// Returns nil if item is not in list
+- (NSIndexPath *)indexPathForItem:(id)item;
+// Returns nil if addCell is not showing
+- (NSIndexPath *)indexPathForAddCell;
+
 #pragma mark Edit Item Methods
 
 // You may override these

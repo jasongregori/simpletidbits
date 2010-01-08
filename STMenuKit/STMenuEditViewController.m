@@ -82,6 +82,7 @@
 
 - (void)st_deleteButtonTapped
 {
+    // TODO: show action sheet asking if they are sure!
     if ([self.delegate
          respondsToSelector:@selector(editMenu:shouldDeleteItem:)])
     {

@@ -39,14 +39,14 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = 793D86DD10F5A21F00AD863E /* SimpleTidbits.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libSimpleTidbits.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = SimpleTidbits;
 		};
 		793D86E710F5A23100AD863E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 793D86E310F5A23100AD863E /* STMenuKit.xcodeproj */;
 			proxyType = 2;
-			remoteGlobalIDString = D2AAC07E0554694100DB518D /* libSTMenuKit.a */;
+			remoteGlobalIDString = D2AAC07E0554694100DB518D;
 			remoteInfo = STMenuKit;
 		};
 /* End PBXContainerItemProxy section */

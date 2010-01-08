@@ -136,7 +136,9 @@
     }
     
     // retain new value
-    self.values     = newValue; 
+    self.values     = newValue;
+    
+    [self reloadSection:NO];
 }
 
 // submenus

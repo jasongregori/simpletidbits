@@ -7,6 +7,7 @@
 //
 
 #import "STMenuCoreDataListSectionController.h"
+#import <STCoreDataKit/STCoreDataKit.h>
 
 @interface STMenuCoreDataListSectionController ()
 
@@ -14,12 +15,14 @@
 
 
 @implementation STMenuCoreDataListSectionController
-@synthesize listKeyPath = _listKeyPath, managedObject = _managedObject;
+@synthesize listKeyPath = _listKeyPath, managedObject = _managedObject,
+            onlyRemoveItemsOnDelete = _onlyRemoveItemsOnDelete;
 
 - (void)dealloc
 {
     self.managedObject  = nil;
     [_listKeyPath release];
+    [_onlyRemoveItemsOnDelete release];
     
     [super dealloc];
 }
@@ -71,6 +74,68 @@
     }
 }
 
+#pragma mark STMenuListSectionController
+
+- (id)createItem
+{
+    NSEntityDescription *entity = [[[[[STCoreData mainManagedObjectContext]
+                                      persistentStoreCoordinator]
+                                     managedObjectModel]
+                                    entitiesByName]
+                                   valueForKey:self.blankItem];
+    if (entity)
+    {
+        return [[[NSManagedObject alloc] initWithEntity:entity
+                         insertIntoManagedObjectContext:nil]
+                autorelease];
+    }
+    return nil;
+}
+
+- (void)addItem:(id)item
+{
+    if (!item)
+    {
+        return;
+    }
+    
+    // add item to the value
+    NSMutableSet    *items      = [self.managedObject
+                                   mutableSetValueForKeyPath:self.listKeyPath];
+    if (items && ![items containsObject:item])
+    {
+        // if the item is not already in moc, insert it into the managedObjects'
+        if (![item managedObjectContext])
+        {
+            [[self.managedObject managedObjectContext] insertObject:item];
+        }
+        // add the item to the managedObject
+        [items addObject:item];
+    }
+}
+
+- (void)deleteItem:(id)item
+{
+    if (!item)
+    {
+        return;
+    }
+    
+    // add item to the value
+    NSMutableSet    *items      = [self.managedObject
+                                   mutableSetValueForKeyPath:self.listKeyPath];
+    if (items && [items containsObject:item])
+    {
+        if (![self.onlyRemoveItemsOnDelete boolValue])
+        {
+            // delete the item
+            [[item managedObjectContext] deleteObject:item];
+        }
+        // remove the item from the managedObject
+        [items removeObject:item];
+    }
+}
+
 #pragma mark STMenuFormattedSectionController
 
 - (void)menuValueDidChange:(id)newValue
@@ -106,12 +171,12 @@
             // remove old objects
             for (id object in [change valueForKey:NSKeyValueChangeOldKey])
             {
-                [self deleteItem:object];
+                [super deleteItem:object];
             }
             // add new objects
             for (id object in [change valueForKey:NSKeyValueChangeNewKey])
             {
-                [self addItem:object];
+                [super addItem:object];
             }
             if (viewLoaded)
             {

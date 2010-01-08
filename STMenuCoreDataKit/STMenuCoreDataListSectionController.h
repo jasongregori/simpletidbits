@@ -29,6 +29,7 @@
   @protected
     NSString        *_listKeyPath;
     NSManagedObject *_managedObject;
+    NSNumber        *_onlyRemoveItemsOnDelete;
 }
 // The managed object that we are getting the list from. If in a menu, the value
 // is automatically set to the menu's value. Otherwise you may set this value.
@@ -36,6 +37,10 @@
 // The keypath to use on the object to get a list of objects. It is also used to
 // observe changes to that list.
 @property (nonatomic, copy)     NSString        *listKeyPath;
-
+// BOOL, default: NO
+// If YES, we only remove the item from the managedObject on delete.
+// If NO, we also delete the item from it's moc.
+// This is useful if your items are used in more then one place.
+@property (nonatomic, retain)   NSNumber        *onlyRemoveItemsOnDelete;
 
 @end

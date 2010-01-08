@@ -65,8 +65,7 @@
             [self.menu.tableView
              deleteRowsAtIndexPaths:
              [NSArray arrayWithObject:
-              [NSIndexPath indexPathForRow:
-               [self.menu.tableView numberOfRowsInSection:self.section]-1
+              [NSIndexPath indexPathForRow:[self.st_list count]
                                  inSection:self.section]]
              withRowAnimation:
              animated?UITableViewRowAnimationTop:UITableViewRowAnimationNone];
@@ -85,8 +84,7 @@
             [self.menu.tableView
              insertRowsAtIndexPaths:
              [NSArray arrayWithObject:
-              [NSIndexPath indexPathForRow:
-               [self.menu.tableView numberOfRowsInSection:self.section]
+              [NSIndexPath indexPathForRow:[self.st_list count]
                                  inSection:self.section]]
              withRowAnimation:
              animated?UITableViewRowAnimationTop:UITableViewRowAnimationNone];
@@ -101,7 +99,7 @@
 
 - (void)showItem:(id)item
 {
-    if (self.itemMenu)
+    if (item && self.itemMenu)
     {
         // get menu
         UIViewController <STMenuProtocol>   *subMenu
@@ -153,6 +151,7 @@
         // animate the table
         NSUInteger  newItemIndex    = [self.st_list
                                        indexOfObjectIdenticalTo:item];
+        [self.menu.tableView beginUpdates];
         if (itemIndex == NSNotFound)
         {
             // this is an add
@@ -165,7 +164,6 @@
         else if (itemIndex != newItemIndex)
         {
             // this was a move
-            [self.menu.tableView beginUpdates];
             [self.menu.tableView
              deleteRowsAtIndexPaths:
              [NSArray arrayWithObject:
@@ -176,8 +174,9 @@
              [NSArray arrayWithObject:
               [NSIndexPath indexPathForRow:newItemIndex inSection:self.section]]
              withRowAnimation:UITableViewRowAnimationFade];
-            [self.menu.tableView endUpdates];
         }
+        [self st_checkIfWeShouldShowAddCell:YES];
+        [self.menu.tableView endUpdates];
     }
 }
 
@@ -204,13 +203,38 @@
         
         if ([self.menu isViewLoaded])
         {
+            [self.menu.tableView beginUpdates];
             [self.menu.tableView
              deleteRowsAtIndexPaths:
              [NSArray arrayWithObject:
               [NSIndexPath indexPathForRow:itemIndex inSection:self.section]]
              withRowAnimation:UITableViewRowAnimationFade];
+            [self st_checkIfWeShouldShowAddCell:YES];
+            [self.menu.tableView endUpdates];
         }
     }
+}
+
+// Returns nil if item is not in list
+- (NSIndexPath *)indexPathForItem:(id)item
+{
+    NSUInteger      row     = [self.st_list indexOfObject:item];
+    if (row != NSNotFound)
+    {
+        return [NSIndexPath indexPathForRow:row inSection:self.section];
+    }
+    return nil;
+}
+
+// Returns nil if addCell is not showing
+- (NSIndexPath *)indexPathForAddCell
+{
+    if (self.st_showingAddCell)
+    {
+        return [NSIndexPath indexPathForRow:[self.st_list count]
+                                  inSection:self.section];
+    }
+    return nil;
 }
 
 #pragma mark Properties
@@ -232,6 +256,10 @@
         else if ([list isKindOfClass:[NSArray class]])
         {
             _list   = [list mutableCopy];
+        }
+        else if (!list || [list isKindOfClass:[NSNull class]])
+        {
+            _list   = nil;
         }
         else
         {
@@ -314,8 +342,48 @@
 {
     if ([key isEqualToString:self.key])
     {
+        BOOL    selectNewValue  = NO;
+        
+        if ([self.menu isViewLoaded])
+        {
+            // !!!: test
+            // see if we should select this new item
+            NSIndexPath     *currentIndexPath   = nil;
+            if (self.st_currentlyShowingItem)
+            {
+                // this was the item that was selected
+                // It has been replaced by a new item, select that new item so
+                // the user can see which item was changed
+                currentIndexPath    = [self indexPathForItem:
+                                       self.st_currentlyShowingItem];
+            }
+            else
+            {
+                // maybe the add cell was selected
+                // This is a new item that got added. Select the new item so
+                // the user can see which item is the one.
+                currentIndexPath    = [self indexPathForAddCell];
+            }
+            selectNewValue  = ([[self.menu.tableView indexPathForSelectedRow]
+                                compare:currentIndexPath]
+                               == NSOrderedSame);
+        }
+
         [self replaceItem:self.st_currentlyShowingItem withItem:value];
         self.st_currentlyShowingItem    = nil;
+        
+        if (selectNewValue)
+        {
+            // !!!: test
+            NSIndexPath     *newValueIndexPath  = [self indexPathForItem:value];
+            if (newValueIndexPath)
+            {
+                [self.menu.tableView
+                 selectRowAtIndexPath:newValueIndexPath
+                 animated:NO
+                 scrollPosition:UITableViewScrollPositionNone];
+            }
+        }
     }
 }
 
