@@ -175,6 +175,14 @@
               [NSIndexPath indexPathForRow:newItemIndex inSection:self.section]]
              withRowAnimation:UITableViewRowAnimationFade];
         }
+        else
+        {
+            // reset cell
+            [(STMenuTableViewCell *)
+             [self.menu.tableView cellForRowAtIndexPath:
+              [NSIndexPath indexPathForRow:itemIndex inSection:self.section]]
+             setValue:item];
+        }
         [self st_checkIfWeShouldShowAddCell:YES];
         [self.menu.tableView endUpdates];
     }
