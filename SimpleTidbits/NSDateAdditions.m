@@ -10,6 +10,7 @@
 
 static NSDateFormatter *shortDateFormatter = nil;
 static NSDateFormatter *longDateFormatter = nil;
+static NSDateFormatter *timeDateFormatter = nil;
 
 @implementation NSDate (SimpleTidbits)
 
@@ -33,6 +34,17 @@ static NSDateFormatter *longDateFormatter = nil;
 		[longDateFormatter setTimeStyle:NSDateFormatterNoStyle];
 	}
 	return [longDateFormatter stringFromDate:self];
+}
+
+- (NSString *)st_timeStringValue
+{
+    if (!timeDateFormatter)
+    {
+        timeDateFormatter   = [[NSDateFormatter alloc] init];
+        [timeDateFormatter setDateStyle:NSDateFormatterNoStyle];
+        [timeDateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    }
+    return [timeDateFormatter stringFromDate:self];
 }
 
 

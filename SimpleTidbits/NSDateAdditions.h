@@ -14,6 +14,7 @@
 // Uses NSDateFormattor with ShortStyle and LongStyle respectively (no time).
 - (NSString *)st_shortStringValue;
 - (NSString *)st_longStringValue;
+- (NSString *)st_timeStringValue;
 
 - (NSDate *)st_dateByRoundingToNearest:(NSUInteger)minutes;
 
