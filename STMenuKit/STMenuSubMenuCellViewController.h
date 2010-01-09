@@ -10,6 +10,8 @@
 #import "STMenuSubMenuTableViewController.h"
 #import "STMenuTextFieldTableViewCell.h"
 
+// TODO: add option for more than one cell
+
 /*
  
  The SubMenuCellViewController is a subMenu that displays one cell. It may be

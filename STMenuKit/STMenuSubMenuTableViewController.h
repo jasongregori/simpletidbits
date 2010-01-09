@@ -40,9 +40,12 @@
 
 // Save is called right before we dismiss the menu.
 // If NO is returned, the save is cancelled.
-// The default is to set self.value to self.subValue and return YES.
-// If you want, you may override and do some work to subValue. Or you can throw
-// up an alert and return NO.
+// If you want, you may override and do some work to subValue before setting
+// self.value to it. Or you can throw up an alert and return NO. Or you can
+// dismiss the subMenu and return to basically cancel instead of save.
+// The default is to check if [self.value isEqual:self.subValue], if YES,
+// dismiss the subMenu and return NO (effectively cancelling). If NO, set
+// self.value to self.subValue and return YES.
 - (BOOL)save;
 
 @end

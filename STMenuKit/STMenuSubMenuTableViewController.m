@@ -61,8 +61,14 @@
 
 - (BOOL)save
 {
-    self.value      = self.subValue;
-    return YES;
+    if (![self.value isEqual:self.subValue])
+    {
+        // only save if the values are not equal
+        self.value      = self.subValue;
+        return YES;
+    }
+    [self dismiss];
+    return NO;
 }
 
 #pragma mark STMenuProtocol
