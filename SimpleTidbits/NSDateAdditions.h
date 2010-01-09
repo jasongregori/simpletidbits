@@ -11,9 +11,14 @@
 
 @interface NSDate (SimpleTidbits)
 
-// Uses NSDateFormattor with ShortStyle and LongStyle respectively (no time).
-- (NSString *)st_shortStringValue;
-- (NSString *)st_longStringValue;
+// Uses NSDateFormattor
+// Example: "November 23, 1937 3:30pm"
+- (NSString *)st_stringValue;
+// Example: “11/23/37”
+- (NSString *)st_shortDateStringValue;
+// Example: “November 23, 1937”
+- (NSString *)st_longDateStringValue;
+// Example: “3:30pm”
 - (NSString *)st_timeStringValue;
 
 - (NSDate *)st_dateByRoundingToNearest:(NSUInteger)minutes;

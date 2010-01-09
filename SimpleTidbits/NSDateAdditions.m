@@ -8,13 +8,25 @@
 
 #import "NSDateAdditions.h"
 
+static NSDateFormatter *stringDateFormatter = nil;
 static NSDateFormatter *shortDateFormatter = nil;
 static NSDateFormatter *longDateFormatter = nil;
 static NSDateFormatter *timeDateFormatter = nil;
 
 @implementation NSDate (SimpleTidbits)
 
-- (NSString *)st_shortStringValue
+- (NSString *)st_stringValue
+{
+    if (!stringDateFormatter)
+    {
+        stringDateFormatter = [[NSDateFormatter alloc] init];
+        [stringDateFormatter setDateStyle:NSDateFormatterLongStyle];
+        [stringDateFormatter setTimeStyle:NSDateFormatterShortStyle];
+    }
+    return [stringDateFormatter stringFromDate:self];
+}
+
+- (NSString *)st_shortDateStringValue
 {
 	if (!shortDateFormatter)
 	{
@@ -25,7 +37,7 @@ static NSDateFormatter *timeDateFormatter = nil;
 	return [shortDateFormatter stringFromDate:self];
 }
 
-- (NSString *)st_longStringValue
+- (NSString *)st_longDateStringValue
 {
 	if (!longDateFormatter)
 	{
