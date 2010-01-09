@@ -10,6 +10,13 @@
 #import "STMenuSubMenuTableViewController.h"
 #import "STMenuTextFieldTableViewCell.h"
 
+/*
+ 
+ The SubMenuCellViewController is a subMenu that displays one cell. It may be
+ subClassed to add more controls to it.
+ 
+ */
+
 @interface STMenuSubMenuCellViewController : STMenuSubMenuTableViewController
 <STMenuTableViewCellDelegate>
 {

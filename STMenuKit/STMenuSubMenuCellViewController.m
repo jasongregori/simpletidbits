@@ -37,7 +37,7 @@
         STMenuTableViewCell *cell
           = (id)[self.tableView cellForRowAtIndexPath:
                  [NSIndexPath indexPathForRow:0 inSection:0]];
-        [cell setValue:self.value];
+        [cell setValue:self.subValue];
     }
 }
 
@@ -54,13 +54,15 @@
     }
 }
 
-#pragma mark STMenuProtocol
+#pragma mark STMenuSubMenuTableViewController
 
-- (void)setValue:(id)value
+- (void)setSubValue:(id)value
 {
-    [super setValue:value];
+    [super setSubValue:value];
     [self reloadCell];
 }
+
+#pragma mark STMenuProtocol
 
 - (void)viewWillAppear:(BOOL)animated
 {
@@ -100,7 +102,7 @@
     STMenuTableViewCell *cell   = [self st_cellWithCellData:self.cell
                                                         key:self.key];
     cell.delegate   = self;
-    [cell setValue:self.value];
+    [cell setValue:self.subValue];
 	
     return cell;
 }
@@ -112,7 +114,7 @@
            didChangeValue:(id)newValue
 {
     // change our value to new value
-    [super setValue:newValue];
+    self.subValue   = newValue;
 }
 
 @end

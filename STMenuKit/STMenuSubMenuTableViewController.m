@@ -8,8 +8,15 @@
 
 #import "STMenuSubMenuTableViewController.h"
 
+@interface STMenuSubMenuTableViewController ()
+
+- (void)st_save;
+
+@end
+
 
 @implementation STMenuSubMenuTableViewController
+@synthesize subValue = _subValue;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -25,16 +32,45 @@
           = [[[UIBarButtonItem alloc]
               initWithBarButtonSystemItem:UIBarButtonSystemItemSave
               target:self
-              action:@selector(save)]
+              action:@selector(st_save)]
              autorelease];
     }
     return self;
 }
 
-- (void)save
+- (void)dealloc
 {
-    self.parentMenuShouldSave   = YES;
-    [self dismiss];
+    [_subValue release];
+    
+    [super dealloc];
+}
+
+- (void)st_save
+{
+    if ([self save])
+    {
+        self.parentMenuShouldSave   = YES;
+        [self dismiss];
+    }
+}
+
+- (void)valueDidChange
+{
+    self.subValue   = self.value;
+}
+
+- (BOOL)save
+{
+    self.value      = self.subValue;
+    return YES;
+}
+
+#pragma mark STMenuProtocol
+
+- (void)setValue:(id)value
+{
+    [super setValue:value];
+    [self valueDidChange];
 }
 
 @end
