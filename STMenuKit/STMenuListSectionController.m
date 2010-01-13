@@ -515,7 +515,7 @@
             return self.addCell;
         }
         // Default add cell
-        return nil;
+        return @"AddItem";
     }
     return nil;
 }

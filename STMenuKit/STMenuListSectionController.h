@@ -51,7 +51,7 @@
 @property (nonatomic, retain)   id          cell;
 // Text to show on add Cell
 @property (nonatomic, copy)     NSString    *addTitle;
-// A custom add cell
+// A custom add cell, defaults to AddItem cell
 @property (nonatomic, retain)   id          addCell;
 // A blank item. When the user adds an item, this is used.
 // When we need to use this value we try to make a mutable copy first, if we

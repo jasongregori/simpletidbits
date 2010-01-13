@@ -28,6 +28,8 @@
 		79856D8510E9A08C001EB83A /* STMenuListSectionController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79856D8310E9A08C001EB83A /* STMenuListSectionController.m */; };
 		799F707D10C8C5150055C744 /* STMenuFormViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 799F707B10C8C5150055C744 /* STMenuFormViewController.h */; };
 		799F707E10C8C5150055C744 /* STMenuFormViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 799F707C10C8C5150055C744 /* STMenuFormViewController.m */; };
+		79A7F5BE10FD892E001835A9 /* STMenuAddItemTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79A7F5BC10FD892E001835A9 /* STMenuAddItemTableViewCell.h */; };
+		79A7F5BF10FD892E001835A9 /* STMenuAddItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79A7F5BD10FD892E001835A9 /* STMenuAddItemTableViewCell.m */; };
 		79B0AB8610DCA08200482185 /* STMenuIntercomController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B0AB8410DCA08200482185 /* STMenuIntercomController.h */; };
 		79B0AB8710DCA08200482185 /* STMenuIntercomController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0AB8510DCA08200482185 /* STMenuIntercomController.m */; };
 		79B0ACF810DD3F9F00482185 /* STMenuSubMenuTableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B0ACF610DD3F9F00482185 /* STMenuSubMenuTableViewController.h */; };
@@ -97,6 +99,8 @@
 		79856D8310E9A08C001EB83A /* STMenuListSectionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuListSectionController.m; sourceTree = "<group>"; };
 		799F707B10C8C5150055C744 /* STMenuFormViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuFormViewController.h; sourceTree = "<group>"; };
 		799F707C10C8C5150055C744 /* STMenuFormViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuFormViewController.m; sourceTree = "<group>"; };
+		79A7F5BC10FD892E001835A9 /* STMenuAddItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuAddItemTableViewCell.h; sourceTree = "<group>"; };
+		79A7F5BD10FD892E001835A9 /* STMenuAddItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuAddItemTableViewCell.m; sourceTree = "<group>"; };
 		79B0AB8410DCA08200482185 /* STMenuIntercomController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuIntercomController.h; sourceTree = "<group>"; };
 		79B0AB8510DCA08200482185 /* STMenuIntercomController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuIntercomController.m; sourceTree = "<group>"; };
 		79B0ACF610DD3F9F00482185 /* STMenuSubMenuTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuSubMenuTableViewController.h; sourceTree = "<group>"; };
@@ -214,6 +218,8 @@
 				7975382610F94FB500E3A188 /* STMenuDateTableViewCell.m */,
 				794E02E410DA1492000C1852 /* STMenuNoItemsTableViewCell.h */,
 				794E02E510DA1492000C1852 /* STMenuNoItemsTableViewCell.m */,
+				79A7F5BC10FD892E001835A9 /* STMenuAddItemTableViewCell.h */,
+				79A7F5BD10FD892E001835A9 /* STMenuAddItemTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -327,6 +333,7 @@
 				79856D8410E9A08C001EB83A /* STMenuListSectionController.h in Headers */,
 				797537DC10F93C5400E3A188 /* STMenuDateViewController.h in Headers */,
 				7975382710F94FB500E3A188 /* STMenuDateTableViewCell.h in Headers */,
+				79A7F5BE10FD892E001835A9 /* STMenuAddItemTableViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +418,7 @@
 				79856D8510E9A08C001EB83A /* STMenuListSectionController.m in Sources */,
 				797537DD10F93C5400E3A188 /* STMenuDateViewController.m in Sources */,
 				7975382810F94FB500E3A188 /* STMenuDateTableViewCell.m in Sources */,
+				79A7F5BF10FD892E001835A9 /* STMenuAddItemTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

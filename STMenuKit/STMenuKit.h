@@ -9,6 +9,8 @@
 #import "STMenuTableViewCell.h"
 #import "STMenuTextFieldTableViewCell.h"
 #import "STMenuDateTableViewCell.h"
+#import "STMenuNoItemsTableViewCell.h"
+#import "STMenuAddItemTableViewCell.h"
 
 // Section Controllers
 #import "STMenuFormattedSectionController.h"
