@@ -74,6 +74,8 @@
 // reuse id is className.
 - (STMenuTableViewCell *)st_cellWithCellData:(id)data
                                          key:(NSString *)key;
+// Default style to use with cells, cells may override this of course.
+- (UITableViewCellStyle)st_defaultCellStyle;
 // This is called whenever a cell is created. Default does nothing.
 - (void)st_initializeCell:(STMenuTableViewCell *)cell;
 

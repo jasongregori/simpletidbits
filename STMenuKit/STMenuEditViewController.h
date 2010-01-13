@@ -14,6 +14,9 @@
  ========================
 
  An edit table view. Cells are not selectable unless table is in edit mode.
+ Cell's styles are set to UITableViewCellStyleValue2 (contacts style).
+ Cell's editingAccessoryType is set to
+     UITableViewCellAccessoryDisclosureIndicator.
  Cells should load a subMenu to edit the item.
  Right bar button item is edit button.
  These are designed to be like the phone/contacts app.

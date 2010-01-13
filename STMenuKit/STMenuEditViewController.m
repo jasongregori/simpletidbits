@@ -7,7 +7,6 @@
 //
 
 #import "STMenuEditViewController.h"
-#import "STMenuEditTableViewCell.h"
 #import "STMenuBasicSectionController.h"
 
 @interface STMenuEditViewController ()
@@ -125,14 +124,19 @@
 
 #pragma mark STMenuBaseTableViewController
 
-- (Class)st_defaultCellClass
-{
-    return [STMenuEditTableViewCell class];
-}
-
 - (NSString *)st_customCellPrefix
 {
     return @"STMenuEdit";
+}
+
+- (UITableViewCellStyle)st_defaultCellStyle
+{
+    return UITableViewCellStyleValue2;
+}
+
+- (void)st_initializeCell:(STMenuTableViewCell *)cell
+{
+    cell.editingAccessoryType   = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 #pragma mark STMenuProtocol

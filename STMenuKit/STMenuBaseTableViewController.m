@@ -141,7 +141,7 @@
     {
         // create a cell
         cell    = [[[cellClass alloc]
-                    initWithStyle:UITableViewCellStyleDefault
+                    initWithStyle:[self st_defaultCellStyle]
                     reuseIdentifier:cellIdentifier]
                    autorelease];
         cell.menu   = self;
@@ -158,6 +158,11 @@
     }
 	
     return cell;
+}
+
+- (UITableViewCellStyle)st_defaultCellStyle
+{
+    return UITableViewCellStyleDefault;
 }
 
 // This is called whenever a cell is created. Default does nothing.

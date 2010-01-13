@@ -7,7 +7,6 @@
 //
 
 #import "STMenuFormViewController.h"
-#import "STMenuFormTableViewCell.h"
 #import "STMenuBasicSectionController.h"
 
 
@@ -31,14 +30,19 @@
 
 #pragma mark STMenuBaseTableViewController
 
-- (Class)st_defaultCellClass
-{
-    return [STMenuFormTableViewCell class];
-}
-
 - (NSString *)st_customCellPrefix
 {
     return @"STMenuForm";
+}
+
+- (UITableViewCellStyle)st_defaultCellStyle
+{
+    return UITableViewCellStyleValue1;
+}
+
+- (void)st_initializeCell:(STMenuTableViewCell *)cell
+{
+    cell.editingAccessoryType   = UITableViewCellAccessoryDisclosureIndicator;
 }
 
 #pragma mark UIViewController

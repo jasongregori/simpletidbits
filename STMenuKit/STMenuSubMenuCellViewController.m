@@ -107,6 +107,13 @@
     return cell;
 }
 
+#pragma mark STMenuBaseTableViewController
+
+- (void)st_initializeCell:(STMenuTableViewCell *)cell
+{
+    cell.selectionStyle         = UITableViewCellSelectionStyleNone;
+}
+
 #pragma mark Delegate Methods
 #pragma mark STMenuTableViewCellDelegate
 
