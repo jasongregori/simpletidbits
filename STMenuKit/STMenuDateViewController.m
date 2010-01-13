@@ -8,10 +8,16 @@
 
 #import "STMenuDateViewController.h"
 
+@interface STMenuDateViewController ()
+@property (nonatomic, retain)   UIDatePicker    *st_datePicker;
+@property (nonatomic, retain)   UITableView     *st_tableView;
+
+@end
 
 @implementation STMenuDateViewController
 @synthesize mode = _mode, maximumDate = _maximumDate,
-            minimumDate = _minimumDate, minuteInterval = _minuteInterval;
+            minimumDate = _minimumDate, minuteInterval = _minuteInterval,
+            st_datePicker = _datePicker, st_tableView = _tableView;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -22,7 +28,6 @@
     return self;
 }
 
-// TODO: on set mode change cell to same mode.
 // TODO: add date picker
 
 - (void)dealloc
@@ -31,6 +36,9 @@
     [_maximumDate release];
     [_minimumDate release];
     [_minuteInterval release];
+    
+    [_datePicker release];
+    [_tableView release];
     
     [super dealloc];
 }
@@ -62,16 +70,105 @@
     // dont let user override cell
 }
 
+#pragma mark STMenuSubMenuTableViewController
+
+- (void)setSubValue:(id)value
+{
+    [super setSubValue:value];
+    [self.st_datePicker setDate:value animated:NO];
+}
+
+#pragma mark UITableViewController
+
+- (UITableView *)tableView
+{
+    // make sure view is loaded
+    self.view;
+    return self.st_tableView;
+}
+
 #pragma mark UIViewController
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
-    // center the cell (height - keyboard - cell height)/2 - cell header margin
+    // make cell appear centered between top and date picker
+    // center the cell (height - cell height)/2 - cell header margin
     self.tableView.contentInset
-    = UIEdgeInsetsMake((self.tableView.frame.size.height - 216 - 44)/2.0 - 10,
+    = UIEdgeInsetsMake((self.tableView.frame.size.height - 44)/2.0 - 10,
                        0, 0, 0);
+}
+
+- (void)loadView
+{
+    UIView          *view       = [[UIView alloc]
+                                   initWithFrame:CGRectMake(0, 0, 320, 480)];
+    view.autoresizingMask       = (UIViewAutoresizingFlexibleHeight
+                                   | UIViewAutoresizingFlexibleWidth);
+    self.view   = view;
+    [view release];
+
+    UIDatePicker    *datePicker = [[UIDatePicker alloc]
+                                   init];
+    datePicker.autoresizingMask = (UIViewAutoresizingFlexibleWidth
+                                   | UIViewAutoresizingFlexibleTopMargin);
+    // set up date picker
+    datePicker.minimumDate      = self.minimumDate;
+    datePicker.maximumDate      = self.maximumDate;
+    if (self.minuteInterval)
+    {
+        datePicker.minuteInterval   = [self.minuteInterval integerValue];
+    }
+    // datepicker mode
+    NSString    *lowercaseMode  = [self.mode lowercaseString];
+    if ([lowercaseMode isEqualToString:@"time"])
+    {
+        datePicker.datePickerMode   = UIDatePickerModeTime;
+    }
+    else if ([lowercaseMode isEqualToString:@"date"])
+    {
+        datePicker.datePickerMode   = UIDatePickerModeDate;
+    }
+    else
+    {
+        datePicker.datePickerMode   = UIDatePickerModeDateAndTime;
+    }
+    // size
+    [datePicker sizeToFit];
+    CGRect          frame       = datePicker.frame;
+    frame.origin.y  = view.frame.size.height - frame.size.height;
+    frame.size.width            = view.frame.size.width;
+    datePicker.frame            = frame;
+    // value
+    datePicker.date = self.subValue;
+    
+    self.st_datePicker  = datePicker;
+    [datePicker release];
+    
+    // table view
+    UITableView     *tableView  = [[UITableView alloc]
+                                   initWithFrame:
+                                   CGRectMake(0, 0,
+                                              view.frame.size.width,
+                                              datePicker.frame.origin.y)
+                                   style:UITableViewStyleGrouped];
+    tableView.autoresizingMask  = (UIViewAutoresizingFlexibleWidth
+                                   | UIViewAutoresizingFlexibleHeight);
+    tableView.delegate          = self;
+    tableView.dataSource        = self;
+    self.st_tableView           = tableView;
+    [tableView release];
+    
+    [view addSubview:self.st_tableView];
+    [view addSubview:self.st_datePicker];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    self.st_datePicker  = nil;
+    self.st_tableView   = nil;
 }
 
 @end

@@ -23,6 +23,9 @@
     NSDate          *_maximumDate;
     NSDate          *_minimumDate;
     NSNumber        *_minuteInterval;
+    
+    UITableView     *_tableView;
+    UIDatePicker    *_datePicker;
 }
 // Possible values: time, date, dateAndTime
 @property (nonatomic, copy)     NSString    *mode;
