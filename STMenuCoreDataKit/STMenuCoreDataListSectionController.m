@@ -102,15 +102,24 @@
     // add item to the value
     NSMutableSet    *items      = [self.managedObject
                                    mutableSetValueForKeyPath:self.listKeyPath];
-    if (items && ![items containsObject:item])
+    if (items)
     {
-        // if the item is not already in moc, insert it into the managedObjects'
-        if (![item managedObjectContext])
+        if (![items containsObject:item])
         {
-            [[self.managedObject managedObjectContext] insertObject:item];
+            // if the item is not already in moc, insert it into the
+            // managedObjects'
+            if (![item managedObjectContext])
+            {
+                [[self.managedObject managedObjectContext] insertObject:item];
+            }
+            // add the item to the managedObject
+            [items addObject:item];
         }
-        // add the item to the managedObject
-        [items addObject:item];
+        else
+        {
+            // item is already a member, do super add to resort the list
+            [super addItem:item];
+        }
     }
 }
 

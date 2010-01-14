@@ -350,39 +350,20 @@
 {
     if ([key isEqualToString:self.key])
     {
-        BOOL    selectNewValue  = NO;
-        
         if ([self.menu isViewLoaded])
         {
-            // !!!: test
-            // see if we should select this new item
-            NSIndexPath     *currentIndexPath   = nil;
-            if (self.st_currentlyShowingItem)
-            {
-                // this was the item that was selected
-                // It has been replaced by a new item, select that new item so
-                // the user can see which item was changed
-                currentIndexPath    = [self indexPathForItem:
-                                       self.st_currentlyShowingItem];
-            }
-            else
-            {
-                // maybe the add cell was selected
-                // This is a new item that got added. Select the new item so
-                // the user can see which item is the one.
-                currentIndexPath    = [self indexPathForAddCell];
-            }
-            selectNewValue  = ([[self.menu.tableView indexPathForSelectedRow]
-                                compare:currentIndexPath]
-                               == NSOrderedSame);
+            // we do this because if cell animations happen sometimes, the
+            // selected cell gets "stuck" selected.
+            [self.menu.tableView
+             deselectRowAtIndexPath:
+             [self.menu.tableView indexPathForSelectedRow]
+             animated:NO];
         }
-
-        [self replaceItem:self.st_currentlyShowingItem withItem:value];
-        self.st_currentlyShowingItem    = nil;
         
-        if (selectNewValue)
+        [self replaceItem:self.st_currentlyShowingItem withItem:value];
+        
+        if (self.st_currentlyShowingItem && [self.menu isViewLoaded])
         {
-            // !!!: test
             NSIndexPath     *newValueIndexPath  = [self indexPathForItem:value];
             if (newValueIndexPath)
             {
@@ -392,6 +373,8 @@
                  scrollPosition:UITableViewScrollPositionNone];
             }
         }
+        
+        self.st_currentlyShowingItem    = nil;
     }
 }
 

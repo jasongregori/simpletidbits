@@ -7,10 +7,13 @@
 //
 
 #import "STMenuDateViewController.h"
+#import <SimpleTidbits/SimpleTidbits.h>
 
 @interface STMenuDateViewController ()
 @property (nonatomic, retain)   UIDatePicker    *st_datePicker;
 @property (nonatomic, retain)   UITableView     *st_tableView;
+
+- (void)st_datePickerValueChanged;
 
 @end
 
@@ -28,8 +31,6 @@
     return self;
 }
 
-// TODO: add date picker
-
 - (void)dealloc
 {
     [_mode release];
@@ -41,6 +42,11 @@
     [_tableView release];
     
     [super dealloc];
+}
+
+- (void)st_datePickerValueChanged
+{
+    self.subValue   = self.st_datePicker.date;
 }
 
 - (void)setMode:(NSString *)mode
@@ -74,8 +80,17 @@
 
 - (void)setSubValue:(id)value
 {
+    if (!value)
+    {
+        value   = [[NSDate date] st_dateByRoundingToNearest:
+                   [self.minuteInterval integerValue]];
+    }
+    
     [super setSubValue:value];
-    [self.st_datePicker setDate:value animated:NO];
+    if (![self.st_datePicker.date isEqualToDate:value])
+    {
+        [self.st_datePicker setDate:value animated:NO];
+    }
 }
 
 #pragma mark UITableViewController
@@ -96,8 +111,8 @@
     // make cell appear centered between top and date picker
     // center the cell (height - cell height)/2 - cell header margin
     self.tableView.contentInset
-    = UIEdgeInsetsMake((self.tableView.frame.size.height - 44)/2.0 - 10,
-                       0, 0, 0);
+      = UIEdgeInsetsMake((self.tableView.frame.size.height - 44)/2.0 - 10,
+                         0, 0, 0);
 }
 
 - (void)loadView
@@ -111,6 +126,9 @@
 
     UIDatePicker    *datePicker = [[UIDatePicker alloc]
                                    init];
+    [datePicker addTarget:self
+                   action:@selector(st_datePickerValueChanged)
+         forControlEvents:UIControlEventValueChanged];
     datePicker.autoresizingMask = (UIViewAutoresizingFlexibleWidth
                                    | UIViewAutoresizingFlexibleTopMargin);
     // set up date picker

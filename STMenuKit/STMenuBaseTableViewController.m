@@ -404,8 +404,6 @@
 
 - (void)viewWillAppear:(BOOL)animated
 {
-    [super viewWillAppear:animated];
-        
     if (self.st_subMenu)
     {
         // If there is a submenu we must have just popped back from it
@@ -420,6 +418,9 @@
             [self st_cancelForSubMenuKey:self.st_subMenu.key];
         }
     }
+    
+    // do this after because saving might change cells
+    [super viewWillAppear:animated];
 }
 
 - (void)viewDidAppear:(BOOL)animated
