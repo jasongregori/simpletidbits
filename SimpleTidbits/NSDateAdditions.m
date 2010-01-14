@@ -62,6 +62,11 @@ static NSDateFormatter *timeDateFormatter = nil;
 
 - (NSDate *)st_dateByRoundingToNearest:(NSUInteger)minutes
 {
+    if (minutes == 0)
+    {
+        return self;
+    }
+    
     NSDateComponents	*dateComponents
       = [[NSCalendar currentCalendar] components:(NSYearCalendarUnit
                                                   | NSMonthCalendarUnit
