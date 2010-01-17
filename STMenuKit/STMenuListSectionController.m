@@ -156,7 +156,7 @@
         // animate the table
         NSUInteger  newItemIndex    = [self.st_list
                                        indexOfObjectIdenticalTo:item];
-        BOOL        animated        = YES;// !self.st_currentlyShowingItem;
+        BOOL        animated        = !self.st_currentlyShowingItem;
         // TODO: I need to reload the section instead of begin/end Updates
         // in order to not get ANY animation.
         if (animated)

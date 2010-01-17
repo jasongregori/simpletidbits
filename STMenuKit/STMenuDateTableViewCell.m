@@ -12,22 +12,10 @@
 @implementation STMenuDateTableViewCell
 @synthesize mode = _mode;
 
-//- (id)initWithStyle:(UITableViewCellStyle)style
-//    reuseIdentifier:(NSString *)reuseIdentifier
+//- (void)setTitle:(NSString *)title
 //{
-//    if (self = [super initWithStyle:style
-//                    reuseIdentifier:reuseIdentifier])
-//    {
-//        self.editingAccessoryType
-//        = UITableViewCellAccessoryDisclosureIndicator;
-//    }
-//    return self;
+//    
 //}
-
-- (void)setTitle:(NSString *)title
-{
-    
-}
 
 - (void)setValue:(id)value
 {
@@ -49,7 +37,15 @@
         text    = [value st_stringValue];
     }
 
-    self.textLabel.text = text;
+    if (self.detailTextLabel)
+    {
+        self.detailTextLabel.text   = text;
+    }
+    else
+    {
+        self.textLabel.text     = text;
+    }
+
 }
 
 @end

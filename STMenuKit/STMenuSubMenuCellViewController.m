@@ -11,6 +11,7 @@
 
 @implementation STMenuSubMenuCellViewController
 @synthesize cell = _cell;
+@synthesize dontStyleCell   = _dontStyleCell;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -26,6 +27,7 @@
 - (void)dealloc
 {
     [_cell release];
+    [_dontStyleCell release];
     
     [super dealloc];
 }
@@ -112,6 +114,15 @@
 - (void)st_initializeCell:(STMenuTableViewCell *)cell
 {
     cell.selectionStyle         = UITableViewCellSelectionStyleNone;
+    if (![self.dontStyleCell boolValue])
+    {
+        // make cell look like an editing cell
+        cell.textLabel.textColor    = [UIColor colorWithRed:0.22
+                                                      green:0.33
+                                                       blue:0.53
+                                                      alpha:1];
+        cell.textLabel.font         = [UIFont systemFontOfSize:17];
+    }
 }
 
 #pragma mark Delegate Methods
