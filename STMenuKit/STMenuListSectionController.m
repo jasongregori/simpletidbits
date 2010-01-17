@@ -62,10 +62,13 @@
         self.st_showingAddCell  = NO;
         if ([self.menu isViewLoaded])
         {
+            // use numberOfRowsInSection for row because we need to delete where
+            // the add cell WAS. And it might have moved if other add/deletes
+            // are happening (if this is in a begin/end updates)
             [self.menu.tableView
              deleteRowsAtIndexPaths:
              [NSArray arrayWithObject:
-              [NSIndexPath indexPathForRow:[self.st_list count]
+              [NSIndexPath indexPathForRow:[self.menu.tableView numberOfRowsInSection:self.section]-1 //[self.st_list count]
                                  inSection:self.section]]
              withRowAnimation:
              animated?UITableViewRowAnimationTop:UITableViewRowAnimationNone];
@@ -80,6 +83,8 @@
     {
         if ([self.menu isViewLoaded])
         {
+            // use list count for row because we need to insert where the add
+            // cell WILL be.
             self.st_showingAddCell  = YES;
             [self.menu.tableView
              insertRowsAtIndexPaths:
@@ -151,40 +156,53 @@
         // animate the table
         NSUInteger  newItemIndex    = [self.st_list
                                        indexOfObjectIdenticalTo:item];
-        [self.menu.tableView beginUpdates];
-        if (itemIndex == NSNotFound)
+        BOOL        animated        = YES;// !self.st_currentlyShowingItem;
+        // TODO: I need to reload the section instead of begin/end Updates
+        // in order to not get ANY animation.
+        if (animated)
         {
-            // this is an add
-            [self.menu.tableView
-             insertRowsAtIndexPaths:
-             [NSArray arrayWithObject:
-              [NSIndexPath indexPathForRow:newItemIndex inSection:self.section]]
-              withRowAnimation:UITableViewRowAnimationFade];
-        }
-        else if (itemIndex != newItemIndex)
-        {
-            // this was a move
-            [self.menu.tableView
-             deleteRowsAtIndexPaths:
-             [NSArray arrayWithObject:
-              [NSIndexPath indexPathForRow:itemIndex inSection:self.section]]
-             withRowAnimation:UITableViewRowAnimationFade];
-            [self.menu.tableView
-             insertRowsAtIndexPaths:
-             [NSArray arrayWithObject:
-              [NSIndexPath indexPathForRow:newItemIndex inSection:self.section]]
-             withRowAnimation:UITableViewRowAnimationFade];
+            [self.menu.tableView beginUpdates];
+            if (itemIndex == NSNotFound)
+            {
+                // this is an add
+                [self.menu.tableView
+                 insertRowsAtIndexPaths:
+                 [NSArray arrayWithObject:
+                  [NSIndexPath indexPathForRow:newItemIndex inSection:self.section]]
+                 withRowAnimation:(animated ? UITableViewRowAnimationFade
+                                   : UITableViewRowAnimationNone)];
+            }
+            else if (itemIndex != newItemIndex)
+            {
+                // this was a move
+                [self.menu.tableView
+                 deleteRowsAtIndexPaths:
+                 [NSArray arrayWithObject:
+                  [NSIndexPath indexPathForRow:itemIndex inSection:self.section]]
+                 withRowAnimation:(animated ? UITableViewRowAnimationFade
+                                   : UITableViewRowAnimationNone)];
+                [self.menu.tableView
+                 insertRowsAtIndexPaths:
+                 [NSArray arrayWithObject:
+                  [NSIndexPath indexPathForRow:newItemIndex inSection:self.section]]
+                 withRowAnimation:(animated ? UITableViewRowAnimationFade
+                                   : UITableViewRowAnimationNone)];
+            }
+            else
+            {
+                // reset cell
+                [(STMenuTableViewCell *)
+                 [self.menu.tableView cellForRowAtIndexPath:
+                  [NSIndexPath indexPathForRow:itemIndex inSection:self.section]]
+                 setValue:item];
+            }
+            [self st_checkIfWeShouldShowAddCell:animated];
+            [self.menu.tableView endUpdates];
         }
         else
         {
-            // reset cell
-            [(STMenuTableViewCell *)
-             [self.menu.tableView cellForRowAtIndexPath:
-              [NSIndexPath indexPathForRow:itemIndex inSection:self.section]]
-             setValue:item];
+            [self reloadSection:NO];
         }
-        [self st_checkIfWeShouldShowAddCell:YES];
-        [self.menu.tableView endUpdates];
     }
 }
 
@@ -211,14 +229,22 @@
         
         if ([self.menu isViewLoaded])
         {
-            [self.menu.tableView beginUpdates];
+            BOOL        animated        = !self.st_currentlyShowingItem;
+            if (animated)
+            {
+                [self.menu.tableView beginUpdates];
+            }
             [self.menu.tableView
              deleteRowsAtIndexPaths:
              [NSArray arrayWithObject:
               [NSIndexPath indexPathForRow:itemIndex inSection:self.section]]
-             withRowAnimation:UITableViewRowAnimationFade];
-            [self st_checkIfWeShouldShowAddCell:YES];
-            [self.menu.tableView endUpdates];
+             withRowAnimation:(animated ? UITableViewRowAnimationFade
+                               : UITableViewRowAnimationNone)];
+            [self st_checkIfWeShouldShowAddCell:animated];
+            if (animated)
+            {
+                [self.menu.tableView endUpdates];
+            }
         }
     }
 }
@@ -443,7 +469,7 @@
 
 - (BOOL)canEditRow:(NSUInteger)row
 {
-    return [self.editable boolValue];
+    return [self.editable boolValue] && self.menu.editing;
 }
 
 - (UITableViewCellEditingStyle)editingStyleForRow:(NSUInteger)row

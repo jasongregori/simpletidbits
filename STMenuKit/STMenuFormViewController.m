@@ -42,7 +42,7 @@
 
 - (void)st_initializeCell:(STMenuTableViewCell *)cell
 {
-    cell.editingAccessoryType   = UITableViewCellAccessoryDisclosureIndicator;
+    
 }
 
 #pragma mark UIViewController

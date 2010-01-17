@@ -58,7 +58,8 @@
     {
         [self.menu.tableView
          reloadSections:[NSIndexSet indexSetWithIndex:self.section]
-         withRowAnimation:UITableViewRowAnimationFade];
+         withRowAnimation:(animated ? UITableViewRowAnimationFade
+                           : UITableViewRowAnimationNone)];
     }
 }
 

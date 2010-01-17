@@ -175,7 +175,10 @@
             BOOL        viewLoaded  = [self.menu isViewLoaded];
             if (viewLoaded)
             {
-                [self.menu.tableView beginUpdates];
+                // We cant do this unless we get deleteItems/addItems because we
+                // go off the list index instead of the row and that is changing
+                // inside this group update
+                // TODO: [self.menu.tableView beginUpdates];
             }
             // remove old objects
             for (id object in [change valueForKey:NSKeyValueChangeOldKey])
@@ -189,7 +192,7 @@
             }
             if (viewLoaded)
             {
-                [self.menu.tableView endUpdates];
+                // [self.menu.tableView endUpdates];
             }
             break;
         }

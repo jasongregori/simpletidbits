@@ -95,6 +95,7 @@
 // spot. Otherwise, item is added into list, the list is sorted, and a new row
 // is added to the table for new index of the item.
 - (void)addItem:(id)item;
+// TODO: addItems
 
 // Responsible for replacing an item in the list and making any necessary
 // changes to the table. Called when a subMenu saves.
@@ -107,6 +108,7 @@
 // Default: Finds item in the list, if found, removes it and removes row from
 // table.
 - (void)deleteItem:(id)item;
+// TODO: deleteItems
 
 #pragma mark Private
 // Mutable version of the list, use this for everything

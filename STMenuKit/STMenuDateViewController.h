@@ -19,6 +19,7 @@
 
 @interface STMenuDateViewController : STMenuSubMenuCellViewController
 {
+  @protected
     NSString        *_mode;
     NSDate          *_maximumDate;
     NSDate          *_minimumDate;
