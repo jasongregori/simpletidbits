@@ -9,6 +9,8 @@
 #import "STMenuTableViewCell.h"
 #import "STMenuTextFieldTableViewCell.h"
 #import "STMenuDateTableViewCell.h"
+#import "STMenuValueToStringTableViewCell.h"
+#import "STMenuSwitchTableViewCell.h"
 #import "STMenuNoItemsTableViewCell.h"
 #import "STMenuAddItemTableViewCell.h"
 
@@ -36,3 +38,4 @@
 #import "STMenuSubMenuTableViewController.h"
 #import "STMenuTextFieldViewController.h"
 #import "STMenuDateViewController.h"
+#import "STMenuSelectViewController.h"
