@@ -113,16 +113,9 @@
 
 - (void)st_initializeCell:(STMenuTableViewCell *)cell
 {
+    [super st_initializeCell:cell];
+    
     cell.selectionStyle         = UITableViewCellSelectionStyleNone;
-    if (![self.dontStyleCell boolValue])
-    {
-        // make cell look like an editing cell
-        cell.textLabel.textColor    = [UIColor colorWithRed:0.22
-                                                      green:0.33
-                                                       blue:0.53
-                                                      alpha:1];
-        cell.textLabel.font         = [UIFont systemFontOfSize:17];
-    }
 }
 
 #pragma mark Delegate Methods

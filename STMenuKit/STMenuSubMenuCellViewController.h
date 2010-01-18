@@ -23,11 +23,8 @@
 <STMenuTableViewCellDelegate>
 {
     id          _cell;
-    NSNumber    *_dontStyleCell;
 }
 @property (nonatomic, retain)   id          cell;
-// BOOL, if YES, cell is not styled
-@property (nonatomic, retain)   NSNumber    *dontStyleCell;
 
 - (void)reloadCell;
 

@@ -42,6 +42,8 @@
 		79B0DA131103C80300F77242 /* STMenuValueToStringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0DA111103C80300F77242 /* STMenuValueToStringTableViewCell.m */; };
 		79B0DA221104002D00F77242 /* STMenuSwitchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B0DA201104002D00F77242 /* STMenuSwitchTableViewCell.h */; };
 		79B0DA231104002D00F77242 /* STMenuSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0DA211104002D00F77242 /* STMenuSwitchTableViewCell.m */; };
+		79B0DAE01104301D00F77242 /* STMenuSelectViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B0DADE1104301D00F77242 /* STMenuSelectViewController.h */; };
+		79B0DAE11104301D00F77242 /* STMenuSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0DADF1104301D00F77242 /* STMenuSelectViewController.m */; };
 		79B303EE10A7463C00CE423D /* STMenuProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B303EC10A7463C00CE423D /* STMenuProtocol.h */; };
 		79B304A810A7A6BB00CE423D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B304A710A7A6BB00CE423D /* UIKit.framework */; };
 		79B7389210D89A1F003F5027 /* STMenuFormLabelTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B7389010D89A1F003F5027 /* STMenuFormLabelTableViewCell.h */; };
@@ -117,6 +119,8 @@
 		79B0DA111103C80300F77242 /* STMenuValueToStringTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuValueToStringTableViewCell.m; sourceTree = "<group>"; };
 		79B0DA201104002D00F77242 /* STMenuSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuSwitchTableViewCell.h; sourceTree = "<group>"; };
 		79B0DA211104002D00F77242 /* STMenuSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuSwitchTableViewCell.m; sourceTree = "<group>"; };
+		79B0DADE1104301D00F77242 /* STMenuSelectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuSelectViewController.h; sourceTree = "<group>"; };
+		79B0DADF1104301D00F77242 /* STMenuSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuSelectViewController.m; sourceTree = "<group>"; };
 		79B303EC10A7463C00CE423D /* STMenuProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuProtocol.h; sourceTree = "<group>"; };
 		79B304A710A7A6BB00CE423D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79B7389010D89A1F003F5027 /* STMenuFormLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuFormLabelTableViewCell.h; sourceTree = "<group>"; };
@@ -302,6 +306,8 @@
 				79B0ACFB10DD434E00482185 /* STMenuTextFieldViewController.m */,
 				797537DA10F93C5400E3A188 /* STMenuDateViewController.h */,
 				797537DB10F93C5400E3A188 /* STMenuDateViewController.m */,
+				79B0DADE1104301D00F77242 /* STMenuSelectViewController.h */,
+				79B0DADF1104301D00F77242 /* STMenuSelectViewController.m */,
 			);
 			name = SubMenus;
 			sourceTree = "<group>";
@@ -348,6 +354,7 @@
 				79A7F5BE10FD892E001835A9 /* STMenuAddItemTableViewCell.h in Headers */,
 				79B0DA121103C80300F77242 /* STMenuValueToStringTableViewCell.h in Headers */,
 				79B0DA221104002D00F77242 /* STMenuSwitchTableViewCell.h in Headers */,
+				79B0DAE01104301D00F77242 /* STMenuSelectViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +442,7 @@
 				79A7F5BF10FD892E001835A9 /* STMenuAddItemTableViewCell.m in Sources */,
 				79B0DA131103C80300F77242 /* STMenuValueToStringTableViewCell.m in Sources */,
 				79B0DA231104002D00F77242 /* STMenuSwitchTableViewCell.m in Sources */,
+				79B0DAE11104301D00F77242 /* STMenuSelectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

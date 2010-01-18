@@ -17,6 +17,7 @@
 
 @implementation STMenuSubMenuTableViewController
 @synthesize subValue = _subValue;
+@synthesize dontStyleCell   = _dontStyleCell;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -41,6 +42,7 @@
 - (void)dealloc
 {
     [_subValue release];
+    [_dontStyleCell release];
     
     [super dealloc];
 }
@@ -69,6 +71,21 @@
     }
     [self dismiss];
     return NO;
+}
+
+#pragma mark STMenuBaseTableViewController
+
+- (void)st_initializeCell:(STMenuTableViewCell *)cell
+{
+    if (![self.dontStyleCell boolValue])
+    {
+        // make cell look like an editing cell
+        cell.textLabel.textColor    = [UIColor colorWithRed:0.22
+                                                      green:0.33
+                                                       blue:0.53
+                                                      alpha:1];
+        cell.textLabel.font         = [UIFont systemFontOfSize:17];
+    }
 }
 
 #pragma mark STMenuProtocol

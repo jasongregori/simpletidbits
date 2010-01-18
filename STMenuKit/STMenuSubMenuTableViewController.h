@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "STMenuBaseTableViewController.h"
+#import "STMenuTableViewCell.h"
 
 /*
  STMenuSubMenuTableViewController
@@ -31,8 +32,11 @@
 @interface STMenuSubMenuTableViewController : STMenuBaseTableViewController
 {
     id          _subValue;
+    NSNumber    *_dontStyleCell;
 }
 @property (nonatomic, retain)   id          subValue;
+// BOOL, if YES, cell is not styled
+@property (nonatomic, retain)   NSNumber    *dontStyleCell;
 
 // This is called when value changes. The default is to set subValue to value.
 // You may override it and set subValue to something else if you want.
