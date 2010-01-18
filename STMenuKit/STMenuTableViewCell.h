@@ -21,7 +21,6 @@
 @property (nonatomic, assign)   STMenuBaseTableViewController   *menu;
 @property (nonatomic, assign)   id <STMenuTableViewCellDelegate>    delegate;
 
-
 + (Class)classForCellData:(id)data
              customPrefix:(NSString *)prefix
              defaultClass:(Class)defaultClass;
@@ -44,8 +43,12 @@
 
 // title is copied, defaults to setting textLabel.text to title
 - (void)setTitle:(NSString *)title;
-// defaults to setting defaultTextLabel.text to [value description]
+// Uses valueStrings and nilString then defaults to setting valueString to
+// [value description]
 - (void)setValue:(id)value;
+// Use this to set the value string. It sets the detailTextLabel.text if it
+// exists, otherwise it sets the textLabel.text.
+- (void)setValueString:(NSString *)string;
 
 @end
 

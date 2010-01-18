@@ -12,11 +12,6 @@
 @implementation STMenuDateTableViewCell
 @synthesize mode = _mode;
 
-//- (void)setTitle:(NSString *)title
-//{
-//    
-//}
-
 - (void)setValue:(id)value
 {
     NSAssert(!value || [value isKindOfClass:[NSDate class]],
@@ -37,15 +32,7 @@
         text    = [value st_stringValue];
     }
 
-    if (self.detailTextLabel)
-    {
-        self.detailTextLabel.text   = text;
-    }
-    else
-    {
-        self.textLabel.text     = text;
-    }
-
+    [self setValueString:text];
 }
 
 @end

@@ -38,6 +38,10 @@
 		79B0ACFD10DD434E00482185 /* STMenuTextFieldViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0ACFB10DD434E00482185 /* STMenuTextFieldViewController.m */; };
 		79B0AE6810DE0EF300482185 /* STMenuSubMenuCellViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B0AE6610DE0EF300482185 /* STMenuSubMenuCellViewController.h */; };
 		79B0AE6910DE0EF300482185 /* STMenuSubMenuCellViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0AE6710DE0EF300482185 /* STMenuSubMenuCellViewController.m */; };
+		79B0DA121103C80300F77242 /* STMenuValueToStringTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B0DA101103C80300F77242 /* STMenuValueToStringTableViewCell.h */; };
+		79B0DA131103C80300F77242 /* STMenuValueToStringTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0DA111103C80300F77242 /* STMenuValueToStringTableViewCell.m */; };
+		79B0DA221104002D00F77242 /* STMenuSwitchTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B0DA201104002D00F77242 /* STMenuSwitchTableViewCell.h */; };
+		79B0DA231104002D00F77242 /* STMenuSwitchTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0DA211104002D00F77242 /* STMenuSwitchTableViewCell.m */; };
 		79B303EE10A7463C00CE423D /* STMenuProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B303EC10A7463C00CE423D /* STMenuProtocol.h */; };
 		79B304A810A7A6BB00CE423D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B304A710A7A6BB00CE423D /* UIKit.framework */; };
 		79B7389210D89A1F003F5027 /* STMenuFormLabelTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B7389010D89A1F003F5027 /* STMenuFormLabelTableViewCell.h */; };
@@ -109,6 +113,10 @@
 		79B0ACFB10DD434E00482185 /* STMenuTextFieldViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuTextFieldViewController.m; sourceTree = "<group>"; };
 		79B0AE6610DE0EF300482185 /* STMenuSubMenuCellViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuSubMenuCellViewController.h; sourceTree = "<group>"; };
 		79B0AE6710DE0EF300482185 /* STMenuSubMenuCellViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuSubMenuCellViewController.m; sourceTree = "<group>"; };
+		79B0DA101103C80300F77242 /* STMenuValueToStringTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuValueToStringTableViewCell.h; sourceTree = "<group>"; };
+		79B0DA111103C80300F77242 /* STMenuValueToStringTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuValueToStringTableViewCell.m; sourceTree = "<group>"; };
+		79B0DA201104002D00F77242 /* STMenuSwitchTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuSwitchTableViewCell.h; sourceTree = "<group>"; };
+		79B0DA211104002D00F77242 /* STMenuSwitchTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuSwitchTableViewCell.m; sourceTree = "<group>"; };
 		79B303EC10A7463C00CE423D /* STMenuProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuProtocol.h; sourceTree = "<group>"; };
 		79B304A710A7A6BB00CE423D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		79B7389010D89A1F003F5027 /* STMenuFormLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuFormLabelTableViewCell.h; sourceTree = "<group>"; };
@@ -212,10 +220,14 @@
 			children = (
 				79D1798810B8AD73008A5B54 /* STMenuTableViewCell.h */,
 				79D1798910B8AD73008A5B54 /* STMenuTableViewCell.m */,
+				79B0DA101103C80300F77242 /* STMenuValueToStringTableViewCell.h */,
+				79B0DA111103C80300F77242 /* STMenuValueToStringTableViewCell.m */,
 				794C780D10CA17AF00717975 /* STMenuTextFieldTableViewCell.h */,
 				794C780E10CA17AF00717975 /* STMenuTextFieldTableViewCell.m */,
 				7975382510F94FB500E3A188 /* STMenuDateTableViewCell.h */,
 				7975382610F94FB500E3A188 /* STMenuDateTableViewCell.m */,
+				79B0DA201104002D00F77242 /* STMenuSwitchTableViewCell.h */,
+				79B0DA211104002D00F77242 /* STMenuSwitchTableViewCell.m */,
 				794E02E410DA1492000C1852 /* STMenuNoItemsTableViewCell.h */,
 				794E02E510DA1492000C1852 /* STMenuNoItemsTableViewCell.m */,
 				79A7F5BC10FD892E001835A9 /* STMenuAddItemTableViewCell.h */,
@@ -334,6 +346,8 @@
 				797537DC10F93C5400E3A188 /* STMenuDateViewController.h in Headers */,
 				7975382710F94FB500E3A188 /* STMenuDateTableViewCell.h in Headers */,
 				79A7F5BE10FD892E001835A9 /* STMenuAddItemTableViewCell.h in Headers */,
+				79B0DA121103C80300F77242 /* STMenuValueToStringTableViewCell.h in Headers */,
+				79B0DA221104002D00F77242 /* STMenuSwitchTableViewCell.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +433,8 @@
 				797537DD10F93C5400E3A188 /* STMenuDateViewController.m in Sources */,
 				7975382810F94FB500E3A188 /* STMenuDateTableViewCell.m in Sources */,
 				79A7F5BF10FD892E001835A9 /* STMenuAddItemTableViewCell.m in Sources */,
+				79B0DA131103C80300F77242 /* STMenuValueToStringTableViewCell.m in Sources */,
+				79B0DA231104002D00F77242 /* STMenuSwitchTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

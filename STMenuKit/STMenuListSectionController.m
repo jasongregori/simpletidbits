@@ -92,7 +92,7 @@
               [NSIndexPath indexPathForRow:[self.st_list count]
                                  inSection:self.section]]
              withRowAnimation:
-             animated?UITableViewRowAnimationTop:UITableViewRowAnimationNone];
+             animated?UITableViewRowAnimationFade:UITableViewRowAnimationNone];
         }
     }
 }

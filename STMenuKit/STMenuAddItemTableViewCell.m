@@ -17,7 +17,6 @@
     if (self = [super initWithStyle:UITableViewCellStyleDefault
                     reuseIdentifier:reuseIdentifier])
     {
-        // Initialization code
         self.textLabel.font             = [UIFont boldSystemFontOfSize:12];
         self.textLabel.textColor        = [UIColor colorWithRed:0.32
                                                           green:0.4
@@ -25,6 +24,13 @@
                                                           alpha:1];
     }
     return self;
+}
+
+#pragma mark STMenuTableViewCell
+
+- (void)setValueString:(NSString *)string
+{
+    // so we don't accidentally override title   
 }
 
 @end

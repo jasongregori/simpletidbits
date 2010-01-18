@@ -56,7 +56,19 @@ static NSMutableDictionary *st_classForCellClassName = nil;
 // defaults to setting defaultTextLabel.text to [value description]
 - (void)setValue:(id)value
 {
-    self.detailTextLabel.text   = [value description];
+    [self setValueString:[value description]];
+}
+
+- (void)setValueString:(NSString *)string
+{
+    if (self.detailTextLabel)
+    {
+        self.detailTextLabel.text   = string;
+    }
+    else
+    {
+        self.textLabel.text         = string;
+    }
 }
 
 #pragma mark STATIC methods

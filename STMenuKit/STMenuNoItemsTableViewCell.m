@@ -26,5 +26,11 @@
     return self;
 }
 
+#pragma mark STMenuTableViewCell
+
+- (void)setValueString:(NSString *)string
+{
+    // so we don't accidentally override title
+}
 
 @end
