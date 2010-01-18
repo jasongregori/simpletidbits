@@ -10,7 +10,7 @@
 #import "STMenuBasicSectionController.h"
 
 @interface STMenuEditViewController ()
-@property (nonatomic, assign)   BOOL        inDeleteMode;
+@property (nonatomic, assign)   BOOL        purgeMode;
 - (void)st_deleteButtonTapped;
 
 @end
@@ -18,7 +18,7 @@
 
 @implementation STMenuEditViewController
 @synthesize showDeleteButton = _showDeleteButton,
-            deleteMessage = _deleteMessage, inDeleteMode = _inDeleteMode;
+            deleteMessage = _deleteMessage, purgeMode = _purgeMode;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -110,7 +110,14 @@
 
 - (void)deleteItem
 {
-    self.inDeleteMode   = YES;
+    self.purgeMode      = YES;
+    
+    [self dismiss];
+}
+
+- (void)st_cancel
+{
+    self.purgeMode      = YES;
     
     [self dismiss];
 }
@@ -162,10 +169,10 @@
         [self st_setEditing:NO animated:NO];
     }
     
-    if (self.inDeleteMode)
+    if (self.purgeMode)
     {
         self.value          = nil;
-        self.inDeleteMode   = NO;
+        self.purgeMode      = NO;
     }
 }
 
@@ -189,7 +196,7 @@
           = [[[UIBarButtonItem alloc]
               initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
               target:self
-              action:@selector(dismiss)]
+              action:@selector(st_cancel)]
              autorelease];
     }
     else

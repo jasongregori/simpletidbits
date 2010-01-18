@@ -53,7 +53,7 @@
 @interface STMenuEditViewController : STMenuFormattedTableViewController
 {
   @protected
-    BOOL            _inDeleteMode;
+    BOOL            _purgeMode;
     NSNumber        *_showDeleteButton;
     NSString        *_deleteMessage;
 }
