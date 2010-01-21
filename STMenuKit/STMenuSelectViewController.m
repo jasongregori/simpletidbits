@@ -215,4 +215,11 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     [self st_resetSubValue];
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.tableView.contentOffset    = CGPointMake(0,0);
+}
+
 @end
