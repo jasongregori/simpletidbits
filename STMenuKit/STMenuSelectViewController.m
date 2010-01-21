@@ -10,60 +10,64 @@
 
 @interface STMenuSelectViewController ()
 
-@property (nonatomic, assign)   NSUInteger  selectedRow;
+@property (nonatomic, retain)   NSIndexPath *st_selectedRow;
 
 - (void)st_resetSubValue;
 
 @end
 
 @implementation STMenuSelectViewController
-@synthesize defaultValue = _defaultValue, values = _values, strings = _strings,
-            selectedRow = _selectedRow;
+@synthesize defaultValue = _defaultValue, values = _values,
+            sections = _sections, st_selectedRow = _selectedRow, rows = _rows;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
-    if (self = [super initWithStyle:UITableViewStyleGrouped])
-    {
-        self.selectedRow    = NSNotFound;
-    }
-    return self;
+    return [super initWithStyle:UITableViewStyleGrouped];
 }
 
 - (void)dealloc
 {
     [_defaultValue release];
     [_values release];
-    [_strings release];
+    [_sections release];
+    [_rows release];
+    [_selectedRow release];
     
     [super dealloc];
 }
 
-- (void)setStrings:(NSArray *)strings
+- (void)setSections:(NSArray *)sections
 {
-    if (![_strings isEqual:strings])
+    if (![_sections isEqual:sections])
     {
-        [_strings release];
-        _strings    = [strings retain];
+        if (sections)
+        {
+            self.rows   = nil;
+        }
+        [_sections release];
+        _sections    = [sections retain];
         
         if ([self isViewLoaded])
         {
             [self.tableView reloadData];
-            [self st_resetSubValue];
         }
     }
 }
 
-- (void)setValues:(NSArray *)values
+- (void)setRows:(NSArray *)rows
 {
-    if (![_values isEqual:values])
+    if (![_rows isEqualToArray:rows])
     {
-        [_values release];
-        _values     = [values retain];
+        if (rows)
+        {
+            self.sections   = nil;
+        }
+        [_rows release];
+        _rows   = [rows retain];
         
         if ([self isViewLoaded])
         {
             [self.tableView reloadData];
-            [self st_resetSubValue];
         }
     }
 }
@@ -71,25 +75,47 @@
 - (void)st_resetSubValue
 {
     // take checkmark away from old guy
-    if (self.selectedRow != NSNotFound)
+    if (self.st_selectedRow)
     {
-        [[self.tableView cellForRowAtIndexPath:
-          [NSIndexPath indexPathForRow:self.selectedRow inSection:0]]
+        [[self.tableView cellForRowAtIndexPath:self.st_selectedRow]
          setAccessoryType:UITableViewCellAccessoryNone];
     }
     
-    self.selectedRow    = [self.values indexOfObject:self.subValue];
-    
-    if (self.selectedRow == NSNotFound)
+    if (self.rows)
     {
-        self.selectedRow    = [self.values indexOfObject:self.defaultValue];
+        NSUInteger  row     = [self.values indexOfObject:self.subValue];
+        if (row != NSNotFound)
+        {
+            self.st_selectedRow    = [NSIndexPath indexPathForRow:row
+                                                     inSection:0];
+        }
+        else
+        {
+            self.st_selectedRow    = nil;
+        }
+    }
+    else
+    {
+        NSUInteger  row;
+        self.st_selectedRow        = nil;
+        NSUInteger i, count = [self.sections count];
+        for (i = 0; i < count; i++)
+        {
+            NSArray     *rows   = [self.values objectAtIndex:i];
+            row         = [rows indexOfObject:self.subValue];
+            if (row != NSNotFound)
+            {
+                self.st_selectedRow    = [NSIndexPath indexPathForRow:row
+                                                         inSection:i];
+                break;
+            }
+        }
     }
     
-    if (self.selectedRow != NSNotFound)
+    if (self.st_selectedRow)
     {
         // set checkmark for new cell
-        [[self.tableView cellForRowAtIndexPath:
-          [NSIndexPath indexPathForRow:self.selectedRow inSection:0]]
+        [[self.tableView cellForRowAtIndexPath:self.st_selectedRow]
          setAccessoryType:UITableViewCellAccessoryCheckmark];
     }
 }
@@ -98,7 +124,11 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    return 1;
+    if (self.rows)
+    {
+        return 1;
+    }
+    return [self.sections count];
 }
 
 
@@ -106,7 +136,11 @@
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section
 {
-    return [self.strings count];
+    if (self.rows)
+    {
+        return [self.rows count];
+    }
+    return [[self.sections objectAtIndex:section] count];
 }
 
 
@@ -116,10 +150,21 @@
 {    
     STMenuTableViewCell *cell   = [self st_cellWithCellData:nil
                                                         key:self.key];
-    [cell setTitle:[self.strings objectAtIndex:indexPath.row]];
+    id      title       = nil;
+    if (self.rows)
+    {
+        title   = [self.rows objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        title   = [[self.sections objectAtIndex:indexPath.section]
+                   objectAtIndex:indexPath.row];
+    }
+
+    [cell setTitle:[title description]];
 	
     // checkmark
-    if (self.selectedRow == indexPath.row)
+    if ([self.st_selectedRow isEqual:indexPath])
     {
         cell.accessoryType  = UITableViewCellAccessoryCheckmark;
     }
@@ -135,7 +180,15 @@
 didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // set sub value (setting it will also checkmark the cell)
-    self.subValue       = [self.values objectAtIndex:indexPath.row];
+    if (self.rows)
+    {
+        self.subValue   = [self.values objectAtIndex:indexPath.row];
+    }
+    else
+    {
+        self.subValue   = [[self.values objectAtIndex:indexPath.section]
+                           objectAtIndex:indexPath.row];
+    }
     
     // deselect row
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
