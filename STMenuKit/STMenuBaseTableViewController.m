@@ -186,6 +186,7 @@
             STTableViewTextView *textView   = [[STTableViewTextView alloc]
                                                init];
             textView.text       = headerMessage;
+            textView.margins    = UIEdgeInsetsMake(10, 10, 0, 10);
             self.tableView.tableHeaderView  = textView;
             [textView release];
         }
