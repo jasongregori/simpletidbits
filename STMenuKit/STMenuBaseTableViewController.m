@@ -246,20 +246,6 @@
     }
 }
 
-- (void)setValue:(id)value
-{
-    if (![_value isEqual:value])
-    {
-        [_value release];
-        _value  = [value retain];
-        
-        if ([self isViewLoaded])
-        {
-            [self.tableView setContentOffset:CGPointMake(0, 0)];
-        }
-    }
-}
-
 - (void)setLoading:(BOOL)loading
 {
     [self setLoading:loading animated:NO];

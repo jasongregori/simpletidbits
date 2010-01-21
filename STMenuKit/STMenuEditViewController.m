@@ -160,6 +160,20 @@
     }
 }
 
+- (void)setValue:(id)value
+{
+    if (![self.value isEqual:value])
+    {
+        [super setValue:value];
+
+        if ([self isViewLoaded])
+        {
+            // scroll to top if value changes
+            [self.tableView setContentOffset:CGPointMake(0, 0)];
+        }
+    }
+}
+
 - (void)menuDidDismiss
 {
     [super menuDidDismiss];
