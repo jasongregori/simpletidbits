@@ -19,6 +19,8 @@
 		79037C6010D20A2A00C28604 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79037C5F10D20A2A00C28604 /* QuartzCore.framework */; };
 		79037C9610D20A7A00C28604 /* libSTMenuKit.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79037C5B10D20A1000C28604 /* libSTMenuKit.a */; settings = {ATTRIBUTES = (Weak, ); }; };
 		79037C9710D20A7D00C28604 /* libSimpleTidbits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 79037C5E10D20A1000C28604 /* libSimpleTidbits.a */; settings = {ATTRIBUTES = (Weak, ); }; };
+		79AB778411081AB200B814EB /* STRemoteSignUpViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79AB778211081AB200B814EB /* STRemoteSignUpViewController.h */; };
+		79AB778511081AB200B814EB /* STRemoteSignUpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79AB778311081AB200B814EB /* STRemoteSignUpViewController.m */; };
 		AA747D9F0F9514B9006C5449 /* STRemoteKit_Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = AA747D9E0F9514B9006C5449 /* STRemoteKit_Prefix.pch */; };
 		AACBBE4A0F95108600F1A2B1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AACBBE490F95108600F1A2B1 /* Foundation.framework */; };
 /* End PBXBuildFile section */
@@ -68,6 +70,8 @@
 		79037C5310D20A1000C28604 /* STMenuKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = STMenuKit.xcodeproj; path = ../STMenuKit/STMenuKit.xcodeproj; sourceTree = SOURCE_ROOT; };
 		79037C5610D20A1000C28604 /* SimpleTidbits.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = SimpleTidbits.xcodeproj; path = ../SimpleTidbits/SimpleTidbits.xcodeproj; sourceTree = SOURCE_ROOT; };
 		79037C5F10D20A2A00C28604 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = /System/Library/Frameworks/QuartzCore.framework; sourceTree = "<absolute>"; };
+		79AB778211081AB200B814EB /* STRemoteSignUpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRemoteSignUpViewController.h; sourceTree = "<group>"; };
+		79AB778311081AB200B814EB /* STRemoteSignUpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STRemoteSignUpViewController.m; sourceTree = "<group>"; };
 		AA747D9E0F9514B9006C5449 /* STRemoteKit_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STRemoteKit_Prefix.pch; sourceTree = SOURCE_ROOT; };
 		AACBBE490F95108600F1A2B1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D2AAC07E0554694100DB518D /* libSTRemoteKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libSTRemoteKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +135,8 @@
 				79037C4110D209EE00C28604 /* STRemoteSignUpControllerProtocol.h */,
 				79037C4210D209EE00C28604 /* STRemoteLoginViewController.h */,
 				79037C4310D209EE00C28604 /* STRemoteLoginViewController.m */,
+				79AB778211081AB200B814EB /* STRemoteSignUpViewController.h */,
+				79AB778311081AB200B814EB /* STRemoteSignUpViewController.m */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -173,6 +179,7 @@
 				79037C4910D209EE00C28604 /* STRemoteSignUpControllerProtocol.h in Headers */,
 				79037C4A10D209EE00C28604 /* STRemoteLoginViewController.h in Headers */,
 				79037C5010D209FA00C28604 /* STRemoteKit.h in Headers */,
+				79AB778411081AB200B814EB /* STRemoteSignUpViewController.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -251,6 +258,7 @@
 				79037C4510D209EE00C28604 /* STRemoteData.m in Sources */,
 				79037C4710D209EE00C28604 /* STRemoteUser.m in Sources */,
 				79037C4B10D209EE00C28604 /* STRemoteLoginViewController.m in Sources */,
+				79AB778511081AB200B814EB /* STRemoteSignUpViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

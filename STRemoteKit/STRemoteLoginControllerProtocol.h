@@ -40,7 +40,7 @@
 @property (nonatomic, assign)   id <STRemoteLoginControllerDelegate> delegate;
 
 // message to show user in login screen
-@property (nonatomic, copy)     NSString        *message;
+@property (nonatomic, copy)     NSString        *headerMessage;
 // When loading == YES, your login view should become unusable but stay on
 // screen. You should show some indicator that loading is happening (e.g.: a
 // spinner).

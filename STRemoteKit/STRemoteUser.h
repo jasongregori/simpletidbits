@@ -113,7 +113,7 @@ STRemoteDataDelegate>
  
  N.B. You do not *have* to override these methods, instead you can do your own
  thing and just override loginWithMessage:, set the st_authInfo and/or
- st_userInfo, and call st_setUserAsLoggedIn. Or a variation of that
+ st_userInfo, and call st_setUserAsLoggedIn. Or a variation of that.
  
  */
 

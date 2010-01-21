@@ -156,7 +156,7 @@ static STRemoteUser *sharedInstance = nil;
     
     self.st_loginController             = [self st_setUpLoginController];
     self.st_loginController.delegate    = self;
-    self.st_loginController.message     = message;
+    self.st_loginController.headerMessage     = message;
     
     if (!self.st_loginController)
     {
@@ -398,7 +398,7 @@ static STRemoteUser *sharedInstance = nil;
     else
     {
         // we are in the login screen
-        self.st_loginController.message    = errorMessage;
+        self.st_loginController.headerMessage    = errorMessage;
         // let the user try and log in again
         self.st_loginController.loading    = NO;
     }

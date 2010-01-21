@@ -13,8 +13,6 @@
 @property (nonatomic, retain)   STBorderView    *st_loginButton;
 @property (nonatomic, retain)   UIBarButtonItem *st_signUpButton;
 
-@property (nonatomic, retain)   STTableViewTextView *st_messageView;
-
 @end
 
 
@@ -22,7 +20,7 @@
 @synthesize delegate = _delegate, cancelButtonHidden = _cancelButtonHidden,
             signUpButtonHidden = _signUpButtonHidden,
             st_cancelButton = _cancelButton, st_loginButton = _loginButton,
-            st_signUpButton = _signUpButton, st_messageView = _messageView;
+            st_signUpButton = _signUpButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -54,7 +52,6 @@
 
 - (void)dealloc
 {
-    [_messageView release];
     [_cancelButton release];
     [_signUpButton release];
     [_loginButton release];
@@ -144,45 +141,19 @@
 
 #pragma mark STRemoteLoginControllerProtocol
 
-- (NSString *)message
+- (void)setHeaderMessage:(NSString *)headerMessage
 {
-    return self.st_messageView.text;
+    [super setHeaderMessage:headerMessage];
 }
 
-- (void)setMessage:(NSString *)message
+- (NSString *)headerMessage
 {
-    if (message && !self.st_messageView)
-    {
-        STTableViewTextView *textView   = [[STTableViewTextView alloc]
-                                           init];
-        textView.margins    = UIEdgeInsetsMake(10, 10, 0, 10);
-        self.st_messageView    = textView;
-        [textView release];
-    }
-    else if (!message && self.st_messageView)
-    {
-        self.st_messageView    = nil;
-    }
-    
-    // set message text
-    self.st_messageView.text   = message;
-    if ([self isViewLoaded])
-    {
-        // show/hide message view
-        self.tableView.tableHeaderView  = self.st_messageView;
-    }
+    return [super headerMessage];
 }
 
 - (void)dismiss
 {
     [self.parentViewController dismissModalViewControllerAnimated:YES];
-}
-
-#pragma mark STMenuProtocol
-
-- (void)done
-{
-    [self login];
 }
 
 - (void)setLoading:(BOOL)loading
@@ -195,13 +166,19 @@
     return [super loading];
 }
 
+#pragma mark STMenuProtocol
+
+- (void)done
+{
+    [self login];
+}
+
 #pragma mark UIViewController
 
 - (void)loadView
 {
     [super loadView];
     
-    self.tableView.tableHeaderView  = self.st_messageView;
     self.tableView.tableFooterView  = self.st_loginButton;
 }
 

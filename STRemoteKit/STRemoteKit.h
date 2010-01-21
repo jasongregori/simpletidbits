@@ -4,3 +4,4 @@
 #import "STRemoteLoginControllerProtocol.h"
 #import "STRemoteSignUpControllerProtocol.h"
 #import "STRemoteLoginViewController.h"
+#import "STRemoteSignUpViewController.h"

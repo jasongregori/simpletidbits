@@ -19,6 +19,10 @@
 
  It is a sample Login that you may use if you don't want to make one.
  
+ STRemoteLoginViewController is a modal controller so it must be modally shown
+ or its parent must be modally shown. (It uses self.parentViewController
+ dismissModalViewControllerAnimated: to dismiss itself).
+ 
  The default plist is in the bundle. Use it as a starting point or include
  the bundle in your project and set the plist to
  @"STRemoteKit.bundle/STRemoteLogin.plist".
@@ -36,8 +40,6 @@
     UIBarButtonItem *_cancelButton;
     STBorderView    *_loginButton;
     UIBarButtonItem *_signUpButton;
-    
-    STTableViewTextView *_messageView;
 }
 // default signup button hidden
 @property (nonatomic, assign)   BOOL    signUpButtonHidden;
