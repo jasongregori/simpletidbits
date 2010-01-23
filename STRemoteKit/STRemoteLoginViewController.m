@@ -7,6 +7,7 @@
 //
 
 #import "STRemoteLoginViewController.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface STRemoteLoginViewController ()
 @property (nonatomic, retain)   UIBarButtonItem *st_cancelButton;
@@ -179,7 +180,11 @@
 {
     [super loadView];
     
+    [CATransaction begin];
+    [CATransaction setValue:(id)kCFBooleanTrue
+                     forKey:kCATransactionDisableActions];
     self.tableView.tableFooterView  = self.st_loginButton;
+    [CATransaction commit];
 }
 
 @end

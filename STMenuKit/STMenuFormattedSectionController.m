@@ -83,6 +83,10 @@
                                    key:[self keyForRow:row]];
     [cell setTitle:[self titleForRow:row]];
     [cell setValue:[self valueForRow:row]];
+    if ([self menuDataForRow:row])
+    {
+        cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
+    }
     cell.delegate   = self;
     return cell;
 }
