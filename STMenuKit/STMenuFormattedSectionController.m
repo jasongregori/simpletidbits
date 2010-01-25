@@ -85,7 +85,8 @@
     [cell setValue:[self valueForRow:row]];
     if ([self menuDataForRow:row])
     {
-        cell.accessoryType  = UITableViewCellAccessoryDisclosureIndicator;
+        cell.editingAccessoryType
+          = UITableViewCellAccessoryDisclosureIndicator;
     }
     cell.delegate   = self;
     return cell;

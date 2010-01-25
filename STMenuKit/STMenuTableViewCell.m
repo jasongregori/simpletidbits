@@ -69,6 +69,7 @@ static NSMutableDictionary *st_classForCellClassName = nil;
     {
         self.textLabel.text         = string;
     }
+    [self setNeedsLayout];
 }
 
 #pragma mark STATIC methods
