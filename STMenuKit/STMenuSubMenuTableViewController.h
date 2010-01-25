@@ -42,6 +42,9 @@
 // You may override it and set subValue to something else if you want.
 - (void)valueDidChange;
 
+// Called when save button is tapped
+- (void)save;
+
 // Save is called right before we dismiss the menu.
 // If NO is returned, the save is cancelled.
 // If you want, you may override and do some work to subValue before setting
@@ -50,6 +53,6 @@
 // The default is to check if [self.value isEqual:self.subValue], if YES,
 // dismiss the subMenu and return NO (effectively cancelling). If NO, set
 // self.value to self.subValue and return YES.
-- (BOOL)save;
+- (BOOL)shouldSave;
 
 @end

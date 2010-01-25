@@ -10,8 +10,6 @@
 
 @interface STMenuSubMenuTableViewController ()
 
-- (void)st_save;
-
 @end
 
 
@@ -33,7 +31,7 @@
           = [[[UIBarButtonItem alloc]
               initWithBarButtonSystemItem:UIBarButtonSystemItemSave
               target:self
-              action:@selector(st_save)]
+              action:@selector(save)]
              autorelease];
     }
     return self;
@@ -47,9 +45,9 @@
     [super dealloc];
 }
 
-- (void)st_save
+- (void)save
 {
-    if ([self save])
+    if ([self shouldSave])
     {
         self.parentMenuShouldSave   = YES;
         [self dismiss];
@@ -61,7 +59,7 @@
     self.subValue   = self.value;
 }
 
-- (BOOL)save
+- (BOOL)shouldSave
 {
     if (![self.value isEqual:self.subValue])
     {

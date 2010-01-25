@@ -18,6 +18,9 @@
  
  TableView list of data.
  
+ Since List Menu has so many properties, the plist is used as a dictionary to
+ set properties instead of as a property in and of itself.
+ 
  * Selecting a row pushes itemMenu with that item.
  * If add button is tapped, nav modal is displayed with itemMenu in addMode
    with addTitle or addMenu is used if not nil.
