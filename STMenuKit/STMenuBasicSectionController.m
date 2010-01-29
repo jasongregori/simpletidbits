@@ -15,6 +15,8 @@
 @property (nonatomic, retain) id        values;
 @property (nonatomic, retain) NSArray   *keys;
 
+- (void)st_startObservingNewValue:(id)value;
+
 @end
 
 
@@ -24,7 +26,7 @@
 - (void)dealloc
 {
     // need to make sure we stop observing this stuff
-    [self menuValueDidChange:nil];
+    [self st_startObservingNewValue:nil];
     [_rows release];
     [_keys release];
     
@@ -53,6 +55,43 @@
          format:@"Rows may only be sent ONCE! (This is the second setting)"];
     }
 
+}
+
+- (void)st_startObservingNewValue:(id)newValue
+{
+    // KVO on values
+    NSMutableSet    *encounteredKeys    = [NSMutableSet set];
+    NSUInteger i, count = [self.rows count];
+    for (i = 0; i < count; i++)
+    {
+        NSString    *key    = [[self.rows objectAtIndex:i] valueForKey:@"key"];
+        // make sure we haven't already done this one
+        if (key && ![encounteredKeys containsObject:key])
+        {
+            // stop observing old value
+            [self.values removeObserver:self forKeyPath:key];
+            
+            // set default values
+            id      defaultValue    = [[self.rows objectAtIndex:i]
+                                       valueForKey:@"defaultValue"];
+            if (newValue && defaultValue && ![newValue valueForKeyPath:key])
+            {
+                [newValue setValue:defaultValue
+                        forKeyPath:key];
+            }
+            
+            // start observing new value
+            [newValue addObserver:self
+                       forKeyPath:key
+                          options:0
+                          context:NULL];
+            
+            [encounteredKeys addObject:key];
+        }
+    }
+    
+    // retain new value
+    self.values     = newValue;
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
@@ -104,39 +143,7 @@
         return;
     }
     
-    // KVO on values
-    NSMutableSet    *encounteredKeys    = [NSMutableSet set];
-    NSUInteger i, count = [self.rows count];
-    for (i = 0; i < count; i++)
-    {
-        NSString    *key    = [[self.rows objectAtIndex:i] valueForKey:@"key"];
-        // make sure we haven't already done this one
-        if (key && ![encounteredKeys containsObject:key])
-        {
-            // stop observing old value
-            [self.values removeObserver:self forKeyPath:key];
-            
-            // set default values
-            id      defaultValue    = [[self.rows objectAtIndex:i]
-                                       valueForKey:@"defaultValue"];
-            if (newValue && defaultValue && ![newValue valueForKeyPath:key])
-            {
-                [newValue setValue:defaultValue
-                        forKeyPath:key];
-            }
-            
-            // start observing new value
-            [newValue addObserver:self
-                       forKeyPath:key
-                          options:0
-                          context:NULL];
-            
-            [encounteredKeys addObject:key];
-        }
-    }
-    
-    // retain new value
-    self.values     = newValue;
+    [self st_startObservingNewValue:newValue];
     
     [self reloadSection:NO];
 }
