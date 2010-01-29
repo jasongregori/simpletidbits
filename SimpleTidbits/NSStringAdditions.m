@@ -23,6 +23,24 @@ static NSNumberFormatter *numberFormatter = nil;
             autorelease];
 }
 
+- (NSString *)st_stringByXMLEncoding
+{
+    NSMutableString     *string     = [NSMutableString stringWithString:self];
+    [string replaceOccurrencesOfString:@"&"
+                            withString:@"&amp;"
+                               options:0
+                                 range:NSMakeRange(0, [string length])];
+    [string replaceOccurrencesOfString:@"<"
+                            withString:@"&lt;"
+                               options:0
+                                 range:NSMakeRange(0, [string length])];
+    [string replaceOccurrencesOfString:@"\""
+                            withString:@"&quot;"
+                               options:0
+                                 range:NSMakeRange(0, [string length])];
+    return string;
+}
+
 - (NSNumber *)st_numberValue
 {
     if (!numberFormatter)

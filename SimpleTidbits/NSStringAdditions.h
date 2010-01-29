@@ -13,6 +13,8 @@
 
 - (NSString *)st_stringByURLEncoding;
 
+- (NSString *)st_stringByXMLEncoding;
+
 - (NSNumber *)st_numberValue;
 
 - (NSString *)st_stringByMD5Encrypting;
