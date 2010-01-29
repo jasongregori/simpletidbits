@@ -97,7 +97,8 @@
 
 - (void)dismiss
 {
-    [self.parentViewController dismissModalViewControllerAnimated:YES];
+    [self.navigationController.parentViewController
+     dismissModalViewControllerAnimated:YES];
 }
 
 - (void)setLoading:(BOOL)loading
