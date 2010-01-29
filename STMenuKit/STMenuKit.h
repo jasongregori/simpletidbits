@@ -13,6 +13,7 @@
 #import "STMenuSwitchTableViewCell.h"
 #import "STMenuNoItemsTableViewCell.h"
 #import "STMenuAddItemTableViewCell.h"
+#import "STMenuTextBoxTableViewCell.h"
 
 // Section Controllers
 #import "STMenuFormattedSectionController.h"
@@ -33,6 +34,9 @@
 
 // List Menu
 #import "STMenuListViewController.h"
+
+// Web Menu
+#import "STMenuWebViewController.h"
 
 // Sub Menu
 #import "STMenuSubMenuTableViewController.h"
