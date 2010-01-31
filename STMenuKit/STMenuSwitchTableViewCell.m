@@ -30,7 +30,9 @@
         [_toggle addTarget:self
                     action:@selector(st_switchValueChanged)
           forControlEvents:UIControlEventValueChanged];
-        self.accessoryView  = _toggle;
+        self.editingAccessoryView   = _toggle;
+        
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
     }
     return self;
 }

@@ -14,6 +14,7 @@
 #import "STMenuNoItemsTableViewCell.h"
 #import "STMenuAddItemTableViewCell.h"
 #import "STMenuTextBoxTableViewCell.h"
+#import "STMenuLabelTableViewCell.h"
 
 // Section Controllers
 #import "STMenuFormattedSectionController.h"
@@ -26,7 +27,6 @@
 #import "STMenuFormattedTableViewController.h"
 
 // Form Menu
-#import "STMenuFormLabelTableViewCell.h"
 #import "STMenuFormViewController.h"
 
 // Edit Menu

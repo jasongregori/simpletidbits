@@ -46,8 +46,8 @@
 		79B0DAE11104301D00F77242 /* STMenuSelectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B0DADF1104301D00F77242 /* STMenuSelectViewController.m */; };
 		79B303EE10A7463C00CE423D /* STMenuProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B303EC10A7463C00CE423D /* STMenuProtocol.h */; };
 		79B304A810A7A6BB00CE423D /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 79B304A710A7A6BB00CE423D /* UIKit.framework */; };
-		79B7389210D89A1F003F5027 /* STMenuFormLabelTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B7389010D89A1F003F5027 /* STMenuFormLabelTableViewCell.h */; };
-		79B7389310D89A1F003F5027 /* STMenuFormLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B7389110D89A1F003F5027 /* STMenuFormLabelTableViewCell.m */; };
+		79B7389210D89A1F003F5027 /* STMenuLabelTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79B7389010D89A1F003F5027 /* STMenuLabelTableViewCell.h */; };
+		79B7389310D89A1F003F5027 /* STMenuLabelTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79B7389110D89A1F003F5027 /* STMenuLabelTableViewCell.m */; };
 		79D1798A10B8AD73008A5B54 /* STMenuTableViewCell.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D1798810B8AD73008A5B54 /* STMenuTableViewCell.h */; };
 		79D1798B10B8AD73008A5B54 /* STMenuTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 79D1798910B8AD73008A5B54 /* STMenuTableViewCell.m */; };
 		79D1799410B8B2A8008A5B54 /* STMenuFormattedSectionController.h in Headers */ = {isa = PBXBuildFile; fileRef = 79D1799210B8B2A8008A5B54 /* STMenuFormattedSectionController.h */; };
@@ -127,8 +127,8 @@
 		79B0DADF1104301D00F77242 /* STMenuSelectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuSelectViewController.m; sourceTree = "<group>"; };
 		79B303EC10A7463C00CE423D /* STMenuProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuProtocol.h; sourceTree = "<group>"; };
 		79B304A710A7A6BB00CE423D /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		79B7389010D89A1F003F5027 /* STMenuFormLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuFormLabelTableViewCell.h; sourceTree = "<group>"; };
-		79B7389110D89A1F003F5027 /* STMenuFormLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuFormLabelTableViewCell.m; sourceTree = "<group>"; };
+		79B7389010D89A1F003F5027 /* STMenuLabelTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuLabelTableViewCell.h; sourceTree = "<group>"; };
+		79B7389110D89A1F003F5027 /* STMenuLabelTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuLabelTableViewCell.m; sourceTree = "<group>"; };
 		79D1798810B8AD73008A5B54 /* STMenuTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuTableViewCell.h; sourceTree = "<group>"; };
 		79D1798910B8AD73008A5B54 /* STMenuTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = STMenuTableViewCell.m; sourceTree = "<group>"; };
 		79D1799210B8B2A8008A5B54 /* STMenuFormattedSectionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = STMenuFormattedSectionController.h; sourceTree = "<group>"; };
@@ -247,6 +247,8 @@
 				79A7F5BD10FD892E001835A9 /* STMenuAddItemTableViewCell.m */,
 				79D3EBC31112976B005F6D9C /* STMenuTextBoxTableViewCell.h */,
 				79D3EBC41112976B005F6D9C /* STMenuTextBoxTableViewCell.m */,
+				79B7389010D89A1F003F5027 /* STMenuLabelTableViewCell.h */,
+				79B7389110D89A1F003F5027 /* STMenuLabelTableViewCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -289,8 +291,6 @@
 		794E01EF10D9DFB1000C1852 /* Form Menu */ = {
 			isa = PBXGroup;
 			children = (
-				79B7389010D89A1F003F5027 /* STMenuFormLabelTableViewCell.h */,
-				79B7389110D89A1F003F5027 /* STMenuFormLabelTableViewCell.m */,
 				799F707B10C8C5150055C744 /* STMenuFormViewController.h */,
 				799F707C10C8C5150055C744 /* STMenuFormViewController.m */,
 			);
@@ -360,7 +360,7 @@
 				799F707D10C8C5150055C744 /* STMenuFormViewController.h in Headers */,
 				794C780F10CA17AF00717975 /* STMenuTextFieldTableViewCell.h in Headers */,
 				79F010E610D7329300CFDBD6 /* STLoadingView.h in Headers */,
-				79B7389210D89A1F003F5027 /* STMenuFormLabelTableViewCell.h in Headers */,
+				79B7389210D89A1F003F5027 /* STMenuLabelTableViewCell.h in Headers */,
 				F728F39610D6B452005B527A /* STMenuBaseViewController.h in Headers */,
 				794E020510D9E01E000C1852 /* STMenuListViewController.h in Headers */,
 				794E02E610DA1492000C1852 /* STMenuNoItemsTableViewCell.h in Headers */,
@@ -450,7 +450,7 @@
 				799F707E10C8C5150055C744 /* STMenuFormViewController.m in Sources */,
 				794C781010CA17AF00717975 /* STMenuTextFieldTableViewCell.m in Sources */,
 				79F010E710D7329300CFDBD6 /* STLoadingView.m in Sources */,
-				79B7389310D89A1F003F5027 /* STMenuFormLabelTableViewCell.m in Sources */,
+				79B7389310D89A1F003F5027 /* STMenuLabelTableViewCell.m in Sources */,
 				F728F39710D6B452005B527A /* STMenuBaseViewController.m in Sources */,
 				794E020610D9E01E000C1852 /* STMenuListViewController.m in Sources */,
 				794E02E710DA1492000C1852 /* STMenuNoItemsTableViewCell.m in Sources */,

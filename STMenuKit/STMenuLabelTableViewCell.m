@@ -6,15 +6,15 @@
 //  Copyright 2009 Jason Gregori. All rights reserved.
 //
 
-#import "STMenuFormLabelTableViewCell.h"
+#import "STMenuLabelTableViewCell.h"
 
 
-@implementation STMenuFormLabelTableViewCell
+@implementation STMenuLabelTableViewCell
 
 - (id)initWithStyle:(UITableViewCellStyle)style
     reuseIdentifier:(NSString *)reuseIdentifier
 {
-    if (self = [super initWithStyle:UITableViewCellStyleValue1
+    if (self = [super initWithStyle:style
                     reuseIdentifier:reuseIdentifier])
     {
         self.selectionStyle = UITableViewCellSelectionStyleNone;
