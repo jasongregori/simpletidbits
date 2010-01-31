@@ -97,8 +97,6 @@ static NSPersistentStoreCoordinator	*st_persistentStoreCoordinator	= nil;
 // Any errors will be logged.
 + (BOOL)saveManagedObjectContext:(NSManagedObjectContext *)moc;
 {
-    NSLog(@"Saving: %@", moc);
-    
     NSError		*error		= nil;
     BOOL		didWork		= [moc save:&error];
     if (!didWork)
