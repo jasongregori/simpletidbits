@@ -173,6 +173,11 @@ static STRemoteUser *sharedInstance = nil;
 
 - (void)logout
 {
+    if (!self.loggedIn)
+    {
+        return;
+    }
+    
     // get userinfo so we can send it in the notification
     id      userInfo        = [self.userInfo retain];
     
