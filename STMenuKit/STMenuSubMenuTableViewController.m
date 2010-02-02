@@ -33,6 +33,7 @@
               target:self
               action:@selector(save)]
              autorelease];
+        self.hidesBottomBarWhenPushed   = YES;
     }
     return self;
 }
