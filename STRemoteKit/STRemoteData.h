@@ -70,6 +70,7 @@
 {
   @private
 	BOOL		_authenticated;
+    BOOL        _suppressErrorMessages;
 	id <STRemoteDataDelegate> _delegate;
 	id			_context;
     NSString    *_networkNamespace;
@@ -85,6 +86,8 @@
 }
 // Whether to use authentication or not, defaults to YES
 @property (nonatomic, assign)	BOOL	authenticated;
+// This is solely for your purposes.
+@property (nonatomic, assign)   BOOL    suppressErrorMessages;
 @property (nonatomic, assign)	id <STRemoteDataDelegate> delegate;
 // For you use only
 @property (nonatomic, retain)	id		context;

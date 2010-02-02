@@ -32,7 +32,8 @@ static CGFloat	st_STRemoteTimeoutInterval	= 10;
 			context = _context, request = _request, statusCode = _statusCode,
 			responseData = _responseData, errorMessage = _errorMessage,
             networkNamespace = _networkNamespace, connection = _connection,
-            requestDictionary = _requestDictionary;
+            requestDictionary = _requestDictionary,
+            suppressErrorMessages = _suppressErrorMessages;
 
 #pragma mark Class Initialize
 
