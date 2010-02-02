@@ -11,6 +11,8 @@
 #pragma mark Notifications
 NSString *const STRemoteUserDidLoginNotification
   = @"STRemoteUserDidLoginNotification";
+NSString *const STRemoteUserDidSignUpNotification
+  = @"STRemoteUserDidSignUpNotification";
 NSString *const STRemoteUserWillLogoutNotification
   = @"STRemoteUserWillLogoutNotification";
 NSString *const STRemoteUserDidLogoutNotification
@@ -246,6 +248,8 @@ static STRemoteUser *sharedInstance = nil;
     [userDefaults setBool:YES forKey:STRemoteUserLoggedInKey];
     [userDefaults synchronize];
     
+    [self st_userDidLogin];
+    
     // send notification
     [[NSNotificationCenter defaultCenter]
      postNotificationName:STRemoteUserDidLoginNotification
@@ -299,6 +303,16 @@ static STRemoteUser *sharedInstance = nil;
 {
     self.st_authInfo    = remoteData.responseData;
     [self st_setUserAsLoggedIn];
+}
+
+- (void)st_userDidLogin
+{
+    
+}
+
+- (void)st_userDidSignup
+{
+    
 }
 
 #pragma mark -
@@ -421,6 +435,15 @@ static STRemoteUser *sharedInstance = nil;
         // we are in sign up
         if (self.signUpControllerIsModalOfLoginController)
         {
+            // The user just successfully signed up!
+            [self st_userDidSignup];
+            
+            // send notification
+            [[NSNotificationCenter defaultCenter]
+             postNotificationName:STRemoteUserDidSignUpNotification
+             object:self
+             userInfo:self.userInfo];
+            
             [self.st_loginController dismiss];
             self.st_loginController = nil;
         }

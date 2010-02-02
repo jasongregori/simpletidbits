@@ -42,6 +42,8 @@
 
 // For notifications object is self, userInfo is self.userInfo
 extern NSString *const STRemoteUserDidLoginNotification;
+// DidLogin Notification still gets called when the user signsup.
+extern NSString *const STRemoteUserDidSignUpNotification;
 extern NSString *const STRemoteUserWillLogoutNotification;
 extern NSString *const STRemoteUserDidLogoutNotification;
 
@@ -157,6 +159,10 @@ STRemoteDataDelegate>
 // The default is to save the response object as st_authInfo then mark the user
 // as logged in.
 - (void)st_loginUserWithRemoteDataResponse:(STRemoteData *)remoteData;
+
+// For your benefit, called before notifications are sent. Defaults do nothing.
+- (void)st_userDidLogin;
+- (void)st_userDidSignup;
 
 @end
 
