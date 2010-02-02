@@ -31,7 +31,7 @@
           = [[[UIBarButtonItem alloc]
               initWithBarButtonSystemItem:UIBarButtonSystemItemSave
               target:self
-              action:@selector(save)]
+              action:@selector(st_save)]
              autorelease];
         self.hidesBottomBarWhenPushed   = YES;
     }
@@ -46,18 +46,19 @@
     [super dealloc];
 }
 
-- (void)save
+- (void)st_save
 {
     if ([self shouldSave])
     {
-        self.parentMenuShouldSave   = YES;
-        [self dismiss];
+        if ([self.delegate respondsToSelector:@selector(subMenu:shouldSave:)])
+        {
+            if (![self.delegate subMenu:self shouldSave:self.subValue])
+            {
+                return;
+            }
+        }
+        [self save];
     }
-}
-
-- (void)valueDidChange
-{
-    self.subValue   = self.value;
 }
 
 - (BOOL)shouldSave
@@ -65,11 +66,27 @@
     if (![self.value isEqual:self.subValue])
     {
         // only save if the values are not equal
-        self.value      = self.subValue;
         return YES;
     }
     [self dismiss];
     return NO;
+}
+
+- (void)save
+{
+    [self st_saveSubValue];
+    self.parentMenuShouldSave   = YES;
+    [self dismiss];
+}
+
+- (void)valueDidChange
+{
+    self.subValue   = self.value;
+}
+
+- (void)st_saveSubValue
+{
+    self.value      = self.subValue;
 }
 
 #pragma mark STMenuBaseTableViewController

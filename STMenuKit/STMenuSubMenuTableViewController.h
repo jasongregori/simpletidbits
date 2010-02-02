@@ -42,17 +42,43 @@
 // You may override it and set subValue to something else if you want.
 - (void)valueDidChange;
 
-// Called when save button is tapped
+// Called internally or call to force a save.
+// The default is to 
 - (void)save;
 
-// Save is called right before we dismiss the menu.
-// If NO is returned, the save is cancelled.
+// shouldSave is called when the user taps save.
+// If NO is returned, nothing happens.
+// If YES is returned, save is called.
 // If you want, you may override and do some work to subValue before setting
 // self.value to it. Or you can throw up an alert and return NO. Or you can
 // dismiss the subMenu and return to basically cancel instead of save.
 // The default is to check if [self.value isEqual:self.subValue], if YES,
-// dismiss the subMenu and return NO (effectively cancelling). If NO, set
-// self.value to self.subValue and return YES.
+// dismiss the subMenu and return NO (effectively cancelling). If NO, return
+// YES.
 - (BOOL)shouldSave;
 
+#pragma mark Private/Subclasse Methods
+// Subclasses should use this to save. It will call `save` if necessary.
+- (void)st_save;
+
+// This is called on save. In it, you should convert subValue back to value.
+// The default is to set self.value to self.subValue.
+- (void)st_saveSubValue;
+
 @end
+
+@protocol STMenuSubMenuTableViewControllerDelegate <NSObject>
+
+@optional
+// This is called when the user taps the save button
+// If you return YES, save is called.
+// If you return NO, nothing happens.
+// You may use this to validate the item: if the item is not valid show an alert
+// and return NO.
+// If you need to do something that will take a while (like save the item on the
+// server), you may return NO and later call save yourself.
+- (BOOL)subMenu:(STMenuSubMenuTableViewController *)subMenu
+     shouldSave:(id)value;
+
+@end
+

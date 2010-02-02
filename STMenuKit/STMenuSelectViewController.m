@@ -123,7 +123,7 @@ didSelectRowAtIndexPath:(NSIndexPath *)indexPath
     
     if ([self.saveOnSelect boolValue])
     {
-        [self save];
+        [self st_save];
     }
 }
 
