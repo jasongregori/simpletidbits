@@ -20,6 +20,16 @@
 @synthesize defaultValue = _defaultValue, st_values = _values,
             st_strings = _strings, plist = _plist;
 
+- (void)dealloc
+{
+    [_defaultValue release];
+    [_plist release];
+    [_values release];
+    [_strings release];
+    
+    [super dealloc];
+}
+
 #pragma mark STMenuTableViewCell
 
 - (void)setPlist:(id)plist
@@ -123,9 +133,7 @@
 {
     [super st_prepareForReuse];
     
-    [_defaultValue release];
-    [_values release];
-    [_strings release];
+    self.defaultValue   = nil;
 }
 
 @end

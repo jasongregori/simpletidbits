@@ -51,11 +51,13 @@
  */
 
 @interface STMenuEditViewController : STMenuFormattedTableViewController
+<UIActionSheetDelegate>
 {
   @protected
     BOOL            _purgeMode;
     NSNumber        *_showDeleteButton;
     NSString        *_deleteMessage;
+    UIActionSheet   *_deleteActionSheet;
 }
 
 // BOOL

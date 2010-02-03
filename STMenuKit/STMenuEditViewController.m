@@ -10,15 +10,20 @@
 #import "STMenuBasicSectionController.h"
 
 @interface STMenuEditViewController ()
-@property (nonatomic, assign)   BOOL        purgeMode;
+
+@property (nonatomic, assign)   BOOL            purgeMode;
+@property (nonatomic, retain)   UIActionSheet   *st_deleteActionSheet;
+
 - (void)st_deleteButtonTapped;
+- (void)st_delete;
 
 @end
 
 
 @implementation STMenuEditViewController
 @synthesize showDeleteButton = _showDeleteButton,
-            deleteMessage = _deleteMessage, purgeMode = _purgeMode;
+            deleteMessage = _deleteMessage, purgeMode = _purgeMode,
+            st_deleteActionSheet = _deleteActionSheet;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,6 +39,7 @@
 {
     [_showDeleteButton release];
     [_deleteMessage release];
+    [_deleteActionSheet release];
     
     [super dealloc];
 }
@@ -81,7 +87,20 @@
 
 - (void)st_deleteButtonTapped
 {
-    // TODO: show action sheet asking if they are sure!
+    UIActionSheet   *actionSheet    = [[UIActionSheet alloc]
+                                       initWithTitle:nil
+                                       delegate:self
+                                       cancelButtonTitle:@"Cancel"
+                                       destructiveButtonTitle:self.deleteMessage
+                                       otherButtonTitles:nil];
+//    actionSheet.actionSheetStyle    = UIActionSheetStyleBlackTranslucent;
+    self.st_deleteActionSheet       = actionSheet;
+    [actionSheet showInView:self.view];
+    [actionSheet release];
+}
+
+- (void)st_delete
+{
     if ([self.delegate
          respondsToSelector:@selector(editMenu:shouldDeleteItem:)])
     {
@@ -254,6 +273,21 @@
     else
     {
         [self st_setEditing:editing animated:animated];
+    }
+}
+
+#pragma mark Delegate Methods
+#pragma mark UIActionSheet
+
+- (void)actionSheet:(UIActionSheet *)actionSheet
+clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (actionSheet == self.st_deleteActionSheet)
+    {
+        if (buttonIndex == [actionSheet destructiveButtonIndex])
+        {
+            [self st_delete];
+        }
     }
 }
 
