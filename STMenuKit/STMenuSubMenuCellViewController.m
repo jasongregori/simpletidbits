@@ -11,7 +11,7 @@
 
 @implementation STMenuSubMenuCellViewController
 @synthesize cell = _cell;
-@synthesize dontStyleCell   = _dontStyleCell;
+//@synthesize dontStyleCell   = _dontStyleCell;
 
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -27,7 +27,7 @@
 - (void)dealloc
 {
     [_cell release];
-    [_dontStyleCell release];
+//    [_dontStyleCell release];
     
     [super dealloc];
 }
